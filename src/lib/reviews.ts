@@ -1,5 +1,5 @@
 // Fetch Google reviews at build time via Places API (New)
-const API_KEY = 'REDACTED';
+const API_KEY = import.meta.env.GOOGLE_PLACES_API_KEY || '';
 const PLACE_ID = 'ChIJpfuUdkhwDIMR0rK-6PvfVJ8';
 
 export interface GoogleReview {
