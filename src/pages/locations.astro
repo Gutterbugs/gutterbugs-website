@@ -7,37 +7,80 @@ const areas = [
     name: 'Tring',
     desc: 'Our home town and base of operations. We provide all services in Tring and the surrounding villages including Aldbury, Wigginton and Long Marston.',
     services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+    lat: 51.7957,
+    lng: -0.6609,
   },
   {
     name: 'Berkhamsted',
     desc: 'We regularly work throughout Berkhamsted, including the town centre and surrounding residential areas. Same-day quotes available.',
     services: ['Gutter Clearing', 'Roof Cleaning', 'Conservatory Cleaning'],
+    lat: 51.7601,
+    lng: -0.5694,
   },
   {
     name: 'Hemel Hempstead',
     desc: 'Full service coverage across all areas of Hemel Hempstead, including Boxmoor, Apsley, Leverstock Green and surrounding villages.',
     services: ['Gutter Clearing', 'Pressure Washing', 'Solar Panel Cleaning'],
+    lat: 51.7526,
+    lng: -0.4692,
   },
   {
     name: 'Aylesbury',
     desc: 'We extend our service area into Aylesbury and the surrounding Vale, providing the same high standard of exterior cleaning across the county border.',
     services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+    lat: 51.8168,
+    lng: -0.8084,
+  },
+  {
+    name: 'Chesham',
+    desc: 'Covering Chesham and the surrounding Chilterns villages. Full range of exterior cleaning services available.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+    lat: 51.7051,
+    lng: -0.6111,
+  },
+  {
+    name: 'Amersham',
+    desc: 'We serve Amersham and the wider Chilterns area including Old Amersham and surrounding villages.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Soffit & Fascia'],
+    lat: 51.6740,
+    lng: -0.6073,
+  },
+  {
+    name: 'Wendover',
+    desc: 'Covering Wendover, Halton and the surrounding villages in the Aylesbury Vale.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+    lat: 51.7624,
+    lng: -0.7468,
+  },
+  {
+    name: 'Kings Langley',
+    desc: 'We regularly work in Kings Langley and nearby areas including Abbots Langley and Chipperfield.',
+    services: ['Gutter Clearing', 'Pressure Washing', 'Conservatory Cleaning'],
+    lat: 51.7060,
+    lng: -0.4399,
   },
   {
     name: 'St Albans',
     desc: 'Covering St Albans and surrounding areas including Harpenden, London Colney and Redbourn. All exterior cleaning services available.',
     services: ['Gutter Clearing', 'Soffit & Fascia', 'Conservatory Cleaning'],
+    lat: 51.7520,
+    lng: -0.3366,
   },
   {
     name: 'Watford',
     desc: 'We travel to Watford and the surrounding areas for all exterior cleaning services. Contact us for availability.',
     services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+    lat: 51.6565,
+    lng: -0.3903,
   },
 ];
+
+// Tring as centre
+const centre = { lat: 51.7957, lng: -0.6609 };
 ---
 
 <Layout
-  title="Service Areas | Gutterbugs Hertfordshire & Surrounding Areas"
+  title="Service Areas | Gutterbugs"
   description="Gutterbugs serves Hertfordshire and surrounding areas including Tring, Berkhamsted, Hemel Hempstead, Aylesbury, St Albans and more. Get a free quote today."
 >
   <!-- Hero -->
@@ -51,13 +94,20 @@ const areas = [
         Areas We Cover
       </h1>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Based in Tring, we cover a wide area. If you're not sure whether we cover your area, just give us a call.
+        Based in Tring, we cover a wide area across Hertfordshire and Buckinghamshire. If you're not sure whether we cover your area, just give us a call.
       </p>
     </div>
   </section>
 
+  <!-- Map -->
+  <section class="py-8 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="service-map" class="w-full h-[450px] rounded-2xl border border-gray-200 overflow-hidden shadow-sm"></div>
+    </div>
+  </section>
+
   <!-- Areas Grid -->
-  <section class="py-20 bg-white">
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {areas.map(area => (
@@ -91,7 +141,7 @@ const areas = [
           <a href="/contact" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-200">
             Get in Touch →
           </a>
-          <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-white/30 text-gray-900 hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-semibold transition-all duration-200">
+          <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-900 hover:bg-sky-50 hover:border-sky-300 px-8 py-3 rounded-full font-semibold transition-all duration-200">
             📞 07904621160
           </a>
         </div>
@@ -101,3 +151,55 @@ const areas = [
 
   <CTASection />
 </Layout>
+
+<!-- Leaflet CSS + JS (free, no API key) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script is:inline define:vars={{ areas, centre }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const map = L.map('service-map', {
+      scrollWheelZoom: false,
+    }).setView([centre.lat, centre.lng], 11);
+
+    // Clean map tiles (CartoDB Positron - light, professional)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Service area circle (approx 20km radius from Tring)
+    L.circle([centre.lat, centre.lng], {
+      radius: 20000,
+      color: '#0ea5e9',
+      fillColor: '#0ea5e9',
+      fillOpacity: 0.06,
+      weight: 2,
+      dashArray: '8 4',
+    }).addTo(map);
+
+    // Custom marker icon
+    const markerIcon = L.divIcon({
+      html: '<div style="background:#0ea5e9;width:12px;height:12px;border-radius:50%;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>',
+      className: '',
+      iconSize: [12, 12],
+      iconAnchor: [6, 6],
+    });
+
+    // HQ marker (larger)
+    const hqIcon = L.divIcon({
+      html: '<div style="background:#0ea5e9;width:18px;height:18px;border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.3);"></div>',
+      className: '',
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+    });
+
+    // Add markers
+    areas.forEach((area, i) => {
+      const icon = area.name === 'Tring' ? hqIcon : markerIcon;
+      const marker = L.marker([area.lat, area.lng], { icon }).addTo(map);
+      const label = area.name === 'Tring' ? `<strong>${area.name}</strong> (HQ)` : `<strong>${area.name}</strong>`;
+      marker.bindPopup(`${label}<br><span style="font-size:12px;color:#666;">${area.services.join(' · ')}</span>`);
+    });
+  });
+</script>
