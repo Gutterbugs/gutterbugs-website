@@ -233,7 +233,7 @@ const services = [
       }
 
       try {
-        const endpoint = (import.meta as any).env?.PUBLIC_FORM_ENDPOINT || '/api/contact';
+        const endpoint = (import.meta as any).env?.PUBLIC_FORM_ENDPOINT || 'https://gutterbugs-form.ryan-1f9.workers.dev';
         const response = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
