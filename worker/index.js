@@ -69,6 +69,37 @@ export default {
         headers: corsHeaders(request, env),
       });
 
+      // Try to push to Mission Control (best-effort, non-blocking)
+      if (env.MISSION_CONTROL_URL) {
+        try {
+          const mcResponse = await fetch(`${env.MISSION_CONTROL_URL}/api/leads/capture`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          });
+          if (mcResponse.ok) {
+            // Mark as synced in D1
+            await env.DB.prepare('UPDATE leads SET synced_to_mc = 1 WHERE id = ?')
+              .bind(result.meta.last_row_id).run();
+          }
+        } catch (e) {
+          // Mission Control unreachable — that's fine, D1 has the lead
+          console.log('MC push failed (will sync later):', e.message);
+        }
+      }
+
+      return new Response(JSON.stringify({
+        ok: true,
+        lead: {
+          id: result.meta.last_row_id,
+          name: `${body.first_name} ${body.last_name}`,
+          status: 'new',
+        },
+      }), {
+        status: 200,
+        headers: corsHeaders(request, env),
+      });
+
     } catch (err) {
       console.error('Worker error:', err);
       return new Response(JSON.stringify({
