@@ -1,0 +1,21 @@
+---
+const stats = [
+  { value: '2000+', label: 'Homes Cleaned' },
+  { value: 'Since 2019', label: 'Family Business' },
+  { value: 'Same-Day', label: 'Quotes Available' },
+  { value: 'Fully', label: 'Insured' },
+];
+---
+
+<section class="bg-sky-600 py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {stats.map(stat => (
+        <div class="text-center">
+          <p class="text-gray-900 font-bold text-xl md:text-2xl" style="font-family: 'Poppins', sans-serif;">{stat.value}</p>
+          <p class="text-sky-100 text-sm mt-0.5">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

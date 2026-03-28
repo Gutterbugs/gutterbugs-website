@@ -1,0 +1,34 @@
+---
+interface Props {
+  name: string;
+  review: string;
+  rating?: number;
+}
+
+const { name, review, rating = 5 } = Astro.props;
+---
+
+<div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-sky-500/20 transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/5">
+  <!-- Stars -->
+  <div class="flex gap-0.5 mb-4">
+    {Array.from({ length: rating }).map(() => (
+      <span class="text-yellow-400 text-lg">★</span>
+    ))}
+  </div>
+
+  <!-- Review Text -->
+  <p class="text-gray-600 text-sm leading-relaxed mb-5 italic">
+    "{review}"
+  </p>
+
+  <!-- Author -->
+  <div class="flex items-center gap-3">
+    <div class="w-9 h-9 bg-sky-500/20 rounded-full flex items-center justify-center">
+      <span class="text-sky-400 font-bold text-sm">{name.charAt(0)}</span>
+    </div>
+    <div>
+      <p class="text-gray-900 font-semibold text-sm">{name}</p>
+      <p class="text-gray-500 text-xs">Verified Customer</p>
+    </div>
+  </div>
+</div>

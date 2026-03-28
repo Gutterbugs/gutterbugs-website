@@ -1,0 +1,271 @@
+---
+const services = [
+  { value: 'gutter_cleaning', label: 'Gutter Cleaning' },
+  { value: 'roof_scraping', label: 'Roof Moss Removal (Scraping)' },
+  { value: 'roof_pressure', label: 'Roof Pressure Washing' },
+  { value: 'driveway', label: 'Driveway/Patio Cleaning' },
+  { value: 'soffit_fascia', label: 'Soffit & Fascia Washing' },
+  { value: 'conservatory_roof', label: 'Conservatory Roof Washing' },
+  { value: 'solar_panels', label: 'Solar Panel Washing' },
+  { value: 'other', label: 'Other Services' },
+];
+---
+
+<form id="contact-form" class="space-y-6">
+  <!-- Hidden attribution fields -->
+  <input type="hidden" name="gclid" id="gclid" />
+  <input type="hidden" name="source" id="source" />
+  <input type="hidden" name="landing_page" id="landing_page" />
+  <input type="hidden" name="referrer" id="referrer" />
+  <input type="hidden" name="utm_source" id="utm_source" />
+  <input type="hidden" name="utm_medium" id="utm_medium" />
+  <input type="hidden" name="utm_campaign" id="utm_campaign" />
+  <input type="hidden" name="utm_term" id="utm_term" />
+
+  <!-- Name -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1.5">First Name <span class="text-red-500">*</span></label>
+      <input
+        type="text"
+        id="first_name"
+        name="first_name"
+        required
+        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      />
+    </div>
+    <div>
+      <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1.5">Last Name <span class="text-red-500">*</span></label>
+      <input
+        type="text"
+        id="last_name"
+        name="last_name"
+        required
+        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      />
+    </div>
+  </div>
+
+  <!-- Email & Phone -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">Email <span class="text-red-500">*</span></label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      />
+    </div>
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-1.5">Phone <span class="text-red-500">*</span></label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        required
+        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      />
+    </div>
+  </div>
+
+  <!-- Address -->
+  <div>
+    <label for="address" class="block text-sm font-medium text-gray-700 mb-1.5">Property Address <span class="text-red-500">*</span></label>
+    <input
+      type="text"
+      id="address"
+      name="address"
+      required
+      placeholder="Street address"
+      class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+    />
+  </div>
+
+  <!-- Postcode -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="postcode" class="block text-sm font-medium text-gray-700 mb-1.5">Postcode</label>
+      <input
+        type="text"
+        id="postcode"
+        name="postcode"
+        placeholder="e.g. HP23 4AB"
+        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      />
+    </div>
+  </div>
+
+  <!-- Services Checkboxes -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-3">Services Needed</label>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {services.map(s => (
+        <label class="flex items-center gap-3 cursor-pointer group">
+          <input
+            type="checkbox"
+            name="services"
+            value={s.value}
+            class="w-5 h-5 rounded border-2 border-gray-300 text-sky-500 focus:ring-sky-500 focus:ring-offset-0 accent-sky-500 flex-shrink-0"
+          />
+          <span class="text-gray-700 text-sm group-hover:text-sky-600 transition-colors">{s.label}</span>
+        </label>
+      ))}
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Additional Details</label>
+    <textarea
+      id="form-message"
+      name="message"
+      rows="4"
+      placeholder="Tell us about your property, any specific requirements, or questions you have..."
+      class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200 resize-none"
+    ></textarea>
+  </div>
+
+  <!-- Success message -->
+  <div id="form-success" class="hidden bg-sky-50 border border-sky-200 text-sky-800 text-sm px-4 py-3 rounded-xl text-center font-medium">
+    Thank you! Your request has been submitted. We'll get back to you with a quote shortly.
+  </div>
+
+  <!-- Error message -->
+  <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl text-center">
+    Something went wrong. Please try again or call us on <a href="tel:07904621160" class="underline font-medium">07904621160</a>.
+  </div>
+
+  <button
+    type="submit"
+    id="submit-btn"
+    class="w-full bg-sky-500 hover:bg-sky-600 text-white py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+  >
+    <span id="submit-text">Get My Free Quote</span>
+    <span id="submit-loading" class="hidden">Submitting...</span>
+  </button>
+
+  <p class="text-gray-500 text-xs text-center">
+    We respond within 24 hours. Your details are kept confidential.
+  </p>
+</form>
+
+<script>
+  // ─── Attribution Capture ────────────────────────────────────────────
+  function getUrlParam(name: string): string | null {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  function initAttribution() {
+    // gclid: capture from URL, persist in localStorage
+    const gclidParam = getUrlParam('gclid');
+    if (gclidParam) localStorage.setItem('gclid', gclidParam);
+    const gclid = gclidParam || localStorage.getItem('gclid') || '';
+    (document.getElementById('gclid') as HTMLInputElement).value = gclid;
+
+    // UTM parameters
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term'].forEach(param => {
+      const val = getUrlParam(param);
+      if (val) (document.getElementById(param) as HTMLInputElement).value = val;
+    });
+
+    // Referrer & landing page
+    (document.getElementById('referrer') as HTMLInputElement).value = document.referrer || '';
+    (document.getElementById('landing_page') as HTMLInputElement).value = window.location.href;
+
+    // Source determination
+    let source = 'direct';
+    if (gclid) source = 'google_ads';
+    else if (getUrlParam('utm_source')) source = getUrlParam('utm_source')!;
+    else if (document.referrer && !document.referrer.includes('gutterbugs.co.uk')) source = 'organic';
+    (document.getElementById('source') as HTMLInputElement).value = source;
+
+    // Store gclid for future visits
+    if (gclid) localStorage.setItem('gclid', gclid);
+  }
+
+  // ─── Form Submission ────────────────────────────────────────────────
+  function initForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const submitText = document.getElementById('submit-text')!;
+    const submitLoading = document.getElementById('submit-loading')!;
+    const errorDiv = document.getElementById('form-error')!;
+    const successDiv = document.getElementById('form-success')!;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitText.classList.add('hidden');
+      submitLoading.classList.remove('hidden');
+      errorDiv.classList.add('hidden');
+      successDiv.classList.add('hidden');
+
+      // Collect form data
+      const formData = new FormData(form);
+      const data: Record<string, string | null> = {};
+      formData.forEach((value, key) => {
+        if (key !== 'services') data[key] = value.toString();
+      });
+
+      // Handle multiple service checkboxes → comma-separated string
+      const checkedServices = Array.from(
+        form.querySelectorAll('input[name="services"]:checked')
+      ).map((cb) => (cb as HTMLInputElement).value);
+      data.service_type = checkedServices.length > 0 ? checkedServices.join(',') : null;
+
+      // GA4 conversion event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'Contact_Us_Form_Entry', {
+          event_category: 'form',
+          event_label: data.service_type || 'unspecified',
+        });
+      }
+
+      // Phone call click tracking (for attribution)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', {
+          currency: 'GBP',
+          value: 0,
+        });
+      }
+
+      try {
+        const endpoint = (import.meta as any).env?.PUBLIC_FORM_ENDPOINT || '/api/contact';
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Show success inline or redirect to thank-you
+          successDiv.classList.remove('hidden');
+          form.reset();
+          
+          // Redirect after short delay so user sees success message
+          setTimeout(() => {
+            window.location.href = '/thank-you';
+          }, 1500);
+        } else {
+          throw new Error(result.error || 'Server error');
+        }
+      } catch {
+        errorDiv.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitText.classList.remove('hidden');
+        submitLoading.classList.add('hidden');
+      }
+    });
+  }
+
+  // Declare gtag for TypeScript
+  declare function gtag(...args: any[]): void;
+
+  initAttribution();
+  initForm();
+</script>

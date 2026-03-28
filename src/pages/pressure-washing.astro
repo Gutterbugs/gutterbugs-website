@@ -1,0 +1,128 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const pricingTiers = [
+  {
+    title: 'Patio',
+    price: 'From £100',
+    description: 'Standard patio areas up to 30m²',
+    features: [
+      'High-pressure cleaning',
+      'Moss & algae removal',
+      'Edge cleaning',
+      'Full debris removal',
+    ],
+  },
+  {
+    title: 'Driveway',
+    price: 'From £150',
+    description: 'Standard driveway areas',
+    features: [
+      'High-pressure cleaning',
+      'Oil stain treatment',
+      'Moss & algae removal',
+      'Edge cleaning',
+      'Full debris removal',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Driveway + Patio',
+    price: 'From £200',
+    description: 'Combined driveway and patio package',
+    features: [
+      'Full driveway cleaning',
+      'Full patio cleaning',
+      'Oil stain treatment',
+      'Moss & algae removal',
+      'Full debris removal',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'What surfaces can you pressure wash?',
+    answer: 'We can pressure wash block paving, concrete, tarmac, natural stone, brick and most other hard surfaces. We adjust the pressure to suit the surface type to avoid any damage.',
+  },
+  {
+    question: 'Will pressure washing remove oil stains?',
+    answer: 'Yes, in most cases. We use specialist degreasers alongside high-pressure cleaning to treat oil and fuel stains on driveways. Very old or deeply embedded stains may not fully disappear but will be significantly reduced.',
+  },
+  {
+    question: 'How long does it take?',
+    answer: 'A standard driveway takes 2–4 hours. A patio typically takes 1–3 hours. We will give you a time estimate when we provide your quote.',
+  },
+  {
+    question: 'Do I need to be home?',
+    answer: 'Not necessarily. As long as we have access to an outdoor water supply and the area to be cleaned, we can carry out the work without you being present.',
+  },
+  {
+    question: 'How soon can I use my driveway after cleaning?',
+    answer: 'Your driveway can typically be used within a few hours of cleaning. We recommend allowing it to dry fully before driving on it if possible.',
+  },
+];
+---
+
+<ServiceLayout
+  title="Professional Pressure Washing in Hertfordshire | Gutterbugs"
+  description="Expert driveway and patio pressure washing across Hertfordshire. Driveways from £150, patios from £100. Fully insured. Get a free quote today."
+  heroTitle="Professional Pressure Washing"
+  heroSubtitle="Transform your driveway, patio and paths with our professional pressure washing service. We remove years of dirt, moss, algae and staining to leave your surfaces looking as good as new."
+>
+  <!-- Service Description -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Restore Your Exterior Surfaces
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>Over time, driveways and patios accumulate layers of dirt, moss, algae, oil stains and general grime. This not only looks unsightly but can also make surfaces dangerously slippery.</p>
+            <p>Our professional pressure washing service uses powerful, commercial-grade equipment to blast away years of buildup, restoring your surfaces to their original appearance.</p>
+            <p>We can treat block paving, concrete, tarmac, natural stone and most other hard surfaces. For oil stains, we use specialist degreasers for the best possible results.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '💪', label: 'Commercial Grade', desc: 'Powerful equipment for superior results' },
+            { icon: '🛢️', label: 'Oil Stain Treatment', desc: 'Specialist degreasers for oil and fuel stains' },
+            { icon: '🌿', label: 'Moss Removal', desc: 'All moss and algae completely removed' },
+            { icon: '✨', label: 'Like New Results', desc: 'Surfaces restored to original condition' },
+          ].map(item => (
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+              <span class="text-2xl mb-3 block">{item.icon}</span>
+              <p class="text-gray-900 font-semibold text-sm mb-1">{item.label}</p>
+              <p class="text-gray-500 text-xs">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Pressure Washing Prices</h2>
+        <p class="text-gray-500">All prices include debris removal and a final clean-down. Larger areas may vary — contact us for a bespoke quote.</p>
+      </div>
+      <PricingTable tiers={pricingTiers} />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h2>
+        <p class="text-gray-500">Everything you need to know about our pressure washing service</p>
+      </div>
+      <FAQAccordion faqs={faqs} />
+    </div>
+  </section>
+</ServiceLayout>

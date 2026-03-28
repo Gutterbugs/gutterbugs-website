@@ -1,0 +1,127 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const pricingTiers = [
+  {
+    title: 'Small Array',
+    price: 'From £80',
+    description: 'Up to 8 panels',
+    features: [
+      'Pure water cleaning',
+      'Panel inspection',
+      'Debris removal',
+      'Efficiency report',
+    ],
+  },
+  {
+    title: 'Medium Array',
+    price: 'From £120',
+    description: '9–16 panels',
+    features: [
+      'Pure water cleaning',
+      'Panel inspection',
+      'Bird deterrent advice',
+      'Debris removal',
+      'Efficiency report',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Large Array',
+    price: 'From £180',
+    description: '17+ panels',
+    features: [
+      'Pure water cleaning',
+      'Full panel inspection',
+      'Bird deterrent advice',
+      'Mounting inspection',
+      'Efficiency report',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'How much efficiency do dirty solar panels lose?',
+    answer: 'Studies show that dirty solar panels can lose between 15–25% of their energy output due to shading from dirt, bird droppings and debris. Regular cleaning can pay for itself quickly through improved energy generation.',
+  },
+  {
+    question: 'What method do you use to clean solar panels?',
+    answer: 'We use pure water cleaning with soft brushes — the same method recommended by solar panel manufacturers. We never use harsh chemicals or high pressure that could damage the panels or void warranties.',
+  },
+  {
+    question: 'How often should solar panels be cleaned?',
+    answer: 'We recommend cleaning once or twice a year. If you have a lot of birds in your area, more frequent cleaning may be beneficial.',
+  },
+  {
+    question: 'Will cleaning void my solar panel warranty?',
+    answer: 'No. Our cleaning method uses pure water and soft brushes, which is the manufacturer-recommended method and will not void your warranty.',
+  },
+  {
+    question: 'Do I need to be home?',
+    answer: 'No, you do not need to be home. We can access the roof and panels from outside. We will contact you when the job is complete.',
+  },
+];
+---
+
+<ServiceLayout
+  title="Solar Panel Cleaning in Hertfordshire | Gutterbugs"
+  description="Professional solar panel cleaning across Hertfordshire. Pure water method. From £80. Restore efficiency, protect your investment. Get a free quote today."
+  heroTitle="Professional Solar Panel Cleaning"
+  heroSubtitle="Dirty solar panels can lose up to 25% of their energy output. Our specialist pure water cleaning service restores your panels to peak efficiency and protects your investment."
+>
+  <!-- Service Description -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Maximise Your Solar Investment
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>Solar panels are a significant investment, and keeping them clean is essential to maximising your return. Dirt, bird droppings, leaves and moss all reduce the amount of light reaching the photovoltaic cells, reducing output.</p>
+            <p>Our specialist solar panel cleaning uses the pure water method with soft brushes — exactly as recommended by solar panel manufacturers. This ensures a thorough clean without any risk of scratching the panels or voiding warranties.</p>
+            <p>Most customers see a noticeable improvement in energy output after cleaning. A regular cleaning programme ensures your panels perform at their best year-round.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '⚡', label: 'Restore Efficiency', desc: 'Up to 25% efficiency gain after cleaning' },
+            { icon: '💧', label: 'Pure Water Method', desc: 'Manufacturer-recommended technique' },
+            { icon: '🛡️', label: 'Warranty Safe', desc: 'Will not void your panel warranty' },
+            { icon: '🐦', label: 'Bird Dropping Removal', desc: 'All soiling removed completely' },
+          ].map(item => (
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+              <span class="text-2xl mb-3 block">{item.icon}</span>
+              <p class="text-gray-900 font-semibold text-sm mb-1">{item.label}</p>
+              <p class="text-gray-500 text-xs">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Solar Panel Cleaning Prices</h2>
+        <p class="text-gray-500">All prices include pure water cleaning, inspection and debris removal.</p>
+      </div>
+      <PricingTable tiers={pricingTiers} />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h2>
+      </div>
+      <FAQAccordion faqs={faqs} />
+    </div>
+  </section>
+</ServiceLayout>

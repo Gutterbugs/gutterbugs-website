@@ -1,0 +1,37 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = "Ready to get your home looking its best?",
+  subtitle = "Get a free, no-obligation quote today. Get a free, no-obligation quote today."
+} = Astro.props;
+---
+
+<section class="py-20 bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
+      {title}
+    </h2>
+    <p class="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
+      {subtitle}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-xl shadow-sky-500/30 hover:-translate-y-0.5"
+      >
+        Get Free Quote →
+      </a>
+      <a
+        href="tel:07904621160"
+        class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-900 hover:bg-sky-50 hover:border-sky-300 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200"
+      >
+        📞 07904621160
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm mt-6">✓ Free quotes &nbsp;·&nbsp; ✓ No obligation &nbsp;·&nbsp; ✓ Same-day response</p>
+  </div>
+</section>

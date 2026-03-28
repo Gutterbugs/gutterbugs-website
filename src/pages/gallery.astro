@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const placeholders = [
+  { bg: 'from-sky-900 to-sky-800', label: 'Gutter Before & After', service: 'Gutter Clearing' },
+  { bg: 'from-gray-700 to-gray-600', label: 'Roof Moss Removal', service: 'Roof Cleaning' },
+  { bg: 'from-blue-900 to-blue-800', label: 'Driveway Transformation', service: 'Pressure Washing' },
+  { bg: 'from-sky-800 to-teal-800', label: 'Gutter Clearing Result', service: 'Gutter Clearing' },
+  { bg: 'from-slate-700 to-slate-600', label: 'Roof Biocide Treatment', service: 'Roof Cleaning' },
+  { bg: 'from-stone-700 to-stone-600', label: 'Patio Cleaning', service: 'Pressure Washing' },
+  { bg: 'from-sky-900 to-sky-800', label: 'Soffit & Fascia Clean', service: 'Soffit & Fascia' },
+  { bg: 'from-sky-900 to-sky-800', label: 'Conservatory Roof', service: 'Conservatory Cleaning' },
+  { bg: 'from-yellow-900 to-amber-900', label: 'Solar Panels Cleaned', service: 'Solar Panels' },
+  { bg: 'from-sky-800 to-sky-700', label: 'Blocked Gutter Cleared', service: 'Gutter Clearing' },
+  { bg: 'from-gray-800 to-gray-700', label: 'Moss-Free Roof', service: 'Roof Cleaning' },
+  { bg: 'from-stone-800 to-stone-700', label: 'Block Paving Cleaned', service: 'Pressure Washing' },
+];
+---
+
+<Layout
+  title="Before & After Gallery | Gutterbugs Hertfordshire"
+  description="See the results of our professional exterior cleaning services. Before and after photos from gutter clearing, roof cleaning and pressure washing jobs across Hertfordshire."
+>
+  <!-- Hero -->
+  <section class="bg-white pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-900/20 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-6">
+        <span class="text-sky-400 text-sm font-medium">Our Work</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
+        Before & After Gallery
+      </h1>
+      <p class="text-xl text-gray-600 max-w-xl mx-auto">
+        Real results from real jobs. See the transformations we achieve for our customers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <p class="text-gray-500 text-sm">Photos being updated regularly — check back soon for more!</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {placeholders.map((item, i) => (
+          <div class={`relative rounded-2xl overflow-hidden bg-gradient-to-br ${item.bg} aspect-[4/3] border border-gray-200 hover:border-sky-500/30 transition-all duration-300 hover:scale-[1.02] cursor-pointer group`}>
+            <!-- Placeholder content -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <div class="text-5xl mb-3 opacity-40">📷</div>
+              <p class="text-gray-900/60 text-sm font-medium px-4 text-center">{item.label}</p>
+            </div>
+            <!-- Service tag -->
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-black/50 backdrop-blur-sm text-gray-900 text-xs px-3 py-1 rounded-full">
+                {item.service}
+              </span>
+            </div>
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-sky-500/0 group-hover:bg-sky-500/10 transition-all duration-300"></div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 max-w-xl mx-auto">
+          <p class="text-2xl mb-3">📸</p>
+          <h2 class="text-gray-900 font-bold text-lg mb-2" style="font-family: 'Poppins', sans-serif;">Photos Coming Soon</h2>
+          <p class="text-gray-500 text-sm mb-4">
+            We are regularly updating this gallery with real before and after photos from our jobs. In the meantime, check out our customer reviews to see what people say about our work.
+          </p>
+          <a href="/contact" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-full text-sm font-semibold transition-all duration-200">
+            Get Your Free Quote →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

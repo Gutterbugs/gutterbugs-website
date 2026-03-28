@@ -1,0 +1,104 @@
+---
+const services = [
+  { label: 'Gutter Clearing', href: '/gutter-clearing' },
+  { label: 'Roof Cleaning', href: '/roof-cleaning' },
+  { label: 'Pressure Washing', href: '/pressure-washing' },
+  { label: 'Soffit & Fascia Washing', href: '/soffit-fascia-washing' },
+  { label: 'Conservatory Cleaning', href: '/conservatory-cleaning' },
+  { label: 'Solar Panel Cleaning', href: '/solar-panel-cleaning' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-white border-t border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Column 1: Business Info -->
+      <div>
+        <a href="/" class="inline-block mb-4">
+          <img src="/logos/logo-160.png" alt="Gutterbugs" class="h-12 w-auto" />
+        </a>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+          Professional exterior cleaning services. Family-run, fully insured, and dedicated to exceptional results.
+        </p>
+        <div class="flex gap-3">
+          <span class="inline-flex items-center gap-1 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs px-3 py-1 rounded-full">✓ Fully Insured</span>
+          <span class="inline-flex items-center gap-1 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs px-3 py-1 rounded-full">★ 5-Star Rated</span>
+        </div>
+      </div>
+
+      <!-- Column 2: Services -->
+      <div>
+        <h3 class="text-gray-900 font-semibold text-sm uppercase tracking-wider mb-5" style="font-family: 'Poppins', sans-serif;">Our Services</h3>
+        <ul class="space-y-2">
+          {services.map(s => (
+            <li>
+              <a href={s.href} class="text-gray-500 hover:text-sky-600 text-sm transition-colors duration-150 flex items-center gap-2">
+                <span class="text-sky-500">→</span>
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact -->
+      <div>
+        <h3 class="text-gray-900 font-semibold text-sm uppercase tracking-wider mb-5" style="font-family: 'Poppins', sans-serif;">Contact Us</h3>
+        <ul class="space-y-3">
+          <li>
+            <a href="tel:07904621160" class="flex items-start gap-3 text-gray-500 hover:text-gray-900 transition-colors duration-150 group">
+              <span class="text-sky-500 mt-0.5">📞</span>
+              <div>
+                <p class="text-xs text-gray-500 mb-0.5">Phone</p>
+                <p class="text-sm font-medium group-hover:text-sky-600 transition-colors">07904621160</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:ryan@gutterbugs.co.uk" class="flex items-start gap-3 text-gray-500 hover:text-gray-900 transition-colors duration-150 group">
+              <span class="text-sky-500 mt-0.5">✉️</span>
+              <div>
+                <p class="text-xs text-gray-500 mb-0.5">Email</p>
+                <p class="text-sm font-medium group-hover:text-sky-600 transition-colors">ryan@gutterbugs.co.uk</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <div class="flex items-start gap-3 text-gray-500">
+              <span class="text-sky-500 mt-0.5">📍</span>
+              <div>
+                <p class="text-xs text-gray-500 mb-0.5">Address</p>
+                <p class="text-sm">Pegasus Barn, Astrope Lane<br />Tring, HP23 4PP</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-start gap-3 text-gray-500">
+              <span class="text-sky-500 mt-0.5">🕐</span>
+              <div>
+                <p class="text-xs text-gray-500 mb-0.5">Hours</p>
+                <p class="text-sm">Mon–Fri: 9am – 5pm</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-gray-500 text-xs">
+        &copy; {year} Gutterbugs. All rights reserved. | Professional Exterior Cleaning
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="/contact" class="text-gray-500 hover:text-gray-600 text-xs transition-colors">Contact</a>
+        <a href="/about" class="text-gray-500 hover:text-gray-600 text-xs transition-colors">About</a>
+        <span class="text-gray-600 text-xs">Built for performance ⚡</span>
+      </div>
+    </div>
+  </div>
+</footer>

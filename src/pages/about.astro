@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+
+const testimonials = [
+  { name: 'Sophie', review: 'Ryan and his dad were fantastic. Really friendly and did a brilliant job.' },
+  { name: 'Mark', review: 'Great family business. Honest, hardworking, and brilliant results.' },
+  { name: 'Heather', review: 'Absolutely delighted with the results. Ryan explained everything clearly.' },
+];
+
+const values = [
+  { icon: '🤝', title: 'Honest & Transparent', desc: 'No hidden costs, no upselling. We give you a fair price and stick to it.' },
+  { icon: '⭐', title: 'Quality First', desc: 'We take pride in every job. If you are not satisfied, we will make it right.' },
+  { icon: '⏰', title: 'Reliable & Punctual', desc: 'We turn up when we say we will and complete the job to the highest standard.' },
+  { icon: '🌍', title: 'Environmentally Conscious', desc: 'We dispose of all waste responsibly and use eco-friendly products where possible.' },
+];
+---
+
+<Layout
+  title="About Gutterbugs | Family Exterior Cleaning Business"
+  description="Learn about Gutterbugs — a family-run exterior cleaning business serving Hertfordshire since 2019. Ryan and Richard, father and son, providing professional, honest service."
+>
+  <!-- Hero -->
+  <section class="bg-white pt-32 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-900/20 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-6">
+        <span class="text-sky-400 text-sm font-medium">Family Business Since 2019</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+        About Gutterbugs
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        A father and son exterior cleaning team, serving you with honesty, hard work and exceptional results since 2019.
+      </p>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Our Story
+          </h2>
+          <div class="space-y-5 text-gray-600 leading-relaxed">
+            <p>
+              Gutterbugs was founded by Ryan in 2019 with a simple mission: to provide homeowners with a genuinely professional, honest and reliable exterior cleaning service.
+            </p>
+            <p>
+              What started as a one-man operation has grown into a family business, with Ryan's dad Richard joining the team. Together, they bring energy, experience and a real passion for the job to every property they visit.
+            </p>
+            <p>
+              In our first few years, we have cleaned over 2,000 homes across the region. Every one of those jobs has been approached with the same care and attention to detail — whether it's a bungalow gutter clear or a large roof cleaning project.
+            </p>
+            <p>
+              As a family business, our reputation means everything to us. That's why we always go the extra mile, communicate clearly with our customers, and stand behind every job we do.
+            </p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-14 h-14 bg-sky-500/20 rounded-full flex items-center justify-center text-2xl">
+                👷
+              </div>
+              <div>
+                <h3 class="text-gray-900 font-bold text-lg" style="font-family: 'Poppins', sans-serif;">Ryan</h3>
+                <p class="text-sky-400 text-sm">Founder & Lead Operative</p>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Ryan founded Gutterbugs in 2019 and leads every job. With years of experience in exterior cleaning, he brings expertise and a genuine commitment to quality to every property.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-14 h-14 bg-sky-500/20 rounded-full flex items-center justify-center text-2xl">
+                👴
+              </div>
+              <div>
+                <h3 class="text-gray-900 font-bold text-lg" style="font-family: 'Poppins', sans-serif;">Richard</h3>
+                <p class="text-sky-400 text-sm">Co-Operative & Ryan's Dad</p>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Richard joined the team to make Gutterbugs a true family business. His experience and work ethic are invaluable, and customers consistently mention how friendly and professional the pair are to work with.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-12 bg-sky-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {[
+          { value: '2000+', label: 'Homes Cleaned' },
+          { value: 'Since 2019', label: 'In Business' },
+          { value: '5 Stars', label: 'Customer Rating' },
+          { value: '100%', label: 'Satisfaction Guaranteed' },
+        ].map(stat => (
+          <div>
+            <p class="text-gray-900 font-bold text-2xl md:text-3xl mb-1" style="font-family: 'Poppins', sans-serif;">{stat.value}</p>
+            <p class="text-sky-100 text-sm">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Our Values</h2>
+        <p class="text-gray-500">The principles that guide everything we do</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map(v => (
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-sky-500/30 transition-all duration-300 text-center">
+            <div class="text-4xl mb-4">{v.icon}</div>
+            <h3 class="text-gray-900 font-bold mb-2" style="font-family: 'Poppins', sans-serif;">{v.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Our Service Area</h2>
+        <p class="text-gray-500 max-w-xl mx-auto">Based in Tring, we serve customers across the surrounding areas.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {['Tring', 'Berkhamsted', 'Hemel Hempstead', 'Aylesbury', 'St Albans', 'Watford', 'Chesham', 'Amersham', 'Leighton Buzzard', 'Dunstable', 'Hitchin', 'Luton'].map(area => (
+          <span class="bg-gray-50 border border-gray-200 text-gray-600 px-5 py-2 rounded-full text-sm hover:border-sky-500/30 hover:text-gray-900 transition-all duration-200">
+            📍 {area}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">What Customers Say About Us</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {testimonials.map(t => (
+          <TestimonialCard name={t.name} review={t.review} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

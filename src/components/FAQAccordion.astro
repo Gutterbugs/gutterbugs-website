@@ -1,0 +1,60 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<div class="space-y-3">
+  {faqs.map((faq, index) => (
+    <div class="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden">
+      <button
+        class="faq-toggle w-full flex items-center justify-between px-6 py-5 text-left hover:bg-gray-750 transition-colors duration-150"
+        aria-expanded="false"
+        data-index={index}
+      >
+        <span class="text-gray-900 font-semibold text-sm pr-4" style="font-family: 'Poppins', sans-serif;">{faq.question}</span>
+        <span class="faq-icon text-sky-400 flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      </button>
+      <div class="faq-content accordion-content">
+        <div class="px-6 pb-5">
+          <p class="text-gray-500 text-sm leading-relaxed">{faq.answer}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  const toggles = document.querySelectorAll('.faq-toggle');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const content = toggle.nextElementSibling as HTMLElement;
+      const icon = toggle.querySelector('.faq-icon') as HTMLElement;
+      const isOpen = content?.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.faq-toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.faq-icon').forEach(i => (i as HTMLElement).style.transform = '');
+
+      // Open clicked if it was closed
+      if (!isOpen && content) {
+        content.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script>

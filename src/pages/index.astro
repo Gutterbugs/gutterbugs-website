@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import CTASection from '../components/CTASection.astro';
+
+const services = [
+  {
+    icon: '🏠',
+    title: 'Gutter Clearing',
+    description: 'Professional gutter cleaning and clearing service. We remove all debris, test for leaks and ensure your gutters flow freely.',
+    href: '/gutter-clearing',
+    price: '£65',
+  },
+  {
+    icon: '🏡',
+    title: 'Roof Cleaning',
+    description: "Expert moss removal and biocide treatment to protect your roof. Low-pressure soft washing that won't damage your tiles.",
+    href: '/roof-cleaning',
+    price: '£400',
+  },
+  {
+    icon: '💧',
+    title: 'Pressure Washing',
+    description: 'High-pressure cleaning for driveways, patios, and paths. Transform your exterior surfaces back to their best.',
+    href: '/pressure-washing',
+    price: '£100',
+  },
+  {
+    icon: '🪟',
+    title: 'Soffit & Fascia Washing',
+    description: 'Deep clean your soffits and fascias to remove algae, mould and grime. Protect and restore your roofline.',
+    href: '/soffit-fascia-washing',
+    price: '£80',
+  },
+  {
+    icon: '🏗️',
+    title: 'Conservatory Cleaning',
+    description: 'Complete conservatory cleaning including roof panels, frames and gutters. Let the light back in.',
+    href: '/conservatory-cleaning',
+    price: '£120',
+  },
+  {
+    icon: '☀️',
+    title: 'Solar Panel Cleaning',
+    description: 'Specialist solar panel cleaning to maximise your energy output. Dirty panels lose up to 25% efficiency.',
+    href: '/solar-panel-cleaning',
+    price: '£80',
+  },
+];
+
+import { fetchGoogleReviews } from '../lib/reviews';
+const { rating, totalReviews, reviews } = await fetchGoogleReviews();
+
+const whyUs = [
+  {
+    icon: '🔧',
+    title: 'Professional Equipment',
+    description: 'We use industry-leading equipment to ensure the best possible results on every job.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Fully Insured',
+    description: "Fully insured for your peace of mind. We're professional and take every job seriously.",
+  },
+  {
+    icon: '👨‍👦',
+    title: 'Family Business',
+    description: 'Father and son team with a personal touch. We treat every property as if it were our own.',
+  },
+  {
+    icon: '✅',
+    title: 'Satisfaction Guaranteed',
+    description: 'We guarantee our work and will return if there are any issues. Your satisfaction is our priority.',
+  },
+];
+---
+
+<Layout
+  title="Gutterbugs | Hertfordshire's Trusted Exterior Cleaning Experts"
+  description="Professional gutter clearing, roof cleaning & pressure washing across Hertfordshire. Family-run, fully insured, 2000+ homes cleaned. Get a free quote today."
+>
+  <Hero />
+  <TrustBar />
+
+  <!-- Services Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-5">
+          <span class="text-sky-400 text-sm font-medium">What We Do</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
+          Our Cleaning Services
+        </h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">
+          From gutter clearing to roof cleaning, we provide a comprehensive range of professional exterior cleaning services.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-5">
+          <span class="text-sky-400 text-sm font-medium">Why Gutterbugs</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
+          Why Choose Gutterbugs?
+        </h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">
+          We are more than just a cleaning company. We are your local, trusted exterior cleaning specialists.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {whyUs.map(item => (
+          <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200 hover:border-sky-500/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="text-4xl mb-4">{item.icon}</div>
+            <h3 class="text-gray-900 font-bold text-base mb-3" style="font-family: 'Poppins', sans-serif;">{item.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews (Live from GMB) -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-5">
+          <span class="text-sky-500 text-sm font-medium">Google Reviews</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
+          What Our Customers Say
+        </h2>
+        <div class="flex items-center justify-center gap-2">
+          <div class="flex gap-0.5">
+            {[1,2,3,4,5].map(() => <span class="text-yellow-400 text-xl">★</span>)}
+          </div>
+          <span class="text-gray-700 text-sm ml-1 font-medium">{rating} · {totalReviews} reviews on Google</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reviews.map(r => (
+          <a href={r.googleMapsUri} target="_blank" rel="noopener noreferrer" class="bg-gray-50 border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-shadow duration-200 block">
+            <div class="flex items-center gap-3 mb-4">
+              {r.authorPhoto ? (
+                <img src={r.authorPhoto} alt={r.author} class="w-10 h-10 rounded-full" loading="lazy" />
+              ) : (
+                <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold text-sm">
+                  {r.author.charAt(0)}
+                </div>
+              )}
+              <div>
+                <p class="text-gray-900 font-semibold text-sm">{r.author}</p>
+                <p class="text-gray-500 text-xs">{r.relativeTime}</p>
+              </div>
+            </div>
+            <div class="flex gap-0.5 mb-3">
+              {[1,2,3,4,5].map(() => <span class="text-yellow-400 text-sm">★</span>)}
+            </div>
+            <p class="text-gray-700 text-sm leading-relaxed">{r.text}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="https://www.google.com/maps/place/Gutterbugs+Exterior+Cleaning/data=!4m7!3m6!1s0x830c70487694fba5:0x9f54dffbe8beb2d2!8m2!3d51.7957!4d-0.6609!16s"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-medium text-sm transition-colors"
+        >
+          See all {totalReviews} reviews on Google →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

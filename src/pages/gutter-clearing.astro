@@ -1,0 +1,171 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const pricingTiers = [
+  {
+    title: 'Bungalow',
+    price: '£65–75',
+    description: 'Single-storey bungalow, up to 4 gutters',
+    features: [
+      'Complete gutter clearing',
+      'Debris removal & disposal',
+      'Leak testing',
+      'Flow check',
+      'Job report',
+    ],
+  },
+  {
+    title: 'Terraced / Semi-Detached',
+    price: '£75–95',
+    description: 'Two-storey terraced or semi-detached home',
+    features: [
+      'Complete gutter clearing',
+      'Debris removal & disposal',
+      'Leak testing',
+      'Joint inspection',
+      'Flow check',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Detached',
+    price: '£90–200',
+    description: 'Detached home, price varies by size',
+    features: [
+      'Complete gutter clearing',
+      'Debris removal & disposal',
+      'Full leak testing',
+      'Joint inspection',
+      'Downpipe check',
+    ],
+  },
+  {
+    title: '3-Storey / Large',
+    price: '£160–300',
+    description: 'Three-storey or large detached properties',
+    features: [
+      'Complete gutter clearing',
+      'Debris removal & disposal',
+      'Full system inspection',
+      'Downpipe flush',
+      'Detailed job report',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'How often should gutters be cleared?',
+    answer: 'We recommend clearing your gutters at least once a year, ideally twice — once in spring and once in autumn. Trees nearby can significantly increase how quickly gutters fill with debris.',
+  },
+  {
+    question: 'Do you take away the debris?',
+    answer: 'Yes, absolutely. All debris is collected, bagged and taken away and disposed of responsibly. We leave your property clean and tidy.',
+  },
+  {
+    question: 'Do you offer gutter repairs?',
+    answer: 'Yes, we can replace leaking joints for just £12 per joint. During every gutter clear we carry out a leak test and will advise you of any issues found.',
+  },
+  {
+    question: 'How long does a gutter clear take?',
+    answer: 'Most jobs take between 1 and 3 hours depending on the size of the property and how blocked the gutters are. We will always give you an estimated time when we book.',
+  },
+  {
+    question: 'Do you work at height safely?',
+    answer: 'Yes. We use professional-grade ladders and follow all relevant health and safety guidelines. All our operatives are trained to work safely at height.',
+  },
+  {
+    question: 'Do you offer a guarantee?',
+    answer: 'Yes. We guarantee all our work and will return at no extra charge if you experience any issues with the work we have carried out.',
+  },
+];
+---
+
+<ServiceLayout
+  title="Professional Gutter Clearing in Hertfordshire | Gutterbugs"
+  description="Expert gutter clearing across Hertfordshire. From £65. Debris removed, leak testing included. Family-run, fully insured. Get a free quote today."
+  heroTitle="Professional Gutter Clearing"
+  heroSubtitle="Keep your gutters flowing freely with our thorough gutter clearing service. We remove all debris, test for leaks, and ensure your drainage system works perfectly. From £65."
+>
+  <!-- Service Description -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Why Regular Gutter Clearing Matters
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>Blocked gutters are one of the most common causes of property damage in the UK. When gutters fill with leaves, moss and debris, water can overflow and cause significant damage to your fascias, soffits, walls and even foundations.</p>
+            <p>At Gutterbugs, we provide a comprehensive gutter clearing service that not only removes all blockages but also tests your gutters for leaks and checks that every downpipe is flowing freely.</p>
+            <p>All debris is collected and removed from your property — we never leave a mess. And with our guarantee, you can be confident the job is done right.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🍂', label: 'Debris Removal', desc: 'All leaves and debris removed and disposed of' },
+            { icon: '💧', label: 'Leak Testing', desc: 'Every gutter tested for leaks' },
+            { icon: '🔩', label: 'Joint Replacement', desc: 'Leaking joints replaced for £12' },
+            { icon: '✅', label: 'Satisfaction Guarantee', desc: 'We return at no charge if needed' },
+          ].map(item => (
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+              <span class="text-2xl mb-3 block">{item.icon}</span>
+              <p class="text-gray-900 font-semibold text-sm mb-1">{item.label}</p>
+              <p class="text-gray-500 text-xs">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Gutter Clearing Prices</h2>
+        <p class="text-gray-500">Transparent pricing with no hidden costs. Gutter joint replacement is £12 per joint if needed.</p>
+      </div>
+      <PricingTable tiers={pricingTiers} />
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Our Process</h2>
+        <p class="text-gray-500">A thorough, professional approach every time</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { step: '1', title: 'Quote & Book', desc: 'We provide a free, transparent quote. Once accepted, we schedule a convenient time.' },
+          { step: '2', title: 'Clear & Clean', desc: 'We clear all debris from every gutter run, ensuring no blockages remain.' },
+          { step: '3', title: 'Leak Test', desc: 'We test every gutter and joint for leaks, and fix any issues found.' },
+          { step: '4', title: 'Tidy Up & Report', desc: 'All debris is removed. We leave your property spotless and provide a job report.' },
+        ].map(item => (
+          <div class="relative bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-4" style="font-family: 'Poppins', sans-serif;">
+              {item.step}
+            </div>
+            <h3 class="text-gray-900 font-bold mb-2">{item.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h2>
+        <p class="text-gray-500">Everything you need to know about our gutter clearing service</p>
+      </div>
+      <FAQAccordion faqs={faqs} />
+    </div>
+  </section>
+</ServiceLayout>

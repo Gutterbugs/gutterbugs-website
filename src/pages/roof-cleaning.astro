@@ -1,0 +1,155 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const pricingTiers = [
+  {
+    title: 'Terraced / Semi-Detached',
+    price: '£400–800',
+    description: 'Two-storey terraced or semi-detached home',
+    features: [
+      'Moss removal & treatment',
+      'Biocide application',
+      'Ridge tile inspection',
+      'Gutters cleared',
+      'Full cleanup',
+    ],
+  },
+  {
+    title: 'Medium Detached',
+    price: '£800–1,500',
+    description: 'Standard detached home',
+    features: [
+      'Moss removal & treatment',
+      'Biocide application',
+      'Ridge tile inspection',
+      'Valley & hip tiles checked',
+      'Gutters cleared',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Large Detached',
+    price: '£1,500–2,500+',
+    description: 'Large detached or complex roofs',
+    features: [
+      'Full moss removal & treatment',
+      'Biocide application',
+      'Full ridge inspection',
+      'Valley cleaning',
+      'Gutters cleared & tested',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: "What's included in roof cleaning?",
+    answer: 'Our roof cleaning service includes moss removal, application of a professional-grade biocide treatment, ridge tile inspection, and a full tidy-up. We also clear your gutters as part of the service.',
+  },
+  {
+    question: 'How long does the treatment last?',
+    answer: 'The biocide treatment continues to work for 12–24 months after application, preventing new moss and algae growth. Over the following weeks and months after treatment, dead moss will naturally wash off in the rain.',
+  },
+  {
+    question: 'Will roof cleaning damage my tiles?',
+    answer: 'No. We use soft washing and low-pressure techniques specifically designed not to damage roof tiles. High-pressure washing can crack tiles or remove protective granules — we never do this.',
+  },
+  {
+    question: 'Do I need to be home during the clean?',
+    answer: 'No, you do not need to be home. We can access the roof from outside without needing to enter your property. Many of our customers are at work when we carry out the job.',
+  },
+  {
+    question: 'What about the mess from moss removal?',
+    answer: 'We take care to protect your garden and surrounding areas. All loose moss and debris are collected and removed from your property. We leave everything clean and tidy.',
+  },
+];
+---
+
+<ServiceLayout
+  title="Expert Roof Cleaning & Moss Removal in Hertfordshire | Gutterbugs"
+  description="Professional roof cleaning and moss removal across Hertfordshire. Biocide treatment included. Low-pressure soft wash. From £400. Get a free quote."
+  heroTitle="Expert Roof Cleaning & Moss Removal"
+  heroSubtitle="Protect your roof and restore your home's appearance with our professional roof cleaning service. We use safe, low-pressure soft washing with biocide treatment to remove moss and prevent regrowth for years to come."
+>
+  <!-- Service Description -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Why Roof Cleaning is Essential
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>Moss, lichen and algae on your roof are more than just an eyesore. Left untreated, they can trap moisture against your tiles, leading to accelerated wear, cracked tiles and even water ingress into your property.</p>
+            <p>Our professional roof cleaning service removes all moss and organic growth using safe, low-pressure soft washing techniques. We then apply a professional biocide treatment that continues to work for 12–24 months, preventing regrowth.</p>
+            <p>The result is a cleaner, healthier roof that looks great and is protected from damage caused by organic growth.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🧪', label: 'Biocide Treatment', desc: 'Professional-grade treatment lasting 12-24 months' },
+            { icon: '💨', label: 'Soft Wash Technique', desc: 'Low-pressure — safe for all tile types' },
+            { icon: '🔍', label: 'Ridge Inspection', desc: 'Ridge tiles inspected for damage' },
+            { icon: '🌿', label: 'Garden Protection', desc: 'Garden and surroundings fully protected' },
+          ].map(item => (
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+              <span class="text-2xl mb-3 block">{item.icon}</span>
+              <p class="text-gray-900 font-semibold text-sm mb-1">{item.label}</p>
+              <p class="text-gray-500 text-xs">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Roof Cleaning Prices</h2>
+        <p class="text-gray-500">All prices include biocide treatment, debris removal, and gutter clearing.</p>
+      </div>
+      <PricingTable tiers={pricingTiers} />
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Our Roof Cleaning Process</h2>
+        <p class="text-gray-500">A thorough, professional approach every time</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { step: '1', title: 'Survey & Quote', desc: 'We assess your roof and provide a detailed quote with no hidden costs.' },
+          { step: '2', title: 'Moss Removal', desc: 'Using soft washing techniques, we safely remove all moss and organic growth.' },
+          { step: '3', title: 'Biocide Treatment', desc: 'Professional biocide is applied to prevent regrowth for 12-24 months.' },
+          { step: '4', title: 'Inspect & Clean Up', desc: 'Ridge tiles are inspected, gutters cleared, and everything tidied up.' },
+        ].map(item => (
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <div class="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold text-sm mb-4" style="font-family: 'Poppins', sans-serif;">
+              {item.step}
+            </div>
+            <h3 class="text-gray-900 font-bold mb-2">{item.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h2>
+        <p class="text-gray-500">Everything you need to know about our roof cleaning service</p>
+      </div>
+      <FAQAccordion faqs={faqs} />
+    </div>
+  </section>
+</ServiceLayout>

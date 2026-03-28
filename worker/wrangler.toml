@@ -1,0 +1,7 @@
+name = "gutterbugs-form"
+main = "index.js"
+compatibility_date = "2026-03-28"
+
+[vars]
+MISSION_CONTROL_URL = "http://100.90.199.12:3000"
+ALLOWED_ORIGINS = "https://gutterbugs.co.uk,https://www.gutterbugs.co.uk"

@@ -1,0 +1,58 @@
+---
+interface PricingTier {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+interface Props {
+  tiers: PricingTier[];
+}
+
+const { tiers } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {tiers.map(tier => (
+    <div class={`rounded-2xl p-6 border transition-all duration-300 ${
+      tier.highlighted
+        ? 'bg-sky-600 border-sky-500 shadow-xl shadow-sky-500/25'
+        : 'bg-gray-50 border-gray-200 hover:border-sky-500/30'
+    }`}>
+      {tier.highlighted && (
+        <div class="inline-flex items-center gap-1 bg-white/20 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+          ⭐ Most Popular
+        </div>
+      )}
+      <h3 class={`font-bold text-lg mb-2 ${tier.highlighted ? 'text-gray-900' : 'text-gray-900'}`} style="font-family: 'Poppins', sans-serif;">
+        {tier.title}
+      </h3>
+      <div class={`text-3xl font-bold mb-2 ${tier.highlighted ? 'text-gray-900' : 'text-sky-400'}`} style="font-family: 'Poppins', sans-serif;">
+        {tier.price}
+      </div>
+      <p class={`text-sm mb-5 ${tier.highlighted ? 'text-sky-100' : 'text-gray-500'}`}>
+        {tier.description}
+      </p>
+      <ul class="space-y-2 mb-6">
+        {tier.features.map(feature => (
+          <li class={`flex items-start gap-2 text-sm ${tier.highlighted ? 'text-sky-50' : 'text-gray-600'}`}>
+            <span class={`mt-0.5 flex-shrink-0 ${tier.highlighted ? 'text-gray-900' : 'text-sky-400'}`}>✓</span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+      <a
+        href="/contact"
+        class={`block text-center py-3 rounded-full font-semibold text-sm transition-all duration-200 ${
+          tier.highlighted
+            ? 'bg-white text-sky-700 hover:bg-gray-50'
+            : 'bg-sky-500 text-white hover:bg-sky-600'
+        }`}
+      >
+        Get Quote
+      </a>
+    </div>
+  ))}
+</div>

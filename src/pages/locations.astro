@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const areas = [
+  {
+    name: 'Tring',
+    desc: 'Our home town and base of operations. We provide all services in Tring and the surrounding villages including Aldbury, Wigginton and Long Marston.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+  },
+  {
+    name: 'Berkhamsted',
+    desc: 'We regularly work throughout Berkhamsted, including the town centre and surrounding residential areas. Same-day quotes available.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Conservatory Cleaning'],
+  },
+  {
+    name: 'Hemel Hempstead',
+    desc: 'Full service coverage across all areas of Hemel Hempstead, including Boxmoor, Apsley, Leverstock Green and surrounding villages.',
+    services: ['Gutter Clearing', 'Pressure Washing', 'Solar Panel Cleaning'],
+  },
+  {
+    name: 'Aylesbury',
+    desc: 'We extend our service area into Aylesbury and the surrounding Vale, providing the same high standard of exterior cleaning across the county border.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+  },
+  {
+    name: 'St Albans',
+    desc: 'Covering St Albans and surrounding areas including Harpenden, London Colney and Redbourn. All exterior cleaning services available.',
+    services: ['Gutter Clearing', 'Soffit & Fascia', 'Conservatory Cleaning'],
+  },
+  {
+    name: 'Watford',
+    desc: 'We travel to Watford and the surrounding areas for all exterior cleaning services. Contact us for availability.',
+    services: ['Gutter Clearing', 'Roof Cleaning', 'Pressure Washing'],
+  },
+];
+---
+
+<Layout
+  title="Service Areas | Gutterbugs Hertfordshire & Surrounding Areas"
+  description="Gutterbugs serves Hertfordshire and surrounding areas including Tring, Berkhamsted, Hemel Hempstead, Aylesbury, St Albans and more. Get a free quote today."
+>
+  <!-- Hero -->
+  <section class="bg-white pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-900/20 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-6">
+        <span class="text-sky-400 text-sm font-medium">Where We Work</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
+        Areas We Cover
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Based in Tring, we cover a wide area. If you're not sure whether we cover your area, just give us a call.
+      </p>
+    </div>
+  </section>
+
+  <!-- Areas Grid -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {areas.map(area => (
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200 hover:border-sky-500/30 transition-all duration-300 hover:-translate-y-1">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-sky-400 text-xl mt-0.5">📍</span>
+              <h2 class="text-gray-900 font-bold text-xl" style="font-family: 'Poppins', sans-serif;">{area.name}</h2>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-5">{area.desc}</p>
+            <div class="space-y-1.5">
+              {area.services.map(service => (
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                  <span class="text-sky-500 text-xs">✓</span>
+                  {service}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Don't See Your Area -->
+      <div class="mt-12 bg-white rounded-2xl p-8 border border-gray-200 text-center">
+        <h2 class="text-gray-900 font-bold text-2xl mb-3" style="font-family: 'Poppins', sans-serif;">
+          Don't see your area?
+        </h2>
+        <p class="text-gray-600 mb-6 max-w-xl mx-auto">
+          We cover a wide area and are always happy to travel for larger jobs. Contact us with your location and we will let you know if we can help.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-200">
+            Get in Touch →
+          </a>
+          <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-white/30 text-gray-900 hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-semibold transition-all duration-200">
+            📞 07904621160
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

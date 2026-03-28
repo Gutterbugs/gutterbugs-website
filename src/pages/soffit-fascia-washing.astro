@@ -1,0 +1,123 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const pricingTiers = [
+  {
+    title: 'Terraced / Semi',
+    price: 'From £80',
+    description: 'Terraced or semi-detached properties',
+    features: [
+      'Soffit cleaning',
+      'Fascia cleaning',
+      'Algae & mould removal',
+      'Full debris removal',
+    ],
+  },
+  {
+    title: 'Detached',
+    price: 'From £120',
+    description: 'Standard detached homes',
+    features: [
+      'Soffit cleaning',
+      'Fascia cleaning',
+      'Bargeboards cleaned',
+      'Algae & mould removal',
+      'Full debris removal',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Large / Complex',
+    price: 'From £200',
+    description: 'Large detached or complex rooflines',
+    features: [
+      'Full soffit & fascia cleaning',
+      'Bargeboard cleaning',
+      'Algae, mould & lichen removal',
+      'Protective treatment available',
+      'Full debris removal',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'What are soffits and fascias?',
+    answer: 'Fascias are the boards that run along the roofline at the edge of your roof, and gutters are typically attached to them. Soffits are the boards that run underneath the fascias, closing the gap between the fascia and the wall.',
+  },
+  {
+    question: 'Why do soffits and fascias need cleaning?',
+    answer: 'Over time, soffits and fascias accumulate algae, mould, lichen and general grime. Left untreated, this can cause the material to deteriorate, leading to costly replacements. Regular cleaning extends their life significantly.',
+  },
+  {
+    question: 'Can you clean both uPVC and wood?',
+    answer: 'Yes, we can clean both uPVC and wooden soffits and fascias. We adjust our techniques and products to suit the material type.',
+  },
+  {
+    question: 'How often should they be cleaned?',
+    answer: 'We recommend cleaning every 2–3 years, or more frequently if you notice significant algae or mould growth.',
+  },
+];
+---
+
+<ServiceLayout
+  title="Soffit & Fascia Washing in Hertfordshire | Gutterbugs"
+  description="Professional soffit and fascia washing across Hertfordshire. Remove algae, mould and grime. From £80. Fully insured. Get a free quote today."
+  heroTitle="Professional Soffit & Fascia Washing"
+  heroSubtitle="Restore and protect your roofline with our specialist soffit and fascia washing service. We remove algae, mould and years of grime to leave your roofline looking pristine and protected."
+>
+  <!-- Service Description -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Protect Your Roofline
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>Your soffits and fascias protect the structural integrity of your roofline, keeping out water, pests and draughts. When covered in algae, mould or lichen, not only do they look unsightly — they can also begin to deteriorate.</p>
+            <p>Our soffit and fascia washing service uses professional cleaning solutions to safely remove all organic growth and grime without damaging uPVC or wood surfaces.</p>
+            <p>The result is a clean, bright roofline that looks great and is protected from further deterioration.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🧹', label: 'Deep Clean', desc: 'All mould, algae and grime removed' },
+            { icon: '🏠', label: 'uPVC & Wood', desc: 'Safe for both uPVC and wooden surfaces' },
+            { icon: '🛡️', label: 'Protection', desc: 'Extend the life of your roofline' },
+            { icon: '✨', label: 'Like New', desc: 'Restore original colour and brightness' },
+          ].map(item => (
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+              <span class="text-2xl mb-3 block">{item.icon}</span>
+              <p class="text-gray-900 font-semibold text-sm mb-1">{item.label}</p>
+              <p class="text-gray-500 text-xs">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Soffit & Fascia Washing Prices</h2>
+        <p class="text-gray-500">Transparent pricing with no hidden costs. Contact us for a bespoke quote on larger properties.</p>
+      </div>
+      <PricingTable tiers={pricingTiers} />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h2>
+      </div>
+      <FAQAccordion faqs={faqs} />
+    </div>
+  </section>
+</ServiceLayout>

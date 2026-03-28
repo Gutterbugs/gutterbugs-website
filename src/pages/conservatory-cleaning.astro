@@ -1,0 +1,123 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const pricingTiers = [
+  {
+    title: 'Small Conservatory',
+    price: 'From £120',
+    description: 'Small lean-to or Victorian conservatory',
+    features: [
+      'Roof panel cleaning',
+      'Frame cleaning',
+      'Gutter clearing',
+      'Full debris removal',
+    ],
+  },
+  {
+    title: 'Medium Conservatory',
+    price: 'From £180',
+    description: 'Standard size conservatory',
+    features: [
+      'Roof panel cleaning',
+      'Frame cleaning',
+      'Ridge cleaning',
+      'Gutter clearing',
+      'Full debris removal',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Large / Orangery',
+    price: 'From £280',
+    description: 'Large conservatory or orangery',
+    features: [
+      'Full roof panel cleaning',
+      'Full frame cleaning',
+      'Ridge & valley cleaning',
+      'Gutter clearing',
+      'Full debris removal',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'What does conservatory cleaning include?',
+    answer: 'Our conservatory cleaning service includes cleaning the roof panels (polycarbonate or glass), all frames, gutters, and ridges. We clean both inside and outside where accessible.',
+  },
+  {
+    question: 'Will you damage my conservatory roof?',
+    answer: 'No. We use appropriate pressure and cleaning solutions for polycarbonate and glass panels. We never use high pressure or abrasive products that could scratch or crack the panels.',
+  },
+  {
+    question: 'How often should a conservatory be cleaned?',
+    answer: 'We recommend a full clean every 1–2 years. If your conservatory is under trees or in a shaded area, it may need more frequent cleaning as algae and moss grow faster.',
+  },
+  {
+    question: 'Do you clean the inside of the conservatory too?',
+    answer: 'Our standard service focuses on the exterior. We can clean accessible interior surfaces on request — please mention this when booking.',
+  },
+];
+---
+
+<ServiceLayout
+  title="Professional Conservatory Cleaning in Hertfordshire | Gutterbugs"
+  description="Expert conservatory cleaning across Hertfordshire. Roof panels, frames, gutters and ridges. From £120. Fully insured. Get a free quote today."
+  heroTitle="Professional Conservatory Cleaning"
+  heroSubtitle="Let the light back into your conservatory with our thorough cleaning service. We clean roof panels, frames, gutters and ridges to restore your conservatory to its sparkling best."
+>
+  <!-- Service Description -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+            Restore Your Conservatory
+          </h2>
+          <div class="space-y-4 text-gray-600">
+            <p>Conservatories are wonderful spaces, but their roof panels — whether polycarbonate or glass — can quickly become covered in algae, moss, bird droppings and general grime.</p>
+            <p>Our specialist conservatory cleaning service restores your panels, frames and gutters to their original condition, letting in maximum natural light and protecting your investment.</p>
+            <p>We use appropriate pressure and cleaning products for your specific panel type, ensuring a thorough clean without any risk of damage.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '☀️', label: 'More Light', desc: 'Clean panels let in significantly more natural light' },
+            { icon: '🔬', label: 'Safe Products', desc: 'Products safe for all panel types' },
+            { icon: '🪟', label: 'Frames Too', desc: 'All frames and ridges cleaned' },
+            { icon: '💧', label: 'Gutters Cleared', desc: 'Gutters cleared as part of the service' },
+          ].map(item => (
+            <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+              <span class="text-2xl mb-3 block">{item.icon}</span>
+              <p class="text-gray-900 font-semibold text-sm mb-1">{item.label}</p>
+              <p class="text-gray-500 text-xs">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Conservatory Cleaning Prices</h2>
+        <p class="text-gray-500">All prices include roof, frames and gutters. Contact us for a bespoke quote.</p>
+      </div>
+      <PricingTable tiers={pricingTiers} />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">Frequently Asked Questions</h2>
+      </div>
+      <FAQAccordion faqs={faqs} />
+    </div>
+  </section>
+</ServiceLayout>

@@ -1,0 +1,28 @@
+# Cloudflare Pages redirects
+# Old Squarespace URLs → new URLs (301 permanent)
+
+# Service pages (unchanged slugs — no redirects needed)
+# /gutter-clearing → /gutter-clearing ✓
+# /roof-cleaning → /roof-cleaning ✓
+# /pressure-washing → /pressure-washing ✓
+# /soffit-fascia-washing → /soffit-fascia-washing ✓
+# /conservatory-cleaning → /conservatory-cleaning ✓
+# /contact → /contact ✓
+# /about → /about ✓
+# /locations → /locations ✓
+
+# New pages (didn't exist on Squarespace)
+# /solar-panel-cleaning — NEW
+# /gallery — NEW
+# /thank-you — NEW
+# /locations/* — NEW (48 location-service pages)
+
+# Catch any trailing slashes
+/gutter-clearing/  /gutter-clearing  301
+/roof-cleaning/  /roof-cleaning  301
+/pressure-washing/  /pressure-washing  301
+/soffit-fascia-washing/  /soffit-fascia-washing  301
+/conservatory-cleaning/  /conservatory-cleaning  301
+/contact/  /contact  301
+/about/  /about  301
+/locations/  /locations  301
