@@ -54,28 +54,6 @@ const services = [
 import { fetchGoogleReviews } from '../lib/reviews';
 const { rating, totalReviews, reviews } = await fetchGoogleReviews();
 
-const whyUs = [
-  {
-    icon: '🔧',
-    title: 'Professional Equipment',
-    description: 'We use industry-leading equipment to ensure the best possible results on every job.',
-  },
-  {
-    icon: '🛡️',
-    title: 'Fully Insured',
-    description: "Fully insured for your peace of mind. We're professional and take every job seriously.",
-  },
-  {
-    icon: '👨‍👦',
-    title: 'Family Business',
-    description: 'Father and son team with a personal touch. We treat every property as if it were our own.',
-  },
-  {
-    icon: '✅',
-    title: 'Satisfaction Guaranteed',
-    description: 'We guarantee our work and will return if there are any issues. Your satisfaction is our priority.',
-  },
-];
 ---
 
 <Layout
@@ -107,33 +85,7 @@ const whyUs = [
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-5">
-          <span class="text-sky-400 text-sm font-medium">Why Gutterbugs</span>
-        </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style="font-family: 'Poppins', sans-serif;">
-          Why Choose Gutterbugs?
-        </h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">
-          We are more than just a cleaning company. We are your local, trusted exterior cleaning specialists.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {whyUs.map(item => (
-          <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200 hover:border-sky-500/30 transition-all duration-300 hover:-translate-y-1">
-            <div class="text-4xl mb-4">{item.icon}</div>
-            <h3 class="text-gray-900 font-bold text-base mb-3" style="font-family: 'Poppins', sans-serif;">{item.title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Google Reviews (Live from GMB) -->
+    <!-- Google Reviews (Live from GMB) -->
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
