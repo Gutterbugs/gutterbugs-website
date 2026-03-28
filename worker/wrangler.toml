@@ -3,5 +3,9 @@ main = "index.js"
 compatibility_date = "2026-03-28"
 
 [vars]
-MISSION_CONTROL_URL = "http://100.90.199.12:3000"
-ALLOWED_ORIGINS = "https://gutterbugs.co.uk,https://www.gutterbugs.co.uk"
+ALLOWED_ORIGINS = "https://gutterbugs.co.uk,https://www.gutterbugs.co.uk,https://gutterbugs-website.pages.dev"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gutterbugs-leads"
+database_id = "4a14324b-4519-4175-b4e9-371a853fa0ba"

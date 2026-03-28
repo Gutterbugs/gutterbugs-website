@@ -1,13 +1,11 @@
 /**
- * Cloudflare Worker — Form submission proxy
+ * Cloudflare Worker — Form submission handler
  * 
- * Receives contact form POSTs from gutterbugs.co.uk
- * and forwards them to Mission Control API on the Mac Mini
- * via Tailscale Funnel or direct Tailscale URL.
+ * Receives contact form POSTs from the Gutterbugs website
+ * and saves them directly to D1 (Cloudflare's database).
  * 
- * Environment variables (set in Cloudflare dashboard):
- *   MISSION_CONTROL_URL - e.g. https://ryans-mac-mini.tailbb3337.ts.net:3000
- *   ALLOWED_ORIGINS - comma-separated, e.g. https://gutterbugs.co.uk,https://www.gutterbugs.co.uk
+ * No tunnel or external server needed — leads are stored
+ * on Cloudflare's edge, always available.
  */
 
 export default {
@@ -36,33 +34,47 @@ export default {
         });
       }
 
-      // Forward to Mission Control
-      const mcUrl = env.MISSION_CONTROL_URL || 'http://100.90.199.12:3000';
-      const response = await fetch(`${mcUrl}/api/leads/capture`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // Save to D1
+      const result = await env.DB.prepare(`
+        INSERT INTO leads (first_name, last_name, email, phone, address, postcode, service_type, message, gclid, source, landing_page, referrer, utm_source, utm_medium, utm_campaign, utm_term)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(
+        body.first_name,
+        body.last_name,
+        body.email,
+        body.phone,
+        body.address || null,
+        body.postcode || null,
+        body.service_type || null,
+        body.message || null,
+        body.gclid || null,
+        body.source || null,
+        body.landing_page || null,
+        body.referrer || null,
+        body.utm_source || null,
+        body.utm_medium || null,
+        body.utm_campaign || null,
+        body.utm_term || null,
+      ).run();
+
+      return new Response(JSON.stringify({
+        ok: true,
+        lead: {
+          id: result.meta.last_row_id,
+          name: `${body.first_name} ${body.last_name}`,
+          status: 'new',
         },
-        body: JSON.stringify(body),
-      });
-
-      const result = await response.json();
-
-      return new Response(JSON.stringify(result), {
-        status: response.status,
+      }), {
+        status: 200,
         headers: corsHeaders(request, env),
       });
 
     } catch (err) {
       console.error('Worker error:', err);
-
-      // If Mission Control is unreachable, store the lead for later
-      // (could use KV or D1 as a queue — for now just return error)
       return new Response(JSON.stringify({
-        error: 'Service temporarily unavailable. Please call 07904621160.',
-        // Still return ok:true so the user sees success — we'll capture via email fallback
+        error: 'Something went wrong. Please call 07904 621160.',
       }), {
-        status: 503,
+        status: 500,
         headers: corsHeaders(request, env),
       });
     }
@@ -70,7 +82,7 @@ export default {
 };
 
 function getAllowedOrigins(env) {
-  const origins = env.ALLOWED_ORIGINS || 'https://gutterbugs.co.uk,https://www.gutterbugs.co.uk';
+  const origins = env.ALLOWED_ORIGINS || 'https://gutterbugs.co.uk,https://www.gutterbugs.co.uk,https://gutterbugs-website.pages.dev';
   return origins.split(',').map(o => o.trim());
 }
 
