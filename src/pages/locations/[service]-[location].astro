@@ -21,8 +21,8 @@ export function getStaticPaths() {
 const { service, location } = Astro.props;
 
 const title = `${service.name} in ${location.name} | Gutterbugs`;
-const description = `Professional ${service.name.toLowerCase()} in ${location.name}, ${location.county}. Family-run, 5-star rated, 2000+ homes cleaned. Free quotes — call 07904621160.`;
-const heroSubtitle = `Professional ${service.name.toLowerCase()} in ${location.name}. Family-run, 5-star rated, 2000+ homes cleaned. Free quotes — call 07904621160.`;
+const description = `Professional ${service.name.toLowerCase()} in ${location.name}, ${location.county}. Family-run, 5-star rated, 3000+ homes cleaned. Free quotes — call 07904621160.`;
+const heroSubtitle = `Professional ${service.name.toLowerCase()} in ${location.name}. Family-run, 5-star rated, 3000+ homes cleaned. Free quotes — call 07904621160.`;
 
 const faqs = [
   { question: `How much does ${service.name.toLowerCase()} cost in ${location.name}?`, answer: `Prices vary based on property size and access requirements. We provide free, no-obligation quotes for all ${location.name} properties. Call 07904621160 or use our contact form for a quick quote.` },
@@ -77,7 +77,7 @@ const schemaData = {
           {service.shortDescription}
         </p>
         <p class="text-gray-700 leading-relaxed">
-          We've cleaned over 2,000 homes and counting. As a family-run business, we take pride in every job — from a simple gutter clear on a terraced house to a full roof restoration on a large detached property.
+          We've cleaned over 3,000 homes and counting. As a family-run business, we take pride in every job — from a simple gutter clear on a terraced house to a full roof restoration on a large detached property.
         </p>
       </div>
     </div>
