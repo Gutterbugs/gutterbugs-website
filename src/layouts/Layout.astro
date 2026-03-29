@@ -129,5 +129,18 @@ const siteURL = 'https://gutterbugs.co.uk';
     </main>
     <Footer />
     <MobileCTA />
+
+    <!-- Phone Call Click Tracking -->
+    <script>
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href^="tel:"]');
+        if (link && typeof gtag === 'function') {
+          gtag('event', 'phone_call_click', {
+            event_category: 'engagement',
+            event_label: link.getAttribute('href'),
+          });
+        }
+      });
+    </script>
   </body>
 </html>

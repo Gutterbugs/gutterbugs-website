@@ -56,12 +56,18 @@ import Layout from '../layouts/Layout.astro';
   </section>
 </Layout>
 
-<!-- GA4 Conversion Event -->
+<!-- GA4 Conversion Events -->
 <script>
   if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-    (window as any).gtag('event', 'conversion', {
-      event_category: 'lead',
+    // Primary conversion event (matches Google Ads import)
+    (window as any).gtag('event', 'Contact_Us_Form_Entry', {
+      event_category: 'form',
       event_label: 'contact_form_submission',
+    });
+    // Lead generation event
+    (window as any).gtag('event', 'generate_lead', {
+      currency: 'GBP',
+      value: 0,
     });
   }
 </script>
