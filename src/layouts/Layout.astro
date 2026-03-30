@@ -51,7 +51,7 @@ const siteURL = 'https://gutterbugs.co.uk';
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Google Tag Manager -->
-    <script>
+    <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -61,8 +61,8 @@ const siteURL = 'https://gutterbugs.co.uk';
     <!-- End Google Tag Manager -->
 
     <!-- GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PVFX7ESJ7"></script>
-    <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PVFX7ESJ7" is:inline></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -131,9 +131,9 @@ const siteURL = 'https://gutterbugs.co.uk';
     <MobileCTA />
 
     <!-- Phone Call Click Tracking -->
-    <script>
+    <script is:inline>
       document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[href^="tel:"]');
+        var link = e.target.closest('a[href^="tel:"]');
         if (link && typeof gtag === 'function') {
           gtag('event', 'phone_call_click', {
             event_category: 'engagement',
