@@ -272,142 +272,75 @@ const services = [
   declare function gtag(...args: any[]): void;
   declare const google: any;
 
-  // ─── Address Autocomplete (Google Places API New) ─────────────────────
-  let _autocompleteTimeout: ReturnType<typeof setTimeout> | null = null;
-  let _autocompleteResults: any[] = [];
-  let _selectedIndex = -1;
+  // ─── Google Places Autocomplete (Maps JS Widget) ──────────────────────
+  declare const google: any;
 
   function initAddressAutocomplete() {
     const addressInput = document.getElementById('address') as HTMLInputElement;
-    if (!addressInput) return;
+    if (!addressInput || !window.google?.maps?.places) return;
 
-    const apiKey = (document.querySelector('meta[name="google-places-key"]') as HTMLMetaElement)?.content;
-    if (!apiKey) return;
+    const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+      componentRestrictions: { country: 'gb' },
+      types: ['address'],
+      fields: ['address_components', 'geometry', 'formatted_address'],
+    });
 
-    // Create dropdown container
-    const dropdown = document.createElement('div');
-    dropdown.id = 'address-dropdown';
-    dropdown.className = 'absolute left-0 right-0 top-full mt-1 bg-white border-2 border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden hidden';
-    addressInput.parentElement!.appendChild(dropdown);
-
-    // Fetch autocomplete suggestions from Places API (New)
-    async function fetchSuggestions(query: string) {
-      if (query.length < 3) { hideDropdown(); return; }
-
-      try {
-        const response = await fetch('https://places.googleapis.com/v1/places:autocomplete', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Goog-Api-Key': apiKey,
-          },
-          body: JSON.stringify({
-            input: query,
-            includedRegionCodes: ['gb'],
-            includedPrimaryTypes: ['street_address', 'subpremise', 'premise'],
-            languageCode: 'en-GB',
-          }),
-        });
-
-        if (!response.ok) return;
-        const data = await response.json();
-        _autocompleteResults = data.suggestions || [];
-        renderDropdown();
-      } catch (e) {
-        // Silently fail — field works as plain text
+    // Style the dropdown to match site design
+    const style = document.createElement('style');
+    style.textContent = `
+      .pac-container {
+        border-radius: 12px;
+        border: 2px solid #e5e7eb;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        margin-top: 4px;
+        font-family: inherit;
+        z-index: 9999;
       }
-    }
-
-    // Fetch full place details
-    async function fetchPlaceDetails(placeId: string) {
-      try {
-        const response = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {
-          headers: {
-            'X-Goog-Api-Key': apiKey,
-            'X-Goog-FieldMask': 'addressComponents,location,formattedAddress,shortFormattedAddress',
-          },
-        });
-
-        if (!response.ok) return null;
-        return response.json();
-      } catch (e) {
-        return null;
+      .pac-item {
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 14px;
+        border-top: 1px solid #f3f4f6;
       }
-    }
+      .pac-item:first-child { border-top: none; }
+      .pac-item:hover, .pac-item-selected {
+        background: #f0f9ff;
+      }
+      .pac-item-query { font-weight: 600; color: #111827; }
+      .pac-icon { display: none; }
+      .pac-logo::after { display: none; }
+    `;
+    document.head.appendChild(style);
 
-    function renderDropdown() {
-      if (_autocompleteResults.length === 0) { hideDropdown(); return; }
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (!place.address_components) return;
 
-      dropdown.innerHTML = _autocompleteResults.map((suggestion, i) => {
-        const place = suggestion.placePrediction;
-        if (!place) return '';
-        const main = place.structuredFormat?.mainText?.text || '';
-        const secondary = place.structuredFormat?.secondaryText?.text || '';
-        return `<div class="address-option px-4 py-3 cursor-pointer hover:bg-sky-50 text-sm border-t border-gray-100 first:border-t-0 transition-colors" data-index="${i}">
-          <span class="font-semibold text-gray-900">${main}</span>
-          <span class="text-gray-500"> ${secondary}</span>
-        </div>`;
-      }).join('');
-
-      dropdown.classList.remove('hidden');
-      _selectedIndex = -1;
-
-      // Click handlers
-      dropdown.querySelectorAll('.address-option').forEach(option => {
-        option.addEventListener('click', () => {
-          const idx = parseInt((option as HTMLElement).dataset.index || '0');
-          selectSuggestion(idx);
-        });
-      });
-    }
-
-    function hideDropdown() {
-      dropdown.classList.add('hidden');
-      _autocompleteResults = [];
-      _selectedIndex = -1;
-    }
-
-    async function selectSuggestion(index: number) {
-      const suggestion = _autocompleteResults[index];
-      if (!suggestion?.placePrediction) return;
-
-      const placeId = suggestion.placePrediction.placeId;
-      hideDropdown();
-
-      // Show the formatted text immediately
-      const mainText = suggestion.placePrediction.structuredFormat?.mainText?.text || '';
-      addressInput.value = mainText;
-
-      // Fetch full details for structured data
-      const details = await fetchPlaceDetails(placeId);
-      if (!details) return;
-
-      // Extract components
       let streetNumber = '';
       let route = '';
       let city = '';
       let county = '';
       let postcode = '';
 
-      for (const component of (details.addressComponents || [])) {
-        const types = component.types || [];
-        if (types.includes('street_number')) streetNumber = component.longText || '';
-        if (types.includes('route')) route = component.longText || '';
-        if (types.includes('postal_town')) city = component.longText || '';
-        if (types.includes('locality') && !city) city = component.longText || '';
-        if (types.includes('administrative_area_level_2')) county = component.longText || '';
-        if (types.includes('postal_code')) postcode = component.longText || '';
+      for (const component of place.address_components) {
+        const types = component.types;
+        if (types.includes('street_number')) streetNumber = component.long_name;
+        if (types.includes('route')) route = component.long_name;
+        if (types.includes('postal_town')) city = component.long_name;
+        if (types.includes('locality') && !city) city = component.long_name;
+        if (types.includes('administrative_area_level_2')) county = component.long_name;
+        if (types.includes('postal_code')) postcode = component.long_name;
       }
 
-      // Set clean street address
+      // Clean street address (no city/postcode — those go in separate fields)
       const streetAddress = streetNumber ? `${streetNumber} ${route}` : route;
-      addressInput.value = streetAddress || details.shortFormattedAddress || mainText;
+      addressInput.value = streetAddress || place.formatted_address || '';
 
       // Auto-fill postcode
       const postcodeInput = document.getElementById('postcode') as HTMLInputElement;
       if (postcodeInput && postcode) postcodeInput.value = postcode;
 
-      // Fill hidden fields
+      // Fill hidden structured fields
       const cityInput = document.getElementById('address_city') as HTMLInputElement;
       const countyInput = document.getElementById('address_county') as HTMLInputElement;
       const latInput = document.getElementById('address_lat') as HTMLInputElement;
@@ -416,55 +349,43 @@ const services = [
       if (cityInput) cityInput.value = city;
       if (countyInput) countyInput.value = county;
 
-      if (details.location) {
-        if (latInput) latInput.value = String(details.location.latitude || '');
-        if (lngInput) lngInput.value = String(details.location.longitude || '');
+      if (place.geometry?.location) {
+        if (latInput) latInput.value = String(place.geometry.location.lat());
+        if (lngInput) lngInput.value = String(place.geometry.location.lng());
       }
-    }
-
-    // Input event — debounced autocomplete
-    addressInput.addEventListener('input', () => {
-      if (_autocompleteTimeout) clearTimeout(_autocompleteTimeout);
-      _autocompleteTimeout = setTimeout(() => {
-        fetchSuggestions(addressInput.value);
-      }, 300);
     });
 
-    // Keyboard navigation
+    // Prevent form submit on enter while dropdown is open
     addressInput.addEventListener('keydown', (e: KeyboardEvent) => {
-      const options = dropdown.querySelectorAll('.address-option');
-      if (options.length === 0) return;
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        _selectedIndex = Math.min(_selectedIndex + 1, options.length - 1);
-        options.forEach((o, i) => o.classList.toggle('bg-sky-50', i === _selectedIndex));
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        _selectedIndex = Math.max(_selectedIndex - 1, 0);
-        options.forEach((o, i) => o.classList.toggle('bg-sky-50', i === _selectedIndex));
-      } else if (e.key === 'Enter' && _selectedIndex >= 0) {
-        e.preventDefault();
-        selectSuggestion(_selectedIndex);
-      } else if (e.key === 'Escape') {
-        hideDropdown();
+      if (e.key === 'Enter') {
+        const pacContainer = document.querySelector('.pac-container');
+        if (pacContainer && pacContainer.querySelectorAll('.pac-item').length > 0) {
+          e.preventDefault();
+        }
       }
-    });
-
-    // Close dropdown on click outside
-    document.addEventListener('click', (e) => {
-      if (!addressInput.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
-        hideDropdown();
-      }
-    });
-
-    // Close on blur (with delay for click to register)
-    addressInput.addEventListener('blur', () => {
-      setTimeout(hideDropdown, 200);
     });
   }
 
+  // Load Google Maps JS API with Places library
+  function loadGoogleMapsAPI() {
+    if (window.google?.maps?.places) {
+      initAddressAutocomplete();
+      return;
+    }
+
+    const apiKey = (document.querySelector('meta[name="google-places-key"]') as HTMLMetaElement)?.content;
+    if (!apiKey) return;
+
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=_initAddressAutocomplete`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  (window as any)._initAddressAutocomplete = initAddressAutocomplete;
+
   initAttribution();
   initForm();
-  initAddressAutocomplete();
+  loadGoogleMapsAPI();
 </script>
