@@ -36,8 +36,8 @@ export default {
 
       // Save to D1
       const result = await env.DB.prepare(`
-        INSERT INTO leads (first_name, last_name, email, phone, address, postcode, service_type, message, gclid, source, landing_page, referrer, utm_source, utm_medium, utm_campaign, utm_term)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO leads (first_name, last_name, email, phone, address, postcode, service_type, message, gclid, source, landing_page, referrer, utm_source, utm_medium, utm_campaign, utm_term, address_city, address_county, address_lat, address_lng)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `).bind(
         body.first_name,
         body.last_name,
@@ -55,6 +55,10 @@ export default {
         body.utm_medium || null,
         body.utm_campaign || null,
         body.utm_term || null,
+        body.address_city || null,
+        body.address_county || null,
+        body.address_lat || null,
+        body.address_lng || null,
       ).run();
 
       // Try to push to Mission Control (best-effort, non-blocking)

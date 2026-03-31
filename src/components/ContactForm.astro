@@ -70,20 +70,25 @@ const services = [
     </div>
   </div>
 
-  <!-- Address -->
-  <div>
+  <!-- Address (Google Places Autocomplete) -->
+  <div class="relative">
     <label for="address" class="block text-sm font-medium text-gray-700 mb-1.5">Property Address <span class="text-red-500">*</span></label>
     <input
       type="text"
       id="address"
       name="address"
       required
-      placeholder="Street address"
+      placeholder="Start typing your address..."
+      autocomplete="off"
       class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
     />
+    <input type="hidden" id="address_city" name="address_city" />
+    <input type="hidden" id="address_county" name="address_county" />
+    <input type="hidden" id="address_lat" name="address_lat" />
+    <input type="hidden" id="address_lng" name="address_lng" />
   </div>
 
-  <!-- Postcode -->
+  <!-- Postcode (auto-filled by autocomplete, still editable) -->
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
     <div>
       <label for="postcode" class="block text-sm font-medium text-gray-700 mb-1.5">Postcode</label>
@@ -265,7 +270,120 @@ const services = [
 
   // Declare gtag for TypeScript
   declare function gtag(...args: any[]): void;
+  declare const google: any;
+
+  // ─── Google Places Autocomplete ───────────────────────────────────────
+  function initAddressAutocomplete() {
+    const addressInput = document.getElementById('address') as HTMLInputElement;
+    if (!addressInput || !window.google?.maps?.places) return;
+
+    const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+      componentRestrictions: { country: 'gb' },
+      types: ['address'],
+      fields: ['address_components', 'geometry', 'formatted_address'],
+    });
+
+    // Style the pac-container dropdown
+    const style = document.createElement('style');
+    style.textContent = `
+      .pac-container {
+        border-radius: 12px;
+        border: 2px solid #e5e7eb;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        margin-top: 4px;
+        font-family: inherit;
+        z-index: 9999;
+      }
+      .pac-item {
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 14px;
+        border-top: 1px solid #f3f4f6;
+      }
+      .pac-item:first-child { border-top: none; }
+      .pac-item:hover, .pac-item-selected {
+        background: #f0f9ff;
+      }
+      .pac-item-query { font-weight: 600; color: #111827; }
+      .pac-icon { display: none; }
+      .pac-logo::after { display: none; }
+    `;
+    document.head.appendChild(style);
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (!place.address_components) return;
+
+      // Extract structured address components
+      let streetNumber = '';
+      let route = '';
+      let city = '';
+      let county = '';
+      let postcode = '';
+
+      for (const component of place.address_components) {
+        const types = component.types;
+        if (types.includes('street_number')) streetNumber = component.long_name;
+        if (types.includes('route')) route = component.long_name;
+        if (types.includes('postal_town')) city = component.long_name;
+        if (types.includes('locality') && !city) city = component.long_name;
+        if (types.includes('administrative_area_level_2')) county = component.long_name;
+        if (types.includes('postal_code')) postcode = component.long_name;
+      }
+
+      // Build clean street address (without city/postcode — those go in separate fields)
+      const streetAddress = streetNumber ? `${streetNumber} ${route}` : route;
+      addressInput.value = streetAddress || place.formatted_address || '';
+
+      // Auto-fill postcode
+      const postcodeInput = document.getElementById('postcode') as HTMLInputElement;
+      if (postcodeInput && postcode) postcodeInput.value = postcode;
+
+      // Fill hidden structured fields
+      const cityInput = document.getElementById('address_city') as HTMLInputElement;
+      const countyInput = document.getElementById('address_county') as HTMLInputElement;
+      const latInput = document.getElementById('address_lat') as HTMLInputElement;
+      const lngInput = document.getElementById('address_lng') as HTMLInputElement;
+
+      if (cityInput) cityInput.value = city;
+      if (countyInput) countyInput.value = county;
+
+      if (place.geometry?.location) {
+        if (latInput) latInput.value = String(place.geometry.location.lat());
+        if (lngInput) lngInput.value = String(place.geometry.location.lng());
+      }
+    });
+
+    // Prevent form submit on enter while dropdown is open
+    addressInput.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        const pacContainer = document.querySelector('.pac-container');
+        if (pacContainer && pacContainer.querySelectorAll('.pac-item').length > 0) {
+          e.preventDefault();
+        }
+      }
+    });
+  }
+
+  // Load Google Maps JS API with Places library
+  function loadGoogleMapsAPI() {
+    // Check if already loaded
+    if (window.google?.maps?.places) {
+      initAddressAutocomplete();
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${(document.querySelector('meta[name="google-places-key"]') as HTMLMetaElement)?.content || ''}&libraries=places&callback=_initAddressAutocomplete`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+
+  // Global callback for async Google Maps loading
+  (window as any)._initAddressAutocomplete = initAddressAutocomplete;
 
   initAttribution();
   initForm();
+  loadGoogleMapsAPI();
 </script>
