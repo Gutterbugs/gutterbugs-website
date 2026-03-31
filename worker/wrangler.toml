@@ -4,6 +4,7 @@ compatibility_date = "2026-03-28"
 
 [vars]
 ALLOWED_ORIGINS = "https://gutterbugs.co.uk,https://www.gutterbugs.co.uk,https://gutterbugs-website.pages.dev"
+GOOGLE_PLACES_API_KEY = "AIzaSyBBGcj-Baee4e1G9hu6VKGjEiCvScELaVc"
 
 [[d1_databases]]
 binding = "DB"
