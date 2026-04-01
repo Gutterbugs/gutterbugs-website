@@ -72,6 +72,22 @@ export const locations: Location[] = [
     postcodesServed: ['WD4'],
     nearbyAreas: ['Abbots Langley', 'Chipperfield', 'Hunton Bridge', 'Bedmond'],
   },
+  {
+    slug: 'milton-keynes',
+    name: 'Milton Keynes',
+    county: 'Buckinghamshire',
+    description: "Milton Keynes' mix of modern estates, older villages, and commercial properties means exterior cleaning is always in demand. From the grid roads to the historic villages like Stony Stratford and Wolverton, we provide professional gutter clearing, roof cleaning, and pressure washing across the entire Milton Keynes area.",
+    postcodesServed: ['MK1', 'MK2', 'MK3', 'MK4', 'MK5', 'MK6', 'MK7', 'MK8', 'MK9', 'MK10', 'MK11', 'MK12', 'MK13', 'MK14', 'MK15'],
+    nearbyAreas: ['Bletchley', 'Wolverton', 'Stony Stratford', 'Great Linford', 'Shenley Church End', 'Furzton', 'Loughton', 'Bradwell'],
+  },
+  {
+    slug: 'newport-pagnell',
+    name: 'Newport Pagnell',
+    county: 'Buckinghamshire',
+    description: "Newport Pagnell's historic market town charm and surrounding villages present unique cleaning challenges. From the medieval buildings in the town centre to the modern developments, we provide expert exterior cleaning services throughout Newport Pagnell and the surrounding areas.",
+    postcodesServed: ['MK16'],
+    nearbyAreas: ['Great Linford', 'Lathbury', 'Sherington', 'Moulsoe', 'Chicheley', 'North Crawley'],
+  },
 ];
 
 export interface ServiceType {
