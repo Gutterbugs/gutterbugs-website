@@ -88,6 +88,38 @@ export const locations: Location[] = [
     postcodesServed: ['MK16'],
     nearbyAreas: ['Great Linford', 'Lathbury', 'Sherington', 'Moulsoe', 'Chicheley', 'North Crawley'],
   },
+  {
+    slug: 'olney',
+    name: 'Olney',
+    county: 'Buckinghamshire',
+    description: "Olney's beautiful Georgian market square and surrounding period properties need specialist care. From the stone-built cottages along the High Street to the newer developments on the edges of town, we provide professional exterior cleaning services across Olney and the surrounding villages.",
+    postcodesServed: ['MK46'],
+    nearbyAreas: ['Emberton', 'Weston Underwood', 'Clifton Reynes', 'Lavendon', 'Warrington', 'Turvey'],
+  },
+  {
+    slug: 'wolverton',
+    name: 'Wolverton',
+    county: 'Buckinghamshire',
+    description: "Wolverton's rich railway heritage means a mix of Victorian terraces, post-war housing, and modern estates — all needing regular exterior maintenance. We provide professional gutter clearing, roof cleaning, and pressure washing throughout Wolverton, Old Wolverton, and the surrounding area.",
+    postcodesServed: ['MK12', 'MK13'],
+    nearbyAreas: ['Old Wolverton', 'Stony Stratford', 'New Bradwell', 'Greenleys', 'Haversham', 'Cosgrove'],
+  },
+  {
+    slug: 'stony-stratford',
+    name: 'Stony Stratford',
+    county: 'Buckinghamshire',
+    description: "Stony Stratford's charming High Street and historic coaching inn character bring a wonderful mix of period properties that benefit from regular professional cleaning. From the listed buildings in the town centre to the residential streets beyond, we keep Stony Stratford properties looking their best.",
+    postcodesServed: ['MK11'],
+    nearbyAreas: ['Wolverton', 'Old Stratford', 'Calverton', 'Passenham', 'Deanshanger', 'Cosgrove'],
+  },
+  {
+    slug: 'bletchley',
+    name: 'Bletchley',
+    county: 'Buckinghamshire',
+    description: "Bletchley's mix of Victorian and Edwardian properties near the station, post-war estates, and modern developments across Fenny Stratford and Water Eaton all need regular exterior maintenance. We provide professional cleaning services throughout Bletchley and the surrounding areas.",
+    postcodesServed: ['MK1', 'MK2', 'MK3'],
+    nearbyAreas: ['Fenny Stratford', 'Water Eaton', 'Newton Longville', 'Shenley Brook End', 'Tattenhoe', 'Far Bletchley'],
+  },
 ];
 
 export interface ServiceType {
