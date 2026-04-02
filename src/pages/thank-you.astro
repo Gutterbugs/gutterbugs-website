@@ -54,20 +54,20 @@ import Layout from '../layouts/Layout.astro';
       </a>
     </div>
   </section>
-</Layout>
 
-<!-- GA4 Conversion Events -->
-<script is:inline>
-  if (typeof window !== 'undefined' && typeof gtag === 'function') {
-    // Primary conversion event (matches Google Ads import)
-    gtag('event', 'Contact_Us_Form_Entry', {
-      event_category: 'form',
-      event_label: 'contact_form_submission',
-    });
-    // Lead generation event
-    gtag('event', 'generate_lead', {
-      currency: 'GBP',
-      value: 0,
-    });
-  }
-</script>
+  <!-- GA4 Conversion Events -->
+  <script is:inline>
+    if (typeof window !== 'undefined' && typeof gtag === 'function') {
+      // Primary conversion event (matches Google Ads import)
+      gtag('event', 'Contact_Us_Form_Entry', {
+        event_category: 'form',
+        event_label: 'contact_form_submission',
+      });
+      // Lead generation event
+      gtag('event', 'generate_lead', {
+        currency: 'GBP',
+        value: 0,
+      });
+    }
+  </script>
+</Layout>
