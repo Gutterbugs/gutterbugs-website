@@ -222,6 +222,12 @@ async function handleFormSubmission(request, env, ctx) {
       if (ctx?.waitUntil) ctx.waitUntil(mcPromise);
     }
 
+    // Instant Telegram notification (non-blocking)
+    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+      const tgPromise = sendTelegramNotification(env, body);
+      if (ctx?.waitUntil) ctx.waitUntil(tgPromise);
+    }
+
     return new Response(JSON.stringify({
       ok: true,
       lead: {
@@ -242,6 +248,43 @@ async function handleFormSubmission(request, env, ctx) {
       status: 500,
       headers: corsHeaders(request, env),
     });
+  }
+}
+
+// ─── Telegram Notification ────────────────────────────────────────────────────
+
+async function sendTelegramNotification(env, lead) {
+  const name = `${lead.first_name} ${lead.last_name}`.trim();
+  const services = lead.service_type || 'Not specified';
+  const source = lead.source || 'direct';
+  const phone = lead.phone || '';
+
+  const message = [
+    `🪲 *New Lead!*`,
+    `*${name}*` + (services !== 'Not specified' ? ` — ${services}` : ''),
+    lead.address ? `📍 ${lead.address}${lead.postcode ? ', ' + lead.postcode : ''}` : '',
+    phone ? `📞 [${phone}](tel:${phone.replace(/\s/g, '')})` : '',
+    lead.email ? `✉️ ${lead.email}` : '',
+    lead.message ? `💬 _"${lead.message}"_` : '',
+    `🔗 Source: ${source}`,
+    lead.gclid ? `📊 Google Ads click` : '',
+  ].filter(Boolean).join('\n');
+
+  try {
+    const res = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: env.TELEGRAM_CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown',
+      }),
+    });
+    if (!res.ok) {
+      console.error('Telegram send failed:', await res.text());
+    }
+  } catch (err) {
+    console.error('Telegram notify error:', err.message);
   }
 }
 

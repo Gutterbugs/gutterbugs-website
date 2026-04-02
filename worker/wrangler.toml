@@ -5,6 +5,8 @@ compatibility_date = "2026-03-28"
 [vars]
 ALLOWED_ORIGINS = "https://gutterbugs.co.uk,https://www.gutterbugs.co.uk,https://gutterbugs-website.pages.dev"
 GOOGLE_PLACES_API_KEY = "AIzaSyBBGcj-Baee4e1G9hu6VKGjEiCvScELaVc"
+TELEGRAM_BOT_TOKEN = "8730621057:AAF2TRUBcJ0gTTb5OSv9wuZv2Zn5KgnF_cc"
+TELEGRAM_CHAT_ID = "6965807478"
 
 [[d1_databases]]
 binding = "DB"
