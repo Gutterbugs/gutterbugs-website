@@ -70,32 +70,39 @@ const services = [
     </div>
   </div>
 
-  <!-- Address (Google Places Autocomplete) -->
-  <div class="relative">
-    <label for="address" class="block text-sm font-medium text-gray-700 mb-1.5">Property Address <span class="text-red-500">*</span></label>
+  <!-- Address -->
+  <div>
+    <label for="address" class="block text-sm font-medium text-gray-700 mb-1.5">Street Address <span class="text-red-500">*</span></label>
     <input
       type="text"
       id="address"
       name="address"
       required
-      placeholder="Start typing your address..."
-      autocomplete="off"
+      placeholder="e.g. 14 High Street"
       class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
     />
-    <input type="hidden" id="address_city" name="address_city" />
-    <input type="hidden" id="address_county" name="address_county" />
-    <input type="hidden" id="address_lat" name="address_lat" />
-    <input type="hidden" id="address_lng" name="address_lng" />
   </div>
 
-  <!-- Postcode (auto-filled by autocomplete, still editable) -->
+  <!-- Town & Postcode -->
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
     <div>
-      <label for="postcode" class="block text-sm font-medium text-gray-700 mb-1.5">Postcode</label>
+      <label for="address_city" class="block text-sm font-medium text-gray-700 mb-1.5">Town <span class="text-red-500">*</span></label>
+      <input
+        type="text"
+        id="address_city"
+        name="address_city"
+        required
+        placeholder="e.g. Tring"
+        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      />
+    </div>
+    <div>
+      <label for="postcode" class="block text-sm font-medium text-gray-700 mb-1.5">Postcode <span class="text-red-500">*</span></label>
       <input
         type="text"
         id="postcode"
         name="postcode"
+        required
         placeholder="e.g. HP23 4AB"
         class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
       />
@@ -270,135 +277,7 @@ const services = [
 
   // Declare gtag for TypeScript
   declare function gtag(...args: any[]): void;
-  declare const google: any;
-
-  // ─── Address Autocomplete (via Worker proxy) ──────────────────────────
-  let _acTimeout: ReturnType<typeof setTimeout> | null = null;
-  let _acResults: Array<{placeId: string; main: string; secondary: string}> = [];
-  let _acIndex = -1;
-  let _acDropdown: HTMLDivElement | null = null;
-
-  function initAddressAutocomplete() {
-    const addressInput = document.getElementById('address') as HTMLInputElement;
-    if (!addressInput) return;
-
-    const endpoint = (import.meta as any).env?.PUBLIC_FORM_ENDPOINT || 'https://gutterbugs-form.ryan-1f9.workers.dev';
-
-    // Create dropdown
-    const dropdown = document.createElement('div');
-    dropdown.className = 'absolute left-0 right-0 top-full mt-1 bg-white border-2 border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden hidden';
-    addressInput.parentElement!.style.position = 'relative';
-    addressInput.parentElement!.appendChild(dropdown);
-    _acDropdown = dropdown;
-
-    function hideDropdown() {
-      dropdown.classList.add('hidden');
-      dropdown.innerHTML = '';
-      _acResults = [];
-      _acIndex = -1;
-    }
-
-    function renderDropdown() {
-      if (_acResults.length === 0) { hideDropdown(); return; }
-
-      dropdown.innerHTML = _acResults.map((s, i) =>
-        `<div class="ac-opt px-4 py-3 cursor-pointer text-sm transition-colors hover:bg-sky-50 ${i > 0 ? 'border-t border-gray-100' : ''}" data-i="${i}">
-          <span class="font-semibold text-gray-900">${s.main}</span>
-          <span class="text-gray-500 ml-1">${s.secondary}</span>
-        </div>`
-      ).join('');
-
-      dropdown.classList.remove('hidden');
-      _acIndex = -1;
-
-      dropdown.querySelectorAll('.ac-opt').forEach(el => {
-        el.addEventListener('mousedown', (e) => {
-          e.preventDefault(); // Prevent blur firing first
-          selectResult(parseInt((el as HTMLElement).dataset.i || '0'));
-        });
-      });
-    }
-
-    async function fetchSuggestions(query: string) {
-      if (query.length < 3) { hideDropdown(); return; }
-      try {
-        const res = await fetch(`${endpoint}/autocomplete?q=${encodeURIComponent(query)}`);
-        const data = await res.json();
-        _acResults = data.suggestions || [];
-        renderDropdown();
-      } catch (e) { /* silent — field works as plain text */ }
-    }
-
-    async function selectResult(index: number) {
-      const result = _acResults[index];
-      if (!result) return;
-
-      hideDropdown();
-      addressInput.value = result.main;
-
-      // Fetch structured details
-      try {
-        const res = await fetch(`${endpoint}/place?id=${encodeURIComponent(result.placeId)}`);
-        const details = await res.json();
-
-        if (details.address) addressInput.value = details.address;
-
-        const postcodeInput = document.getElementById('postcode') as HTMLInputElement;
-        if (postcodeInput && details.postcode) postcodeInput.value = details.postcode;
-
-        const cityInput = document.getElementById('address_city') as HTMLInputElement;
-        const countyInput = document.getElementById('address_county') as HTMLInputElement;
-        const latInput = document.getElementById('address_lat') as HTMLInputElement;
-        const lngInput = document.getElementById('address_lng') as HTMLInputElement;
-
-        if (cityInput) cityInput.value = details.city || '';
-        if (countyInput) countyInput.value = details.county || '';
-        if (latInput) latInput.value = details.lat != null ? String(details.lat) : '';
-        if (lngInput) lngInput.value = details.lng != null ? String(details.lng) : '';
-      } catch (e) { /* details fetch failed — address text still set */ }
-    }
-
-    // Debounced input
-    addressInput.addEventListener('input', () => {
-      if (_acTimeout) clearTimeout(_acTimeout);
-      _acTimeout = setTimeout(() => fetchSuggestions(addressInput.value), 300);
-    });
-
-    // Keyboard navigation
-    addressInput.addEventListener('keydown', (e: KeyboardEvent) => {
-      const opts = dropdown.querySelectorAll('.ac-opt');
-      if (!opts.length && e.key !== 'Escape') return;
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        _acIndex = Math.min(_acIndex + 1, opts.length - 1);
-        opts.forEach((o, i) => { (o as HTMLElement).style.background = i === _acIndex ? '#f0f9ff' : ''; });
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        _acIndex = Math.max(_acIndex - 1, 0);
-        opts.forEach((o, i) => { (o as HTMLElement).style.background = i === _acIndex ? '#f0f9ff' : ''; });
-      } else if (e.key === 'Enter' && _acIndex >= 0) {
-        e.preventDefault();
-        selectResult(_acIndex);
-      } else if (e.key === 'Escape') {
-        hideDropdown();
-      }
-    });
-
-    // Close on blur
-    addressInput.addEventListener('blur', () => {
-      setTimeout(hideDropdown, 150);
-    });
-
-    // Close on click outside
-    document.addEventListener('click', (e) => {
-      if (!addressInput.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
-        hideDropdown();
-      }
-    });
-  }
 
   initAttribution();
   initForm();
-  initAddressAutocomplete();
 </script>
