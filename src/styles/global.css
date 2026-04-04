@@ -7,18 +7,20 @@
   --font-body: "Inter", sans-serif;
 }
 
-* {
+html {
+  scroll-behavior: smooth;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
   font-family: var(--font-body, "Inter", sans-serif);
   background-color: #0a0a0a;
   color: #e5e7eb;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
