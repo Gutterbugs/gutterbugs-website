@@ -45,10 +45,18 @@ const siteURL = 'https://gutterbugs.co.uk';
 
     <title>{title}</title>
 
-    <!-- Google Fonts -->
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    
+    <!-- Preload critical above-the-fold resources -->
+    <link rel="preload" href="/logos/logo-160.png" as="image" type="image/png" />
+    
+    <!-- Google Fonts with optimized loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
 
     <!-- Google Tag Manager -->
     <script is:inline>
@@ -132,15 +140,7 @@ const siteURL = 'https://gutterbugs.co.uk';
 
     <!-- Phone Call Click Tracking -->
     <script is:inline>
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href^="tel:"]');
-        if (link && typeof gtag === 'function') {
-          gtag('event', 'phone_call_click', {
-            event_category: 'engagement',
-            event_label: link.getAttribute('href'),
-          });
-        }
-      });
+      document.addEventListener('click',(e)=>{var l=e.target.closest('a[href^="tel:"]');l&&typeof gtag==='function'&&gtag('event','phone_call_click',{event_category:'engagement',event_label:l.getAttribute('href')})});
     </script>
   </body>
 </html>
