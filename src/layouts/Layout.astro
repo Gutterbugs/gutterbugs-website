@@ -140,15 +140,7 @@ const siteURL = 'https://gutterbugs.co.uk';
 
     <!-- Phone Call Click Tracking -->
     <script is:inline>
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href^="tel:"]');
-        if (link && typeof gtag === 'function') {
-          gtag('event', 'phone_call_click', {
-            event_category: 'engagement',
-            event_label: link.getAttribute('href'),
-          });
-        }
-      });
+      document.addEventListener('click',(e)=>{var l=e.target.closest('a[href^="tel:"]');l&&typeof gtag==='function'&&gtag('event','phone_call_click',{event_category:'engagement',event_label:l.getAttribute('href')})});
     </script>
   </body>
 </html>
