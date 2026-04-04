@@ -54,8 +54,10 @@ const siteURL = 'https://gutterbugs.co.uk';
     <!-- Preload critical above-the-fold resources -->
     <link rel="preload" href="/logos/logo-160.png" as="image" type="image/png" />
     
-    <!-- Google Fonts with swap display -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+    <!-- Google Fonts with optimized loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Google Tag Manager -->
     <script defer is:inline>
