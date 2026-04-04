@@ -25,21 +25,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading, "Poppins", sans-serif);
 }
 
-/* Custom animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
+/* Custom animations - removed fadeInUp as it's unused */
 
 /* Accordion */
 .accordion-content {
