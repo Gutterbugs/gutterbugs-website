@@ -2,11 +2,16 @@ name = "gutterbugs-form"
 main = "index.js"
 compatibility_date = "2026-03-28"
 
+[triggers]
+crons = ["0 */6 * * *"]
+
 [vars]
 ALLOWED_ORIGINS = "https://gutterbugs.co.uk,https://www.gutterbugs.co.uk,https://gutterbugs-website.pages.dev"
 GOOGLE_PLACES_API_KEY = "AIzaSyBBGcj-Baee4e1G9hu6VKGjEiCvScELaVc"
 TELEGRAM_BOT_TOKEN = "8730621057:AAF2TRUBcJ0gTTb5OSv9wuZv2Zn5KgnF_cc"
 TELEGRAM_CHAT_ID = "6965807478"
+# GMB secrets — set via: wrangler secret put GMB_CLIENT_ID, GMB_CLIENT_SECRET,
+# GMB_REFRESH_TOKEN, GMB_ACCOUNT_ID, GMB_LOCATION_ID
 
 [[d1_databases]]
 binding = "DB"
