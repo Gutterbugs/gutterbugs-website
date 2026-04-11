@@ -8,7 +8,7 @@
  *   GET  /reviews             → Cached GMB reviews from D1
  *
  * Cron:
- *   0 */6 * * *               → Sync reviews from GMB API into D1
+ *   0 * / 6 * * *               → Sync reviews from GMB API into D1
  *
  * Secrets (set via `wrangler secret put <NAME>`):
  *   GMB_CLIENT_ID, GMB_CLIENT_SECRET, GMB_REFRESH_TOKEN,
