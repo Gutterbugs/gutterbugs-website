@@ -1,10 +1,18 @@
 /**
- * Cloudflare Worker — Form submission + Address Autocomplete proxy
- * 
+ * Cloudflare Worker — Form submission + Address Autocomplete proxy + GMB Reviews cache
+ *
  * Routes:
  *   POST /                    → Lead form submission (saves to D1)
  *   GET  /autocomplete?q=...  → Proxy to Google Places Autocomplete
  *   GET  /place?id=...        → Proxy to Google Places Details
+ *   GET  /reviews             → Cached GMB reviews from D1
+ *
+ * Cron:
+ *   0 */6 * * *               → Sync reviews from GMB API into D1
+ *
+ * Secrets (set via `wrangler secret put <NAME>`):
+ *   GMB_CLIENT_ID, GMB_CLIENT_SECRET, GMB_REFRESH_TOKEN,
+ *   GMB_ACCOUNT_ID, GMB_LOCATION_ID
  */
 
 export default {
@@ -14,6 +22,11 @@ export default {
     // CORS preflight
     if (request.method === 'OPTIONS') {
       return handleCORS(request, env);
+    }
+
+    // Route: Cached GMB reviews
+    if (url.pathname === '/reviews' && request.method === 'GET') {
+      return handleGetReviews(request, env);
     }
 
     // Route: Address autocomplete proxy
@@ -36,7 +49,119 @@ export default {
 
     return handleFormSubmission(request, env, ctx);
   },
+
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(syncGmbReviews(env));
+  },
 };
+
+// ─── GMB Reviews — Cron Sync ──────────────────────────────────────────────────
+
+const STAR_MAP = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
+
+async function getGmbAccessToken(env) {
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: env.GMB_CLIENT_ID,
+      client_secret: env.GMB_CLIENT_SECRET,
+      refresh_token: env.GMB_REFRESH_TOKEN,
+      grant_type: 'refresh_token',
+    }),
+  });
+  if (!res.ok) throw new Error(`GMB token refresh failed: ${res.status}`);
+  const data = await res.json();
+  if (!data.access_token) throw new Error('No access_token in GMB token response');
+  return data.access_token;
+}
+
+async function syncGmbReviews(env) {
+  try {
+    const token = await getGmbAccessToken(env);
+    const apiUrl =
+      `https://mybusiness.googleapis.com/v4/accounts/${env.GMB_ACCOUNT_ID}` +
+      `/locations/${env.GMB_LOCATION_ID}/reviews?pageSize=50`;
+
+    const res = await fetch(apiUrl, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) throw new Error(`GMB reviews fetch failed: ${res.status}`);
+    const data = await res.json();
+
+    for (const review of (data.reviews || [])) {
+      await env.DB.prepare(`
+        INSERT INTO reviews (review_id, reviewer_name, photo_url, star_rating, comment, reply_comment, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(review_id) DO UPDATE SET
+          reviewer_name  = excluded.reviewer_name,
+          photo_url      = excluded.photo_url,
+          star_rating    = excluded.star_rating,
+          comment        = excluded.comment,
+          reply_comment  = excluded.reply_comment
+      `).bind(
+        review.reviewId,
+        review.reviewer?.displayName || 'Anonymous',
+        review.reviewer?.profilePhotoUrl || '',
+        STAR_MAP[review.starRating] || 0,
+        review.comment || '',
+        review.reviewReply?.comment || null,
+        review.createTime || new Date().toISOString(),
+      ).run();
+    }
+
+    console.log(`GMB sync complete — ${(data.reviews || []).length} reviews processed`);
+  } catch (err) {
+    console.error('GMB sync error:', err.message);
+  }
+}
+
+// ─── GMB Reviews — GET /reviews ───────────────────────────────────────────────
+
+function relativeTime(isoDate) {
+  if (!isoDate) return '';
+  const days = Math.floor((Date.now() - new Date(isoDate).getTime()) / 86400000);
+  if (days === 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 7) return `${days} days ago`;
+  if (days < 30) return `${Math.floor(days / 7)} week${Math.floor(days / 7) > 1 ? 's' : ''} ago`;
+  if (days < 365) return `${Math.floor(days / 30)} month${Math.floor(days / 30) > 1 ? 's' : ''} ago`;
+  return `${Math.floor(days / 365)} year${Math.floor(days / 365) > 1 ? 's' : ''} ago`;
+}
+
+async function handleGetReviews(request, env) {
+  try {
+    const { results } = await env.DB.prepare(
+      'SELECT * FROM reviews WHERE star_rating = 5 ORDER BY created_at DESC LIMIT 10'
+    ).all();
+
+    const countRow = await env.DB.prepare('SELECT COUNT(*) as total FROM reviews').first();
+
+    const reviews = (results || []).map(r => ({
+      author: r.reviewer_name,
+      authorPhoto: r.photo_url,
+      authorUri: '',
+      rating: r.star_rating,
+      text: r.comment,
+      relativeTime: relativeTime(r.created_at),
+      publishTime: r.created_at,
+      googleMapsUri: '',
+    }));
+
+    return new Response(JSON.stringify({
+      rating: 5.0,
+      totalReviews: countRow?.total || 0,
+      reviews,
+    }), {
+      headers: corsHeaders(request, env),
+    });
+  } catch (err) {
+    console.error('GET /reviews error:', err.message);
+    return new Response(JSON.stringify({ rating: 5.0, totalReviews: 0, reviews: [] }), {
+      headers: corsHeaders(request, env),
+    });
+  }
+}
 
 // ─── Address Autocomplete Proxy ───────────────────────────────────────────────
 

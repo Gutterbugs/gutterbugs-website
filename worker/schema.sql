@@ -1,3 +1,13 @@
+CREATE TABLE IF NOT EXISTS reviews (
+  review_id TEXT PRIMARY KEY,
+  reviewer_name TEXT,
+  photo_url TEXT,
+  star_rating INTEGER,
+  comment TEXT,
+  reply_comment TEXT,
+  created_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS leads (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   first_name TEXT NOT NULL,
