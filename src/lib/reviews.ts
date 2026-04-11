@@ -1,6 +1,5 @@
 // Fetch Google reviews from the Cloudflare Worker (cached in D1 from GMB API)
-const WORKER_URL =
-  import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://gutterbugs-form.ryan-1f9.workers.dev';
+const WORKER_URL = 'http://127.0.0.1:8787'; // Forced to local worker for development preview
 
 export interface GoogleReview {
   author: string;

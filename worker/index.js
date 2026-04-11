@@ -145,7 +145,7 @@ async function handleGetReviews(request, env) {
       text: r.comment,
       relativeTime: relativeTime(r.created_at),
       publishTime: r.created_at,
-      googleMapsUri: '',
+      googleMapsUri: 'https://g.page/r/Cdfyvr7o_1SfEAE/review',
     }));
 
     return new Response(JSON.stringify({
