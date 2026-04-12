@@ -1,0 +1,1195 @@
+{
+  "fetchedAt": "2026-04-12T17:54:58.677Z",
+  "totalReviews": 92,
+  "averageRating": 5,
+  "ratingBreakdown": [
+    {
+      "stars": 5,
+      "count": 91
+    },
+    {
+      "stars": 4,
+      "count": 1
+    },
+    {
+      "stars": 3,
+      "count": 0
+    },
+    {
+      "stars": 2,
+      "count": 0
+    },
+    {
+      "stars": 1,
+      "count": 0
+    }
+  ],
+  "reviews": [
+    {
+      "id": "AbFvOqkuCP2gUsk9wIPzh4K6TceTg9jG7MjoiNgNUDp9CO629-l_INS_1LFyGJM3f5JgOYnMcFmsgA",
+      "author": "PAUL",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJnD9xg9sNWMrcGUQ58ZL0AeUOIKLdWxl0tUsgLSQiRcFpilQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Gutterbugs are simply the best. Gutters cleaned and emptied of rubbish by two of the nicest guys I know.",
+      "time": "2026-03-05T10:05:36.980423Z",
+      "updateTime": "2026-03-05T10:05:36.980423Z",
+      "reply": {
+        "text": "Hi Paul, thanks for the kind words! It was a pleasure helping you out yesterday. We’re glad you’re happy with the Gutterbugs service and it was great to see you.\n\nAll the best,\nRyan & Richard",
+        "time": "2026-03-05T12:05:49.845171Z"
+      }
+    },
+    {
+      "id": "AbFvOqn1zx0ZGUlzciYXpVVVj2B_zVzf0J1p7ftRf2EdubiKuqlrImuboaoV2ICIUufgAel0xAiwdg",
+      "author": "Lorraine G",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocI3_XRMbMIh30VefiV9xpi77Er_1BZqAcVpeM7E_HgrJ_LZgg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Gutterbugs (Ryan & Richard) were efficient and professional from start to finish, providing a prompt quote and completing the work to a high standard. They removed our hedgehog gutter brushes, thoroughly cleaned the gutters, and, after discussing options with us, installed leaf guards on the downpipes instead of reinstating the hedgehogs. They left everything very clean and tidy. We’ll definitely use them again next year and highly recommend them.",
+      "time": "2026-02-26T08:53:25.894084Z",
+      "updateTime": "2026-02-26T08:53:25.894084Z",
+      "reply": {
+        "text": "Thanks for the lovely review Lorraine. We're glad we could be of help. \n\nWishing you a lovely weekend. \n\nRyan & Richard",
+        "time": "2026-02-27T08:50:24.343985Z"
+      }
+    },
+    {
+      "id": "AbFvOqmDJfJc-hQrlvX74vL42EFOV6rhZs2Vu7zx3gQPJBjTm73EPhaCCbIh9Y4qAL7b1SdUkvLK4Q",
+      "author": "stephen richards",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKo7DuveIXXKX4s1neKsm7kADI7QOis5hHSpupImMbRB68ESw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Very good job and nice men.",
+      "time": "2026-02-19T20:30:00.360064Z",
+      "updateTime": "2026-02-19T20:30:00.360064Z",
+      "reply": {
+        "text": "Thanks Stephen, glad we could be of help.\n\nRegards\nRyan",
+        "time": "2026-02-20T00:18:52.825784Z"
+      }
+    },
+    {
+      "id": "AbFvOqn8umbS1Jz3GzM2D1u4QsBzBu1tP8b0O5x6Q-4miEdQq34XBjXsBdvF1XRc2a6RGij5TiYUPA",
+      "author": "Ed Snow",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIM_6SAP0vyBuG5SWs3qDsm3cUs8Oum4Xrg6k87k-FIl6h5Ug=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent experience, polite and friendly team who did a great job.\nWould definitely recommend.",
+      "time": "2026-02-09T21:27:55.280795Z",
+      "updateTime": "2026-02-09T21:27:55.280795Z",
+      "reply": {
+        "text": "Hi Ed, thanks for the kind words! We’re glad we could get the job done for you and that you were happy with the service. Thanks for choosing us!\n\nAll the best, Ryan & Richard",
+        "time": "2026-02-09T22:57:10.187708Z"
+      }
+    },
+    {
+      "id": "AbFvOqk_a4g3FC-GaU-1w1L-SN_tyV5XIMJMVkfGduBy9eFXVVtSHQiEgfQwZU9UmiIoFVDt1sehYA",
+      "author": "Joanna Stone",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJUfFBBYc2WD7YOCimrN_uiEdwZpPl6jeDCPnn0TM7LOGTbag=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Superb service. Very friendly and knowledgeable, incredibly helpful, efficient, good vfm. All round just a pleasure to work with. Will definitely have them back again next year.",
+      "time": "2026-01-20T12:07:52.296727Z",
+      "updateTime": "2026-01-20T12:09:42.848045Z",
+      "reply": {
+        "text": "Hi Joanna, \n\nThanks for the glowing review! We’re so glad we could provide efficient service and good value. It was a pleasure working with you, and we’re already looking forward to your next cleaning. See you next year!\n\nRegards,\nRyan & Richard",
+        "time": "2026-01-24T14:35:07.928706Z"
+      }
+    },
+    {
+      "id": "AbFvOqlilMALW3TH8bX06jRsmxyONVSPv-6VnhkxfKQ1JB6kpHPQCQMaTfcovdcrLzlrOd7R9u6rwQ",
+      "author": "Georgina Minter-Brown",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKcpYYeH-tbS-D_7POldFfdA-U0Wn-Hbe67w-b54fEuOn8nkg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent service by two lovely people. Ryan and his team were quick to respond to messages, and were polite and professional. They did a brilliant job on our gutters, and we will be using them again next year! Thank you!",
+      "time": "2025-12-11T09:50:35.700331Z",
+      "updateTime": "2025-12-11T09:50:35.700331Z",
+      "reply": {
+        "text": "Hi Georgina, we really appreciate the review. It's good to hear you were happy with the job. My dad and I look forward to helping you out again next year!\n\nMuch appreciated.\nRyan & Richard",
+        "time": "2026-01-24T14:50:07.515473Z"
+      }
+    },
+    {
+      "id": "AbFvOqmdGb5IKcUHicN7VU_kF-ItSM2SFkDVtpGvqPj5Z6ee7oZlsqgDBo7vosC3kLl6FBpMAaFb",
+      "author": "Andrew R",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUfTb-7x37f_mjDxsFjByzmiYs2BXUm-8K-RPIn_seW32ORXLo2=s120-c-rp-mo-ba4-br100",
+      "rating": 5,
+      "text": "Professional and friendly service. My gutters are now cleared (even had a plant growing there!) Plus a new endcap was just a few extra quid, so no more overflowing water every time it rains!",
+      "time": "2025-11-17T14:08:53.155196Z",
+      "updateTime": "2026-02-17T16:21:16.357896Z",
+      "reply": {
+        "text": "Hi Andrew, thanks for the kind words! It was a pleasure helping you out. We’re glad we could get those gutters back in working order and fix that overflow issue for a fair price.\n\nAll the best,\nRyan & Richard",
+        "time": "2026-02-17T17:23:41.977120Z"
+      }
+    },
+    {
+      "id": "AbFvOqm9ZBRCvPw7tS-hWRqdQZ7f-zJj_VBlJ_ntOeW3iz7A1aa5fm36Eypl66rBoykHtdSlhVOg1w",
+      "author": "Gio Z",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIsXdej08E2g5YQQRZhoeXD8lLyEw9zZ7I_C_pU4CV_2wKYlw=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Highly recommended!\n\nFriendly, honest and professional service. Helped us to get rid of pigeons nesting under solar panels.",
+      "time": "2025-10-28T17:43:08.800587Z",
+      "updateTime": "2025-10-28T17:43:08.800587Z",
+      "reply": {
+        "text": "Hi Gio, thanks for the recommendation! Those nesting issues can be a real headache, so my dad and I are glad we could help get your solar panels cleared. See you next time!",
+        "time": "2026-01-24T14:54:18.809700Z"
+      }
+    },
+    {
+      "id": "AbFvOqnw87tjSQpCwUTY06Q1HY8vgGTCsGfxH7yXQ6Nq3gtGA0U_UoCRFhICrJJoVHyQs6PMUjO5",
+      "author": "Greig Peter",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKqb0_Iwp5_GS59PFjC9LkkDmjJ9ozOGwDy--71b5T5QpQWRw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "A pleasure to work with.",
+      "time": "2025-10-10T08:37:27.130435Z",
+      "updateTime": "2025-10-10T08:37:27.130435Z",
+      "reply": {
+        "text": "Hi Greig, thanks for leaving us a review! Glad you were happy with the service and it was great to meet you.\n\nCheers, Ryan & Richard",
+        "time": "2026-01-24T14:56:06.943151Z"
+      }
+    },
+    {
+      "id": "AbFvOqlWWulEGMcK5meygp--H9lBdiqplZ_HN7HrZCn6WcOnne3sjahEhjYbr_mef0UfU4NuEfI9cA",
+      "author": "Stefan Gyoker",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKDkg9w6uW-p_Bn1NSfUXKwtw9-BORiBiae8ZHYQL7UvmtOmA=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "The guys were absolutely brilliant from start to finish. Quick to quote, started the work on time and did a fantastic job. 30 years of dirt and moss removed and roof now looks like new. They take pride in their work, left the surrounding patio areas clean and tidy when they left and were just overall lovely guys. Thanks Ryan and Richard - highly recommended!",
+      "time": "2025-10-02T20:38:43.969471Z",
+      "updateTime": "2025-10-02T20:41:11.814308Z",
+      "reply": {
+        "text": "Hi Stefan, thanks for the kind words! It was a pleasure working on your home and getting that roof looking like new again. My dad and I take a lot of pride in the cleanup, so we appreciate you mentioning the patio. Hope you're enjoying the fresh look!\n\nRegards,\nRyan & Richard",
+        "time": "2026-01-24T14:58:01.700177Z"
+      }
+    },
+    {
+      "id": "AbFvOqlA2dO1beMK8fSG1E3_scje_qUUkFj1KbhgmHfxMqaIzCuiPLwfDHLyDpaQ81-y6QaNdf_F5w",
+      "author": "George Bull",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLKFQVnKwLye1Rc114YO6K9X95H40LIDg7nGhCq-fNsgbseAg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and Richard were great. They came out at short notice to deal with a gutter problem. The problem is now fixed and their price is very fair. You can’t ask for more than that!",
+      "time": "2025-09-17T19:58:10.888588Z",
+      "updateTime": "2025-09-17T19:58:10.888588Z",
+      "reply": {
+        "text": "Hi George,\n\nThanks got leaving us a review, glad to hear the gutters are all fixed now and that you were happy with the service. \n\nAll the best,\nRyan & Richard",
+        "time": "2026-01-26T09:16:11.004863Z"
+      }
+    },
+    {
+      "id": "AbFvOqlvw64_0HX-btnCliueWpgqEmQQfE0I2XPRb5qU8lH2lH9Ds611Mzh2wI25krEIhxIj3h_iFg",
+      "author": "Gisella Goodwin",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIInh5XFmti8V1GzOdF5GLcWANLWtn9GuY4zsNeDMBHiPG1IQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent service",
+      "time": "2025-09-15T15:53:51.731245Z",
+      "updateTime": "2025-09-15T15:53:51.731245Z",
+      "reply": {
+        "text": "Hi Gisella, thanks for the feedback! It was a pleasure helping you out and we appreciate the 5 stars.\n\nCheers,\nRyan & Richard",
+        "time": "2026-01-26T09:17:35.003906Z"
+      }
+    },
+    {
+      "id": "AbFvOqn3zp8KVFKBHoTHprLMrNI6OJFWqWcANnBybpNYaBwhwn1OV-svevpUuniVTWaHp7bdlrpyQw",
+      "author": "Phil Hill",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIQ-bTOWlOYcKvAjHh1jqRr-O51vl-qgJJHF8fPXW-bF31rIw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and Richard are really friendly and professional,  they did a fantastic job of clearing and cleaning my blocked gutter over my conservatory at a very competitive price.",
+      "time": "2025-09-15T10:40:43.624048Z",
+      "updateTime": "2025-09-15T10:40:43.624048Z",
+      "reply": {
+        "text": "Hi Phil, thanks for leaving us a 5-star review! Glad you were happy with the job we did on the conservatory gutters. It was great meeting you and we appreciate the recommendation!\n\nRegards\nRyan & Richard",
+        "time": "2026-01-26T09:20:01.334865Z"
+      }
+    },
+    {
+      "id": "AbFvOqnwynw1Zs2ogJiyCkbPshJjf1IEpemvus59SDJWr3p-0RnKgetmWnKUjND6inhN60Qmeeuy8g",
+      "author": "Victoria Lang",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJvJLZfeOWzjsWjThdKtZxjAY0IJ1S4_vCTnDLd2FgLJarbXQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "From start to finish, Gutterbugs couldn’t have been more perfect! If you’re looking for a professional, knowledgeable, friendly, family run company to clean your gutters and roof, then look no further. Richard and Ryan are absolutely brilliant! They treated my property with respect and care and did a truly amazing job! I would definitely recommend them! A complete 5 star rating from me.",
+      "time": "2025-08-21T19:26:31.337906Z",
+      "updateTime": "2025-08-21T19:26:31.337906Z",
+      "reply": {
+        "text": "Hi Victoria, thanks for leaving such a nice review! We're glad we could get the gutters and roof sorted for you and that you were happy with the service. It was great meeting you and we appreciate the 5 stars!\n\nCheers,\nRyan & Richard",
+        "time": "2026-01-26T09:22:21.477659Z"
+      }
+    },
+    {
+      "id": "AbFvOqk0po6EPKiTmL4i99xhJ-Fn7ojl3c22yzo9AQR9PmSvxsttFAIUzCIT5Ecv45AvJUrrPQypyg",
+      "author": "Elizabeth Alder",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIl6XlGOody6E14PXfUdq3xrmFFMi8zPJEKdyWixReNL84GhQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and Richard did a fantastic job clearing my gutters and roof of moss\nThe are both extremely pleasant, helpful and professional.\nI’m delighted.",
+      "time": "2025-05-30T09:55:27.899597Z",
+      "updateTime": "2025-05-30T09:55:27.899597Z",
+      "reply": {
+        "text": "Thank you for your wonderful feedback, Elizabeth! We're thrilled to hear that Ryan and Richard provided you with excellent service in clearing your gutters and roof. It's great to know that their pleasant and professional demeanor made a positive impression. We appreciate your support and look forward to assisting you again in the future!",
+        "time": "2025-05-30T12:14:53.434796Z"
+      }
+    },
+    {
+      "id": "AbFvOqlfTbSxb5ba69MxYXlIB94wBelobpkkyKDXwjaab25rVNNQF4PmsvChU5iC5OQBbEcb4lhF",
+      "author": "Steve Odell",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLiz-2USBdH-YmwU0eXeU4xIxoNFu7UD3BMuusuPVJYaeF-Gw=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Used these guys to clean off a huge amount of moss from my roof. Also cleaned out the gutters. Very pleasant people, Had all the (what looked like) right equipment. Overall very satisfied and would recommend.",
+      "time": "2025-04-22T18:13:46.036182Z",
+      "updateTime": "2025-04-22T18:13:46.036182Z",
+      "reply": {
+        "text": "Thank you for your positive feedback, Steve! We're thrilled to hear that you were satisfied with our roof and gutter cleaning services. Our team always strives to provide excellent service and the right equipment for each job. Your recommendation means a lot to us, and we look forward to serving you again in the future!",
+        "time": "2025-04-23T00:03:01.460929Z"
+      }
+    },
+    {
+      "id": "AbFvOqkZWDt3lif6KODcY0ZoFaissbzDf8AZbNyxNycfwcsBPDbSf7vaPDEeA0skovJEozTtnknkcw",
+      "author": "Patrick Busby",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKtOce517BG1JxLCkfQ6hyq_n_C6ZjipPf4SJU56PlnzndIeQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Great service and incredibly professional. Ryan was so helpful from the very first enquiry, all the way through until the job was completed. They carried out an absolutely fantastic job, did it with a smile on their faces and were super polite. All whilst being very competitive.\nI couldn’t recommend them enough! Top marks from me",
+      "time": "2025-04-03T15:48:17.364062Z",
+      "updateTime": "2025-04-03T15:48:17.364062Z",
+      "reply": {
+        "text": "Thank you for your wonderful review, Patrick! We're thrilled to hear that Ryan and the team provided you with great service and professionalism. Your kind words and recommendation mean a lot to us. We look forward to serving you again in the future!",
+        "time": "2025-04-03T17:57:20.760700Z"
+      }
+    },
+    {
+      "id": "AbFvOqlAM4nyZXsB1N6uh-A3C-lfCQ7QR9u724sVf25QAm0N35ChmNuIx9R2av5alInNH7TTkZnRNw",
+      "author": "Dorothy Gillingham",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJwKRPatLbgf-ZP7fBF8xMLtpj-2v2Oxxz5ctQbVwTOxS5wmQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "You don’t always come across a company like Gutterbugs these days.  The work carried out was over and above all that was required.  To put into words, capable, dependable, reliable, polite and efficient.\nWould highly recommend.",
+      "time": "2025-03-11T12:08:43.965943Z",
+      "updateTime": "2025-03-11T12:08:43.965943Z",
+      "reply": {
+        "text": "Thank you for your wonderful review, Dorothy! We're delighted to hear that you had such a positive experience with our team. Your recommendation means a lot to us, and we look forward to serving you again in the future!",
+        "time": "2025-03-11T17:47:06.854144Z"
+      }
+    },
+    {
+      "id": "AbFvOqnx0lfTkVVF4uc1oLu-8XG-jFEfxDRrD-oXhHKJ2qz-IM6SWuBG7zadeAlVd55ks9Xz0MRMXA",
+      "author": "Michael Vaux",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIiNvgByp-7hHYEx1O_Rj4nKLoW2WJ7x4PY-_8JQX9qPacaDA=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "I would recommend Gutterbugs to anyone. I don't normally write reviews but the job they did was fantastic. There was a small hiccup where one of our gutters was missed by mistake but they were back round to the house within 30 minutes to remedy the issue - very impressed with the customer service! I'll be using them again in the summer to remove our roof moss!",
+      "time": "2025-02-14T11:14:55.797390Z",
+      "updateTime": "2025-02-14T11:14:55.797390Z",
+      "reply": {
+        "text": "Thank you for your wonderful review, Michael! We're delighted to hear that you were impressed with our customer service and that we could promptly resolve the issue. Your recommendation means a lot to us. We look forward to assisting you again in the summer with the roof moss removal!",
+        "time": "2025-02-16T19:57:14.813914Z"
+      }
+    },
+    {
+      "id": "AbFvOqksuTOyJMTcEMkWBm2ttIp3nr8ubuvKbltCoNISft4sDR0LwrgIwPNFiEy1H2gYgGqq8SZfjw",
+      "author": "Nicholas Thomas",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjXNvjuwC4ZMNDC_rWVaQNpMhlfq3t-L-pNpSbkLjft0MTTv61b_=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Professional and friendly service from Ryan & Richard, very happy with job done",
+      "time": "2025-02-13T09:55:30.453021Z",
+      "updateTime": "2025-02-13T09:55:30.453021Z",
+      "reply": {
+        "text": "Thank you for your wonderful feedback, Nicholas! We're thrilled to hear that you had a professional and friendly experience with Ryan and Richard. Your satisfaction is our priority, and we look forward to serving you again!",
+        "time": "2025-02-16T19:57:15.163102Z"
+      }
+    },
+    {
+      "id": "AbFvOql2rqqXTQw7UCurpekKVLwUKQg61D5JYXmR7R7XN0-m6ScJiiWOzERcMFkhksG4QvHqaSsI",
+      "author": "John",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUyvTyugbX4wXYqYhMZc0anqVXeVYFCVjVtaCHopfxMtWIxxmBc=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent job done !",
+      "time": "2024-12-20T16:32:46.064024Z",
+      "updateTime": "2024-12-20T16:32:46.064024Z",
+      "reply": {
+        "text": "Thank you for your great feedback, John! We're thrilled to hear that you're satisfied with our work. Your support means a lot to us!",
+        "time": "2024-12-20T21:18:07.576518Z"
+      }
+    },
+    {
+      "id": "AbFvOqn66CkNxCM7R3d0JmuzOVOgXr3r4xx-K0WgP_pLRJI65kCUaRjPGARNbum_GIadCJa3SKQEPg",
+      "author": "Will Jameson",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKt8m4FnCarqodRUga0o5G6yRzr0y_EiujDeqdYD2b4wFhmoQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and Richard were great. Responded and got the work done quickly and were really practical and professional.",
+      "time": "2024-12-02T13:38:45.825467Z",
+      "updateTime": "2024-12-02T13:38:45.825467Z",
+      "reply": {
+        "text": "Thank you for your wonderful review, Will! We're glad to hear that Ryan and Richard made a positive impression with their efficiency and professionalism. Your feedback means a lot to us, and we look forward to assisting you again in the future!",
+        "time": "2024-12-02T15:16:27.391801Z"
+      }
+    },
+    {
+      "id": "AbFvOqlm3S6eKq8dOVXPLbUuREhXOJnUcSSSWw-1F9VgNB4TKLiau8JrThn2X4xgaXL9fOXJHdMbMA",
+      "author": "H C",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLnAF_heMq_HYTsKDr3YlFpL-Y8_MMdD2_xrHNNyPXukMyY=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan is such a nice chap, he is reliable and turns up when he says he will, and does a great job at a reasonable price. Highly recommended.",
+      "time": "2024-11-01T16:05:03.355485Z",
+      "updateTime": "2024-11-01T16:05:03.355485Z",
+      "reply": {
+        "text": "Thanks for the review! My dad and I know how important it is to turn up when we say we will, so it’s great to hear you appreciated that. Glad you were happy with the work and the price!\n\nBest, Ryan & Richard\"",
+        "time": "2026-01-29T22:56:53.350594Z"
+      }
+    },
+    {
+      "id": "AbFvOqkDfxybRmSyiQbs_upEYiD5KbTwlBJ9BSMYTBQUmEGbmWJskufKcBX1cl6p9NZANqZqQDY1rQ",
+      "author": "Ren Cr (RenCr)",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIFR8KjSlAnCOljG4HDveG-_E7phKgQvydHccitzOZPUWVw7A=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "An excellent job. Richard and Ryan were competent, professional and careful, and I would have no hesitation in recommending them to any other household or business.",
+      "time": "2024-11-01T15:47:41.890121Z",
+      "updateTime": "2024-11-01T15:47:41.890121Z",
+      "reply": {
+        "text": "Thank you for the kind words! It was a pleasure working for you. We take a lot of pride in doing a competent and thorough job, so it’s great to hear you were happy with the service.",
+        "time": "2026-01-29T22:58:48.494544Z"
+      }
+    },
+    {
+      "id": "AbFvOqkaeqL4CLjpjEp0kpZvR4HZ77vkTzW4wixBWWAml1n0f7NnjJcuH9cPGBty3Nkhz9uSF76l",
+      "author": "Amelia Firth-Waugh",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjU5SifMuUVx_wyogJHFZY-eGsu3SHbUbUJtknsd1jqFp3jBCVE=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan was incredibly professional, speedy and very well priced. We will be using his services again next year! Would definitely recommend! Thanks so much",
+      "time": "2024-10-28T21:12:50.036838Z",
+      "updateTime": "2024-10-28T21:12:50.036838Z",
+      "reply": {
+        "text": "Hi Amelia, thanks so much for the review! My dad and I are really glad we could get the job done quickly for you and at a good price. We're already looking forward to seeing you again next year!",
+        "time": "2026-01-29T22:59:45.278130Z"
+      }
+    },
+    {
+      "id": "AbFvOqnUjuQ8SiPbJKuWBCT-733-8gNyT9ptksPPQQv8s-DfuUN2AQhWCaQt95fE_zA-cxfKXlQmmg",
+      "author": "Adnan Bashir",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKW9ppXQJhx6kdjnsD9sciNTe8IH-duC3rqW3oa70X4OXzj4g=s120-c-rp-mo-ba3-br100",
+      "rating": 5,
+      "text": "Ryan & his dad are an amazing team. Did the work beyond of what was required of them. Very honest people, and ensured everything was transparent. Family/friends have already booked them in. 5* service.",
+      "time": "2024-10-22T17:22:57.452212Z",
+      "updateTime": "2024-10-22T17:22:57.452212Z",
+      "reply": {
+        "text": "Hi Adz,\n\nThank you for the lovely review, we were glad to be of service. \n\nRegards,\nRyan",
+        "time": "2024-10-22T20:37:01.082965Z"
+      }
+    },
+    {
+      "id": "AbFvOqkM-YdzwHJBP79CtH2VeGDJkarbumW84cWFotS7h3vVNC2aBLVMoxsXJxlsIfcpR14izN_4",
+      "author": "Sue Burge",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWa1H27yccpxZ-h6F9STqExn4Y0C3pxRZTmMTLyuafO8PANn-M=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "I cannot rate this company high enough, fabulous job, worked clean and tidy, absolute gentleman. Can highly recommend and will definitely be using their services again.",
+      "time": "2024-09-20T08:52:01.132611Z",
+      "updateTime": "2024-09-20T08:52:01.132611Z",
+      "reply": {
+        "text": "Hi Sue, thank you for the kind review. \n\nHope you have a lovely weekend.\n\nRegards\nRyan & Richard",
+        "time": "2024-09-20T16:49:34.725694Z"
+      }
+    },
+    {
+      "id": "AbFvOqmdPbhuEFc5XZNEe_XO0bI_CVIPiRrQWBCeKPH-oxT9rrpDuY90wrNt3ZECUUM0Z88F6PCPtA",
+      "author": "Heather Painter",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocK-zzX3nT2DRmEebLNp8for-7xpgQsMw1nTZjB2C2_zgXgX7Q=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and his Father have demossed the roof, and cleaned the fascia’s, soffits and velux windows.\nBoth were very pleasant, hard working, efficient and knowledgeable.\nI am thrilled with the result.\nThank you",
+      "time": "2024-08-22T17:20:20.769454Z",
+      "updateTime": "2024-08-22T17:20:20.769454Z",
+      "reply": {
+        "text": "Hi Heather, \n\nThank you for the lovely review and for being such a caring host. \n\nWishing you all the best. \nRyan & Richard",
+        "time": "2024-08-22T20:42:48.592392Z"
+      }
+    },
+    {
+      "id": "AbFvOqm4-QEKnmaekKfwXrJbbKImNIHEWKFmb8LgX2YmGS_DdDrEiMsi63m_4uxD3xX_Nl2wHz2aNQ",
+      "author": "Sarah Waller",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIFH2aRRtt24GVpsxWDWCJ7ftp_aFgmkbR-fMlq2YR5NudjWw=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Thank you so much Ryan for doing a great job on my mothers house.She is delighted with the service provided and I believe you ended up doing her neighbours house as well.First class service from this company from start to finish.",
+      "time": "2024-07-29T18:14:18.345061Z",
+      "updateTime": "2025-05-14T19:54:00.917073Z",
+      "reply": {
+        "text": "Hi Sarah, \n\nThank you for the lovely review, it was a pleasure meeting your mother today. Wishing her all the best. \n\nRegards,\nRyan",
+        "time": "2024-07-29T20:01:25.158752Z"
+      }
+    },
+    {
+      "id": "AbFvOqn6klBeeoJfxxZQFtoe3uZ6VHILROq2uWqhRTrmsRagmKBY7s0iFpfEBWbG5oJdYeM_Vz6vQg",
+      "author": "Helen Smith",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWGFsIE1pziQXOY1oI8-l9MJbtQfmukL1Of8a4oCtoNKG_2bds=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Very professional, great job. Left everything clean and tidy.",
+      "time": "2024-07-23T21:32:22.946958Z",
+      "updateTime": "2024-07-23T21:33:23.872206Z",
+      "reply": {
+        "text": "Hi Helen, thanks for the review! My dad and I always make a point of leaving everything exactly as we found it, so we're really glad you noticed the cleanup. Thanks for the feedback!",
+        "time": "2026-01-29T23:00:28.705908Z"
+      }
+    },
+    {
+      "id": "AbFvOql9BZvsLHkWvV4jyex7Nhpup9aQeQtAYVLxqKFGiFzqRasE1mK_4lzdoNddXXafN6cnH84kjQ",
+      "author": "Liss Humphris",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJUfgnF_U-11_F39ns4twlOKRupCuaKMuS1wI8ZR7xXt2i51g=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and Richard go above and beyond. As always, a great service provided. Would highly recommend.",
+      "time": "2024-06-11T20:55:32.621181Z",
+      "updateTime": "2024-09-14T07:59:25.604632Z",
+      "reply": {
+        "text": "Hi Liss, thank you so much for the review! It’s always a pleasure coming back to help you out. My dad and I really appreciate the ongoing support and the recommendation. See you next time!",
+        "time": "2026-02-02T09:17:21.095107Z"
+      }
+    },
+    {
+      "id": "AbFvOqnI-MBJGb5I8DjTt-H-Cf-XtmdA-FXLwrnR5gkskeQ1P2TlaQKoPuarxO6awZ_VrI7SUUmHNw",
+      "author": "Fiona Rogers",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKJC2iIo1UCCypWD72yFv66rTe518WYD3osXQIaLCkypd-psQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Professional, friendly & thorough",
+      "time": "2024-06-04T07:31:47.473323Z",
+      "updateTime": "2024-06-04T07:31:47.473323Z",
+      "reply": {
+        "text": "Hi Fiona, thanks for the feedback! It was a pleasure helping you out and we really appreciate the kind words.",
+        "time": "2026-02-02T09:18:12.538691Z"
+      }
+    },
+    {
+      "id": "AbFvOqnGE8brwqONj7uj3aKkkQ1LFQOnLKbu9Xci4luccYPknZnVa6vT8rdljzUkHl9kxx2fHD1hHw",
+      "author": "sue hetherington",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocI5nNCePD1UdB_ymJPgPxW8rmbANLz6gf8-BD1SwqOnoJg3jw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "I cant recommend ryan and his father highly enough...charming, polite and meticulous workmanship. Thank you!",
+      "time": "2024-05-24T12:28:07.947587Z",
+      "updateTime": "2024-05-24T12:28:07.947587Z",
+      "reply": {
+        "text": "Thanks for the kind review Sue! \n\nWishing you all the best,\nRyan & Richard",
+        "time": "2024-05-24T18:42:01.278250Z"
+      }
+    },
+    {
+      "id": "AbFvOqkbaxNQUeW_pKLyHU5cQgKDabjngIIO-LI4dePu2h94RfUVbhRTxMAUgPm6IvXK7O5zoy1tXg",
+      "author": "J Scott",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWjBm1PVgcpTH40ZmW9KFhKmc43m66GUZyauMfFniKkl1-alzLw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Great!! Cleared a down pipe that was causing the gutters to over spill… Super easy and friendly. Competitive prices too! Thanks!",
+      "time": "2024-04-18T15:56:59.586022Z",
+      "updateTime": "2024-04-18T15:56:59.586022Z",
+      "reply": {
+        "text": "Thanks for the kind review J, pleasure to be able to help.\n\nRegards\nRyan",
+        "time": "2024-04-18T17:08:42.613177Z"
+      }
+    },
+    {
+      "id": "AbFvOqlh0GEdaI5daPMacjTQ93jJ_Nc1hJ17gTyRn1Am2iYhtj1t_ivSlD0agRC0a2go1HFbLRVoZQ",
+      "author": "Stephen Andor",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocI0GpgY6HQ6QGFAOYzPlfyDfqdUWeyyozZq2hiThTHUab2-Fw=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Really excellent job done by Ryan and his dad! Very impressed and very grateful thanks indeed.\n\nThanks indeed.",
+      "time": "2024-04-03T09:06:19.751531Z",
+      "updateTime": "2024-04-03T09:06:19.751531Z",
+      "reply": {
+        "text": "Hi Stephen, \n\nMany thanks for the kind review, we hope you enjoy the new, clean roof. \n\nRegards,\nRyan & Richard",
+        "time": "2024-04-03T09:23:56.490682Z"
+      }
+    },
+    {
+      "id": "AbFvOqlH5G-MLxTSXoLMPJDLocmre5xG7DsVmN73xsyI92zx_KTnOa3rBaLv8sYWFxETp37COp6Dxg",
+      "author": "Robbie Weber",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKrjSYUzfsQDbTgc-FYiKdmsMPUDn6EGZwqKutLCanROTzEGQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "I was really impressed by the professional and personal service received. Decades of moss was cleared from my garage roof as well as the revelation of the colour that my patio was, it having not been cleaned for some time. I would thoroughly recommend Gutterbugs",
+      "time": "2024-03-11T13:50:24.871228Z",
+      "updateTime": "2024-03-11T13:50:24.871228Z",
+      "reply": {
+        "text": "Hi Robbie,\n\nThank you for the kind review, we're glad we could be of help. \n\nRegards,\nRyan & Richard",
+        "time": "2024-03-11T15:02:22.668050Z"
+      }
+    },
+    {
+      "id": "AbFvOqkrYAGOh0Id-xNPofzXry92Uat9iR_5TIuKBSYvVcbxrumvle82njKZDBo_2BYHY0Mud8LR",
+      "author": "Richard Northcote",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWytoNonZa11tOjuA5hwJLQcWiJ-10ZmhkrB2EkLjMjqWPkIQ0=s120-c-rp-mo-ba3-br100",
+      "rating": 5,
+      "text": "Ryan and his Dad provide an excellent service at very reasonable cost. Apart from the fact that they are really nice guys, they have all the right kit and are very professional. To date they have cleared my gutters and cleaned off moss etc from my roof. A solid 5 stars.",
+      "time": "2024-02-12T14:13:52.209224Z",
+      "updateTime": "2024-02-12T14:13:52.209224Z",
+      "reply": {
+        "text": "Hi Richard, thanks for the 5-star review! It’s been a pleasure helping you out with both the gutters and the roof cleaning. We’re glad you were happy with the service and the results. Thanks for the support!",
+        "time": "2026-02-02T09:19:17.020548Z"
+      }
+    },
+    {
+      "id": "AbFvOqlaTRjNUNxOTs15bk-b4D3L2embWrAx604tLFGW36U8OiWcdA9k-_qqSukWFWsN4jBX4Dbq-Q",
+      "author": "Ian McCaul",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKl6MdsL81VmF2TZsM5YH8C_EU_5XSpKJFe8W_DakCQUDRZ5w=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Superb. Highly recommended",
+      "time": "2024-02-07T18:49:04.292512Z",
+      "updateTime": "2024-02-07T18:49:04.292512Z",
+      "reply": {
+        "text": "Thanks Ian! ",
+        "time": "2024-02-07T19:00:01.398260Z"
+      }
+    },
+    {
+      "id": "AbFvOqnMOfIGu0IhgrgO6ikqx2xFR8L74JOEImQ9BJ4RY6mnK6-ZQvHfcdwE0lLfewAt-8pEPNwi4w",
+      "author": "Ashley Webber",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWa34WBcRHsc65VRX6euybnvrOZ_Ku9MM0Xq4MIfKVkgi305R1H=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Very friendly gents. Great service. Great finish. Very easy going 👍",
+      "time": "2024-01-30T19:42:06.281971Z",
+      "updateTime": "2024-01-30T19:42:06.281971Z",
+      "reply": {
+        "text": "Thanks Ashley, it was a pleasure meeting today and helping you out. \n\nWishing you all the best,\nRyan & Richard",
+        "time": "2024-01-30T21:47:18.469700Z"
+      }
+    },
+    {
+      "id": "AbFvOqll4jTlgqXq_9RLA2nKBSWEgua-gRNiBiDT74j1t6sWrV9T0EeJP7l_AsTlPtksuEwsA4Mr",
+      "author": "Heather Thornton",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUG2z1-7smyJOrZa84V0FTQpa1woc5UndNTd9LPbEd9XyQYy99bTA=s120-c-rp-mo-ba3-br100",
+      "rating": 5,
+      "text": "Great workmanship, polite, came on time and did what they said they would do.",
+      "time": "2023-12-16T11:57:03.058012Z",
+      "updateTime": "2023-12-16T11:57:03.058012Z",
+      "reply": {
+        "text": "Hi Heather, thanks for the 5-star review! Glad we could get the work done on time for you and that you were happy with the result. Thanks for choosing us!",
+        "time": "2026-02-02T09:20:14.340310Z"
+      }
+    },
+    {
+      "id": "AbFvOqleOugsArUyolV0FUsce0Min634XQSRChQbxP-Giv8yPCRqTMPywAcSiSz067Z446QlozXotQ",
+      "author": "Geeta",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocInd1QSJPwJCJq-MdlxdNxLv6IEKAnrhLYN8Jg28JSxc9Vhwg=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Ryan and Richard did a fantastic job. They were so well mannered and did a clean job, leaving no mess. Cannot fault and will certainly be recommending to our friends locally.",
+      "time": "2023-12-12T21:21:25.596513Z",
+      "updateTime": "2023-12-12T21:21:25.596513Z",
+      "reply": {
+        "text": "Thanks Geeta! \n\nHappy holidays and all the best,\nRyan & Richard",
+        "time": "2023-12-13T15:50:59.207415Z"
+      }
+    },
+    {
+      "id": "AbFvOqkH196f4Ficf6_UAjT1AjEO5p0IzbrpByR3zhF1Lgdma4A-CVptvvdeI763ED4L7Cu4jPOxEQ",
+      "author": "Annette Yates",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjVDdxB9jWzYuSByPnMriiBQ-5KkTHerTZRor4BZ8jmpZLb-2Imm=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Friendly, professional, on-time service. Nothing too much trouble. Thanks Ryan and team, highly recommended!",
+      "time": "2023-12-07T16:18:28.711767Z",
+      "updateTime": "2023-12-07T16:18:28.711767Z",
+      "reply": {
+        "text": "Thanks Annette, no problem at all. \n\nRegards,\nRyan & Richard",
+        "time": "2023-12-07T17:35:46.672623Z"
+      }
+    },
+    {
+      "id": "AbFvOqnIsVp3FqJ_1A8N1zu1ZY3DHKl_OXhecLxbpQ2Wp9_f9aJtir85NNSGLLXALhpql3pFX8azfw",
+      "author": "Ross Kirke",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJ2x7zZb7rF5M0qehiPvTcVK4TR8gzidFs2Vi3EXzcWClRIhw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "I hired Gutterbugs through check-a-trade, which had many companies contact me to provide quotes. Not only did gutterbugs provide the most competitive quote but they were able to provide a date for the job for within a week of first contact. On the job they were thorough with the roof cleaning and the tidy up afterward, polite all the way and gave a great result. Would recommend.",
+      "time": "2023-11-24T15:05:41.891384Z",
+      "updateTime": "2023-11-24T15:05:41.891384Z",
+      "reply": {
+        "text": "Thank you for the great review Ross, we're happy to be of service. \n\nRegards,\nRyan & Richard",
+        "time": "2023-11-24T16:05:04.493616Z"
+      }
+    },
+    {
+      "id": "AbFvOqki4Ra_epJuVHM90ihoL4VsxFvlm2j2pHM6hmfCiUKH9QnH67jW5migzsgCXSF79yamdsko0w",
+      "author": "Pam",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLA3RrOX9CuqWnuw4FeqI2Za50E3qde8z-Ij5LiyD1VpI99sw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Very professional. Clean, tidy and thorough. Excellent communication. Would highly recommend this company.",
+      "time": "2023-11-15T07:30:17.414076Z",
+      "updateTime": "2023-11-15T07:30:17.414076Z",
+      "reply": {
+        "text": "Thanks Pam, we’re happy to be of service. \n\nAll the best,\nRyan & Richard",
+        "time": "2023-11-15T15:02:27.513341Z"
+      }
+    },
+    {
+      "id": "AbFvOqnVp63nIxQ4bb9FJhXtRTi3u8yzlNUwgIWHrxkP3p5dGYTemDPJRyXmrnsuUynCc3f_Sq3jJQ",
+      "author": "Chris Paddon",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjV-Q3BOKu8vUSPrKI2OE9_5unOarMCISDsBBlTKRPAhDHgZi2GJ3Q=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Ryan and Richard, did a great job clearing the moss off our roof, which was a tricky job with some fragile tiles. They have some decent gear for the job, good knowledge, and would recommend to anyone who needs roof cleaning/maintenance work. Good value, and very professional. Wish them all the best.",
+      "time": "2023-10-30T21:52:10.659216Z",
+      "updateTime": "2023-10-30T21:52:10.659216Z",
+      "reply": {
+        "text": "Thanks for taking the time to leave us a review. We appreciate your feedback. We're glad to hear you were pleased with our moss clearing service, especially considering the delicate nature of your roof's tiles.\n\nWishing you all the best,\nRyan & Richard",
+        "time": "2023-10-31T09:07:45.323495Z"
+      }
+    },
+    {
+      "id": "AbFvOqm_L2TEodoyWnwDOHTgtqY0VBLgTF9kNc0iuJB64svRyrJgsgmLU5lromR9aTItnh7mFB31ag",
+      "author": "Mike Sheridan",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocL_u9O_BJI2lQXRYI0NhMfnLeDdHLrIC6iwkuSvyTXmL_FzVw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Arrived promptly and fixed leaking gutter and cleaned gutter very reasonable cost",
+      "time": "2023-10-24T09:37:35.450964Z",
+      "updateTime": "2023-10-24T09:37:35.450964Z",
+      "reply": {
+        "text": "Thanks for taking the time to leave us a review Mike. \n\nThanks again for choosing Gutterbugs Exterior Cleaning, and we look forward to serving you in the future.\n\nRegards\nRyan & Richard",
+        "time": "2023-10-24T09:57:10.465705Z"
+      }
+    },
+    {
+      "id": "AbFvOql74yGOsQrayCV9XaFICFTmID-I9qTN7hLXwsqamDpPF11ng2F74aUq_SAgSvve82bHHGz1",
+      "author": "Rosalind Birkett",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIOYeNwcxTLOKV8vLaYQfySlLADQh26SAHuDv8GYYLbHlW4Gg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "We have had very positive experiences with Gutterbugs.\nI had my roof and gutters mended and cleared of moss  about a year ago, and found Ryan and his team to be very professional, polite and helpful.\nJust recently my neighbour and I needed the gutter cleared before the expected rainfall, and they came early the next morning and did a really good job.\nI would thoroughly recommend them.",
+      "time": "2023-10-20T07:53:27.041355Z",
+      "updateTime": "2023-10-20T07:53:27.041355Z",
+      "reply": {
+        "text": "Hi Rosalind, \n\nThank you so much for the kind review, we're glad to have been of help. \n\nRegards,\nRyan & Richard",
+        "time": "2023-10-20T09:32:28.769643Z"
+      }
+    },
+    {
+      "id": "AbFvOqmfX-b_i21TtAvZmz61KcpgllNgFXmYvVuOHx4V-cAlAyI_1QurCEV1e09AKCNOYxHuzFd6rw",
+      "author": "Paul Yearley",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJBePfCm7WUlbZgNgOWJBz032mEjz3J69NOc0lXygDuuaPVPQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent swift professional service\nI will use again",
+      "time": "2023-10-11T15:23:42.745499Z",
+      "updateTime": "2023-10-11T15:23:42.745499Z",
+      "reply": {
+        "text": "Thanks Paul, happy to be of service. \n\nRegards,\nRyan",
+        "time": "2023-10-11T15:34:54.888736Z"
+      }
+    },
+    {
+      "id": "AbFvOqm60qh8L24qrZ1Mnu0EX_7D_6QtxAjZuehmKR7HwojlBYJW39OfcpP8ujF9theC9KVgDC1qqw",
+      "author": "Jamie Jones",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIClk4eyovo-cxZZy-LgE38IbnZlZXjmNGLVguUdfvZTAONdQ=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "I messaged Gutterbugs at the weekend. They messaged back instantly & my gutters were cleaned first thing Monday morning. They were on time, thoughtful, professional and efficient and I would highly recommend them. I think I’ll be seeing them next year too!",
+      "time": "2023-10-02T14:22:28.474011Z",
+      "updateTime": "2023-10-02T14:22:28.474011Z",
+      "reply": {
+        "text": "Thank you so much for the kind review!",
+        "time": "2023-10-02T14:29:04.921096Z"
+      }
+    },
+    {
+      "id": "AbFvOqlft_Mlj4VvvCCyUuTxNunWtYaXHEcPZQfLFytplYkbxCT7jldecdMZa9u7pV7YkKzyE52PKw",
+      "author": "John Jarvis",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIF-db70aKYHz2GsZ-VE-3573NsbjmlPc-9vM2pTBCHpWewhw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Richard and Ryan did an excellent job cleaning our roof and helping with some guttering problems. Two nice guys who are extremely efficient in their work. Their pricing is also very fair and I would fully recommend them.",
+      "time": "2023-09-15T11:38:49.801120Z",
+      "updateTime": "2023-09-15T11:38:49.801120Z",
+      "reply": {
+        "text": "Hi John,\n\nThank you so much for taking the time to leave us a fantastic 5-star review.\n\nWe're committed to maintaining the quality you've come to expect from us and ensuring your satisfaction in the future. If you ever need our services again or have any questions, please don't hesitate to reach out to us.\n\nThanks again for choosing Gutterbugs Exterior Cleaning, and we look forward to serving you in the future.\n\nBest regards,\nRyan & Richard\nGutterbugs Exterior Cleaning",
+        "time": "2023-10-24T10:00:17.183395Z"
+      }
+    },
+    {
+      "id": "AbFvOqkOG_qhChOV-rvEiqy3CpoJKtgPk8422gfUVNSRoQL1iKR-3q3Ws51s9XUXBtJIwmdzvCq_5Q",
+      "author": "davy kwan",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocL-M1WW_6xUKN6leZ8ZnsJMtgkxkejA_EGyLpHpNGFK2-mHoQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and Richard did an excellent job. They have a sense of humour which is important as they were around the place for 2 day :-).  Conscientious and treat their work seriously which is refreshing.\nThey did our next door neighbours’ roof first and she was saying how good they were; I am not disappointed.  Most importantly the clearing out of the moss on the tiles were done manually and not by power jet which maybe quicker but I worry that it could  damage the tiles.  They also applied the chemical on the retaining wall too to see if it can remove the discolouring caused by black mould, without charging extra.  It is a job very well done indeed.   So pleased that I don’t have to go around picking up the moss or watching the water gushing down from the gutter. So thank you.",
+      "time": "2023-08-31T20:35:10.751373Z",
+      "updateTime": "2023-08-31T20:35:10.751373Z",
+      "reply": {
+        "text": "Hi Davy,\n\nThank you so much for the kind review. We’re glad you’re happy with our work. If you ever need anything please feel free to give us a shout.\n\nThanks!\nRyan & Richard",
+        "time": "2023-10-24T11:22:45.831217Z"
+      }
+    },
+    {
+      "id": "AbFvOqlbv4ojtf8dPCeeEUYetLOYOWYrwlVtZX-Aq-tJJETvWJddqvS8JoorbjXnvINvPh0O2PLgZw",
+      "author": "Megane Cutler",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUM6iSisAExoAah5KUkzlRCyYmChbnaRaOatzHUY__9ZPaI_1w=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "The Gutterbugs Team cleaned and repaired our gutters today and did an excellent job. Prompt, courteous, professional and efficient. No hidden cost and a very reasonable and affordable fee. We would absolutely recommend this small local company ☺️",
+      "time": "2023-08-14T13:16:13.300032Z",
+      "updateTime": "2023-08-14T13:16:13.300032Z",
+      "reply": {
+        "text": "Hi Meg, thank you so much for the kind review, we were happy to be of assistance. \n\nRegards\nRyan & Richard",
+        "time": "2023-08-15T18:11:37.467307Z"
+      }
+    },
+    {
+      "id": "AbFvOqkjq6oU3xTThDe34Jl2V7Nef8YohqzDZF28odbZW6pMt1dWs9RrEh6r8J5oxLr-spcoze4eWA",
+      "author": "Christopher Eyles",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIKiJ7t1GoOYBYxz0pb1S_134NFx0fXLRsxBs_RZs-U5TQN4g=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent service. I can highly recommend Gutterbugs.",
+      "time": "2023-07-10T10:29:14.670983Z",
+      "updateTime": "2023-07-10T10:29:14.670983Z",
+      "reply": {
+        "text": "Thanks Chris! ",
+        "time": "2023-07-10T11:59:25.000918Z"
+      }
+    },
+    {
+      "id": "AbFvOqlKbf40CgipTzhdgtwGfWzaaMJfBSUWxYCx_baGDONmqZqZZlpt_NnQSL-xwxbj1g67FbNd9A",
+      "author": "susan pondo",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJCD7qk35no7eB1e9xmNHA7KAZh2NIczM6ohjiRl39WTsmxWw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Removed moss and debris from roof using scrapers and then sprayed with Biocide.  Team arrived on the given day and work was carried out to a high standard.   Very professional and friendly team.  Would highly recommend.",
+      "time": "2023-06-28T09:35:58.841492Z",
+      "updateTime": "2023-06-28T09:35:58.841492Z",
+      "reply": {
+        "text": "Hi Susan,\n\nThanks for taking the time to leave us a review, we really appreciate it. \n\nIf you ever need any more help please let us know.\n\nThanks\nRyan & Richard",
+        "time": "2023-10-24T11:24:04.035074Z"
+      }
+    },
+    {
+      "id": "AbFvOqmCh5Kg3BeMUcsAy1IC8M28_Gq5WH8gkJ5BgdQaSErRGI5HTcYB07ADy1H2n9WPngoo15L_",
+      "author": "Salli Belsham",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIR4RTnJfpZzmpu4m41zavsHAsYGX26GTzgZl8iZgItfEb0jQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Richard turned up on time, was pleasantly chatty, knew his guters etc. He checked the downpipe flow before he left. I am very happy with the service provided",
+      "time": "2023-06-16T19:26:15.194833Z",
+      "updateTime": "2023-06-16T19:26:15.194833Z",
+      "reply": {
+        "text": "Hi Salli,\n\nThank you for the kind review. \n\nAll the best\nRyan & Richard",
+        "time": "2023-06-16T20:25:55.221162Z"
+      }
+    },
+    {
+      "id": "AbFvOqlCaosCvDL3SM7ow6swn47Bn_E2iByP87tI51aL2zOwU2KZaYZvxEyNDb_s_H9vDhNIQD26mA",
+      "author": "Pat Rutherford",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocK6U5wnywlmkmh_omTmOUTzzmAIezb2DbZSVUY18wEVOzlJaQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Really professional family business that cleaned more than they quoted for. Faced challenge of very neglected gutters and conservatory roof.Very nice people to deal with who went that extra mile very rarely seen in these times.",
+      "time": "2023-06-13T16:59:37.705458Z",
+      "updateTime": "2023-06-13T16:59:37.705458Z",
+      "reply": {
+        "text": "Hi Pat, \n\nThank you for the kind review, we really appreciate it. Don’t hesitate to call if you need anything!\n\nRegards\nRyan & Richard",
+        "time": "2023-06-13T17:30:31.802006Z"
+      }
+    },
+    {
+      "id": "AbFvOqk-hEnsEzrTjObFfSBk13Ugz7OE-a5nbQal316aqkrZG2fD8TYExj0CsKNQzyC8aNZeKRtnLA",
+      "author": "Mark Thompson",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKloV6TU4CnaDLOUcn1gjXz6jmAHRU4JC0UOOiFlPAMzagtJg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "A great service at a fair price. Ryan was very easy to deal with and good communication. Cleared up properly.  A good job and I would use them again",
+      "time": "2023-05-25T16:06:48.300525Z",
+      "updateTime": "2023-05-25T16:06:48.300525Z",
+      "reply": {
+        "text": "Hi Mark, \n\nThank you for the kind review! \n\nRegards,\nRyan & Richard",
+        "time": "2023-05-25T19:50:08.409664Z"
+      }
+    },
+    {
+      "id": "AbFvOqnXqQPykYQoViBcTmjcWIGP-u3xciqStWFuXbj8uS6KGIMPgQn7JiGJ3v6u8NtycL2BZNiYOg",
+      "author": "Ross Allen",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKdJI9Z2MJaYUBkQ5i9OY1zxIcUZYy8KR7CHV-oTM7rV5188w=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent: efficient, straightforward advice, friendly and professional throughout.",
+      "time": "2023-05-22T15:38:47.467964Z",
+      "updateTime": "2023-05-22T15:38:47.467964Z",
+      "reply": {
+        "text": "Thanks for the great review Ross 👍🏻",
+        "time": "2023-05-22T17:10:59.986287Z"
+      }
+    },
+    {
+      "id": "AbFvOqkyPMrv7oD28K-rdvzo1eTjEeRhh4v8JH99DXXNzCh4ifwmnwgpf4h44Pr-8UVL2LFp3r8auQ",
+      "author": "Melanie Page",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIV7enZVprorRrB4OC_EM_YQdoN7TDrEw0qsb7BSUJL-bjXAQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Gutterbugs are an excellent business! Requesting their service on their website was easy, they responded quickly with a competitive quote and were able to do the job within a few days. They cleaned our fascias and did a fabulous job! The house looks fabulous, front and back. They arrived promptly and were friendly and professional. I couldn’t rate them highly enough!",
+      "time": "2023-05-18T15:02:53.281317Z",
+      "updateTime": "2023-05-18T15:02:53.281317Z",
+      "reply": {
+        "text": "Hi Melanie, thank you for the great review! We really appreciate it. \n\nRegards,\nRyan & Richard",
+        "time": "2023-05-18T16:38:52.369112Z"
+      }
+    },
+    {
+      "id": "AbFvOql0uEZdaSad7i79ZGFYYOxq9AkRgrD90mJ96KmJx7EuXAlRU6R1dpkrS7U1SB-9XMiWHeje5w",
+      "author": "Bob Spiers",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLdoj3I815E7PE9J98rygnMBEbkvfkQ3TBKhx1UqrpqPtMD6p0=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Great job Ryan and good price too. I am sure our neighbours will want your business card when they see how good our place looks. Punctual, Professional very nice to do business with. 😊👍",
+      "time": "2023-05-18T14:14:23.624212Z",
+      "updateTime": "2023-05-18T14:14:23.624212Z",
+      "reply": {
+        "text": "Thanks for the lovely review Bob, we're happy to be of service!\n\nRegards,\nRyan & Richard",
+        "time": "2023-05-18T16:37:04.407113Z"
+      }
+    },
+    {
+      "id": "AbFvOqkutdkUX7EbdvtMsjm1t70M79ApNfL5vUGpf2O2M3DoBrY5YqS23sQ5oU5IunV5CvxjMbu1tA",
+      "author": "Susan Hinks",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjXVbRs_AT5zLEfhkc3nDCWc135sQ9Tz-R_wLbnxawNh4dzXPXvp6A=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Superb gutter clearing service.  Ryan responded same day to an urgent call and completed a very professional job to a high standard, including a couple of guttering fixes, for a very fair price.  Highly recommend, I will use them again.",
+      "time": "2023-05-14T06:33:00.950992Z",
+      "updateTime": "2023-05-14T06:33:00.950992Z",
+      "reply": {
+        "text": "Hi Susan,\n\nI’m glad to have been of service, and thank you for taking the time to write a review, we really appreciate it.\n\nWishing you all the best,\nRyan & Richard",
+        "time": "2023-10-24T11:25:54.652553Z"
+      }
+    },
+    {
+      "id": "AbFvOqljM21EiBBStPMiNYzVrudoGO4gJqn8JIfE-l4t8N34MECezof-tzEyA9lwl3X-HfFUesiKFg",
+      "author": "Kirk Hay",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjXF5u5ZtZEaNSMPPmBJrIU7eB3yk49lXkIVytIXs294SdLXmfJ8=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "The Gutterbugs team did a great job on my roof and gutters. I had them scrape some moss from the roof and then it was given a spray that will eliminate the microbes and lichen and stop it growing back anytime soon. They also cleaned out the gutter thoroughly with a very fancy vacuum machine and I was amazed to see what they collected! They did such a careful job by hand and I was impressed by their attention to detail and careful steady progress over the day. A great father and son team too that were just a pleasure to meet. I was also pleased with the soffit and fascia cleaning that they did and they left the place very near and tidy. I’d recommend them and I’ll also be looking to get them back in a year or so to get those gutters cleaned out! Top marks.",
+      "time": "2023-05-02T20:40:42.551292Z",
+      "updateTime": "2023-05-02T20:40:42.551292Z",
+      "reply": {
+        "text": "Hi Kirk,\n\nThank you so much for the kind review, we really appreciate it! We're happy to have been of help. If you ever need help with anything else just give us a call\n\nRegards,\nRyan & Richard",
+        "time": "2023-05-03T13:35:49.155560Z"
+      }
+    },
+    {
+      "id": "AbFvOql3euQh_z3IHRUn3ONZsbxZHlF9LO8HPvAf--cBtssw5na_0M6WicfVdVEegTkZ4lrAWHsFGw",
+      "author": "Mattie Fellows",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjXu7nadL5HHtyccioOTTAIHYZhVzZaX01e5eRFDDD2pETD4pBNQ=s120-c-rp-mo-ba3-br100",
+      "rating": 5,
+      "text": "Ryan was super friendly and came the next day. Can’t recommend enough :)",
+      "time": "2023-05-02T10:41:41.327424Z",
+      "updateTime": "2023-05-02T10:41:41.327424Z",
+      "reply": {
+        "text": "Thanks for the kind review Mattie, pleasure doing business with you :)",
+        "time": "2023-05-02T14:39:54.429485Z"
+      }
+    },
+    {
+      "id": "AbFvOqnTzB18aSR8Fe26X3x3x_GkfPzHU-SrEIBDNnoXU7-SFo6kPuV-hrG0T8X82gAuXMVQxdmedg",
+      "author": "Mac Maclean",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocL5kTCS5wUZddc9wNnamBJz_fgOHeNwp9QF4kIAT9kzJT5uew=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Excellent service,Ryan and Richard cleared the gutters on 6 homes in our little row of cottages.\nAbsolutely first class workmanship, very professional, had all the latest equipment.\nIt was a pleasure to meet such lovely ,friendly workmen, great attitude, couldn't recommend them more.\nIf you need this sort of work doing efficiently and with a smile then Gutterbugs is the answer.\nCompetitively priced, we are all delighted, thank you so much.\nBest wishes.\n\"Mac\" Maclean",
+      "time": "2023-03-30T11:39:04.270570Z",
+      "updateTime": "2023-03-30T11:39:04.270570Z",
+      "reply": {
+        "text": "Thanks for the kind review Mac, we’re happy to have been of service. If you ever need any more work done please do reach out.\n\nThanks\nRyan & Richard",
+        "time": "2023-10-24T11:28:06.153558Z"
+      }
+    },
+    {
+      "id": "AbFvOqnQG_sDA9cLDgBsSU7tVOq2aHcX1AAZJRxwvlixyT9iZ7oWoOyecy0pNLf7DNnTJyiSeEWrxQ",
+      "author": "Vindz B",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLeFo5qdpFpFOv_VieQwFw526pkfxGeS15hl0b7N1be81yoew=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "We recently had gutters cleaned in our property. I would definitely recommend to my friends and family Ryan, who also gave a detailed status of all gutters and maintenance regime. I look forward to get more work done - roof top cleaning.",
+      "time": "2023-03-21T10:00:42.429749Z",
+      "updateTime": "2023-03-21T10:00:42.429749Z",
+      "reply": {
+        "text": "Thanks for the lovely review Vindhya. We'll see you in May for your roof clean. ",
+        "time": "2023-03-22T11:48:52.221899Z"
+      }
+    },
+    {
+      "id": "AbFvOqkwcVgf94Nm_sTjIeKFeR2mTJ7lkyTPtQ6kL1bSO99YCMH7ywQaGZ_GuT8Itl_vc8KkUfis",
+      "author": "Michelle Boyes",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKHcFUD0ypiw3l95_tjiRvuBM2l-zk-mOCMS_lkQATVL5O4UQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Would highly recommend Gutterbugs. A lovely family run business, Richard and Ryan, was the most professional polite workman that I've ever met. They quoted within hours of contact, they turned up on time, did an amazing job, and left the premises clean and tidy. The price they quoted is what they invoiced. They even went the extra mile and repaired some guttering without charging extra. What more can you ask for . If you need work done on your gutters, soffits,  fascias etc, then look no further. You will not be disappointed.",
+      "time": "2023-02-24T13:25:51.023421Z",
+      "updateTime": "2023-02-24T13:25:51.023421Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqnqpGB9oOXBTapbr25184j5F81vJAFjp6Tc5OqKcbO986mtNkmj7Hwq9H7yNoUy6g087u05WA",
+      "author": "Kaman Bailey",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJfv5RrSBJq8XFP7MQINyk7YmAmq5aHrMT-NjN_ApT7gA1_1g=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Great service would definitely use these guys again, prompt polite and attention to detail was great honestly couldn’t have asked for better service.\n\nThanks again guys",
+      "time": "2023-02-21T19:07:38.338549Z",
+      "updateTime": "2023-02-21T19:07:38.338549Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqnAZB-ImrnYudj4TBWpuAkjWckFQ9UxGXgSPwE73MlHva73Q58QiJhdCGbmfMA9n3_oN43mNA",
+      "author": "Lisa Deering",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKaK8Tbtbk1DlEGY3Q9zZeE2sM8IuIXbliSXPKLNcGh9ntHbw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Polite, responsive men who did a great job on clearing our back and front gutters, fascia and soffit cleaning and conservatory roof/gutters. No mess left behind. So glad we have found our go-to guys for gutters and outside cleaning, wont go to anyone else! Thanks guys",
+      "time": "2023-02-16T06:25:16.794455Z",
+      "updateTime": "2023-02-16T06:25:16.794455Z",
+      "reply": {
+        "text": "Thank you for the kind review Lisa! And for the lovely coffees. ",
+        "time": "2023-02-17T11:15:24.576853Z"
+      }
+    },
+    {
+      "id": "AbFvOqk8yaerHwCYBm1TSdgSJSqNKrKg5aYSA7aQ6ksenkH-pggTVw-jYGsikMpcPP4A-hA3ID3rCw",
+      "author": "David Dennaford",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocITh6pAHLeWr7nl_rfI0yDfsSSAfWI7pBzZlQxyYo4Si-qecw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Cleaned gutters today, friendly, good price, very happy customer.",
+      "time": "2023-01-27T20:02:15.308192Z",
+      "updateTime": "2023-01-27T20:02:15.308192Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqnF60AJ9-oCR9isML58TqSxOpiReSEtMUNqgx9BTxw8W99te78d_2rSmMCjIbnsYSFKHGL3dg",
+      "author": "Baljinder K",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJzVD1m4bMqv6pIq4ltFeKdsGmBGHNBujClqwQ4SAkVguH0aqH_=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "I had quite an urgent problem with the guttering.  Ryan got back to me speedily  with a reasonable quote and was able to fix the problem quickly. He came with his colleague, very professional, clean work and both had lovely smiles on their faces. Would most definitely recommend them and use again.  Thank you.",
+      "time": "2023-01-05T17:15:36.302888Z",
+      "updateTime": "2023-01-05T17:15:36.302888Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqnZSMIzjeHjtpg3H7rhHFwikFaL4HZn7x6ZgdQ90epn1H4UwoqI5_O8mLhW6gQQ-bRSitjXsw",
+      "author": "Matt Partner",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKyyi_sKKnZIfLHYaXBwl8t-VYAEmTJKaBqitQtmhaR19Y9KA=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Excellent and professional service provided - I would highly recommend",
+      "time": "2022-12-06T15:22:37.804657Z",
+      "updateTime": "2022-12-06T15:22:37.804657Z",
+      "reply": {
+        "text": "Thanks for the review Matt, and all the lovely coffees!\n\nRegards,\nRyan & Richard",
+        "time": "2022-12-06T19:21:38.853969Z"
+      }
+    },
+    {
+      "id": "AbFvOqle1MpZJQx1j83lL8bjYrwRsFxnTAnpoNiba-BHeOPaWh6sNwLhW-db6ek_FsPQlLv1KWtZiw",
+      "author": "tgreensmith28",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjU4c40iTyMI4zmCvXG9Eow_We5jscf1bKljfqxglBfhGZwiscnJ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Responded to enquiry about gutter cleaning and came the same day. Super easy, top service and great price. Many thanks!",
+      "time": "2022-11-15T15:06:32.715496Z",
+      "updateTime": "2022-11-15T15:06:32.715496Z",
+      "reply": {
+        "text": "Thanks for the kind review Thomas!",
+        "time": "2022-11-15T15:39:24.401047Z"
+      }
+    },
+    {
+      "id": "AbFvOql5xAK2XDRcxZaFtG64Qjy_lxGOIu_0Yr5ybyVKy56p990mz3aC26O9knol6OosTQbI2sGlpw",
+      "author": "Robert Balding",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKVihcHb_JuDUoSioEz-qW3zQYbMFP3D_XYCBLIvPZun-uhRg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "A really great job and faultless service at a very fair price. From start to finish, we were so impressed with the professionalism and friendliness of this father and son team. We would have no hesitation in recommending Gutterbugs to all. Thank you!",
+      "time": "2022-11-09T21:27:43.980273Z",
+      "updateTime": "2022-11-09T21:27:43.980273Z",
+      "reply": {
+        "text": "Thank you very much for the kind review Robert, we're glad we could be of help. \n\nRegards,\nRyan & Richard",
+        "time": "2022-11-10T08:15:13.762890Z"
+      }
+    },
+    {
+      "id": "AbFvOqng8xnfM8FOVruWolJlpslRTtsF2YJFHnnZGZaCi8bY51VvToWG_CRoI0GCVlCdzQ8N6o9R",
+      "author": "Keith Rostron",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJeddp3A7MYkVyY2ayQa5IWI-ev2Ciua6xGIcdVe0F40IprKQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "I used Ryan@Gutterbugs to clean my roof which took two days of hard work. They were very professional and conscientious, even fixing part of the guttering as they went.  They were clean and tidy and I am very happy with the result.",
+      "time": "2022-09-29T16:22:22.267936Z",
+      "updateTime": "2022-09-29T16:22:22.267936Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqnlTf2Xk4PfycF76sPduXjZim7Jqp72ie2_VNqBV5EX-6jOO0FPLeX_pgyg6c22P8hzsJ3O",
+      "author": "Shasta Razak",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIEkq-_9IVKELrOKQLHxyp7X3_Z4Ude4v_iZgGgEfbk14mqbw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Used Ryan to clean my gutters and from the moment I dealt with this company to completion of work, it was great service! A friendly team, speedy response and reasonably priced. I would highly recommend them and will definitely use them again in the future.",
+      "time": "2022-09-21T15:15:03.152021Z",
+      "updateTime": "2022-09-21T15:15:03.152021Z",
+      "reply": {
+        "text": "Thank you for the kind review Shasta! Wishing you a lovely week.",
+        "time": "2022-09-21T15:48:04.381278Z"
+      }
+    },
+    {
+      "id": "AbFvOqkGdBGI_8eAMOHE8ffg4YkSEJU3_PzjOcBjRJ7OTgulBd3Oxkh1iDfWWPQx2mgbdUNTm7biYw",
+      "author": "Kathleen Gordine",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJ-Lo5xLdu8tVhVZGNi2s96A3TK8qfFqa80Z-mAPxSNqMmlkw=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "",
+      "time": "2022-06-16T12:16:28.386855Z",
+      "updateTime": "2022-06-16T12:16:28.386855Z",
+      "reply": {
+        "text": "Thanks Kathleen!",
+        "time": "2022-06-16T12:59:47.232599Z"
+      }
+    },
+    {
+      "id": "AbFvOqlXuJZiwDbJ5ExAXhQZlK9BOlgjTkIwyqBfVGXNAMeUgcwYueGNUtW-3e0YTzwJj85nZDia",
+      "author": "Christina Sin",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLywHTqktAQlH-FPbbFdcGPTbjwgDsPITKh2bo10RGIti4smA=s120-c-rp-mo-br100",
+      "rating": 4,
+      "text": "Ryan is professional and reliable. He helped to clean my roof and done a great job.",
+      "time": "2022-06-13T20:16:47.017753Z",
+      "updateTime": "2022-06-13T20:16:47.017753Z",
+      "reply": {
+        "text": "Thanks Christina, anytime!",
+        "time": "2022-06-14T09:30:50.198533Z"
+      }
+    },
+    {
+      "id": "AbFvOqn2bBDHJ9d7WfyyfTTvjC83ohtlDU0K8uOeax-dW84TJUOkAnTFR34_ajWpSyQQQcOV9hcGEg",
+      "author": "Peter Spring",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUfeYU1EmpXxU2A0Dqz3ObD7LPJCsxWNPjfV1OdONS4vcyG5rUaYw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Prompt, polite, caring. Would recommend to anyone",
+      "time": "2022-05-31T18:52:05.300867Z",
+      "updateTime": "2022-05-31T18:52:05.300867Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqkNhWOrZOF-61CmCjh0cySi93Xgk564OL5XFUHawxrLu57lIB1BAf75KH-Mq07R9SCrIfV6zA",
+      "author": "Rebecca Clayton",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUp8Arg6_Yc0i5pI4aL_ImMOx9zrjBG8r6NCGFWMKXqz_9vtBMY=s120-c-rp-mo-ba2-br100",
+      "rating": 5,
+      "text": "Such a professional service, arriving on time they simply set to work and with a high attention to detail they completed all tasks in a very timely and efficient manner. I would not hesitate to recommend Ryan at Gutterbugs and hope that you have the opportunity to work with them. Great job.",
+      "time": "2022-05-25T14:32:17.410691Z",
+      "updateTime": "2022-05-25T14:32:17.410691Z",
+      "reply": {
+        "text": "Thank for the kind review Rebecca. It was a pleasure working on your beautiful home.\n\nRegards,\nRyan & Richard",
+        "time": "2022-05-25T16:06:59.614437Z"
+      }
+    },
+    {
+      "id": "AbFvOqkUKQE_SgYcC9eWQsqlCiJx0mBed4t4KyMBqpIhIFiANpjyb7oIK12YFwEEScMXsRneeffGkw",
+      "author": "richtfingers",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjUKMukZoHqOp1YHryWNfnkNhY07Fki-Sp3Erx8ahkLiXAiqewU=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "First class service at a fair price.  Ryan and Richard turned up on time, were friendly and polite and although the job was just straightforward gutter cleaning they were meticulous and check all the flows in the pipes and really did a superb job.\nI would recommend them without hesitation.",
+      "time": "2022-05-24T10:37:24.351729Z",
+      "updateTime": "2022-05-24T10:37:24.351729Z",
+      "reply": {
+        "text": "Thank you very much for the kind review Richard. Wishing you a lovely week.\n\nRegards,\nRyan & Richard",
+        "time": "2022-05-24T11:15:50.166196Z"
+      }
+    },
+    {
+      "id": "AbFvOqmMc7aey5zBXDrDJXcPzYWz36LbzxIF6CCQG7JZaJUzxiO-846llckAbL5i-Z7dCDcKfdy0fQ",
+      "author": "Gavin Moor",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJdRdZML8D0h-TECH4ZyzCDl8tDQPqd12SqXXWLg5aeUG-dIw=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Polite, responsive, good value and did exactly as we had agreed. If only all businesses were like this. Ryan, thank you for your hard work today and all the best - will be happy to pass on your details.",
+      "time": "2022-05-12T14:40:37.785909Z",
+      "updateTime": "2022-05-12T14:40:37.785909Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqltKW2DFYfqegnimuYmt95s6obXAi2joYxR4lUy3aJeCG-GkUpHYFgtJEEaZq3-Wm55d-TJvQ",
+      "author": "Natasha pollard",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLBktRZ_V6Gis_MW7zeP0tPhBh3d8P-uyFqkT9PmWHxIi5B9g=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan and his team have been an absolute pleasure to deal with, worked very long hours to get the work done and our house looks fantastic after a full roof clean and complete replacement of guttering.\nVery polite, professional, happy and really lovely guys. Great value for money too and would highly recommend to anyone!",
+      "time": "2022-04-23T18:52:18.499465Z",
+      "updateTime": "2022-04-23T18:52:18.499465Z",
+      "reply": {
+        "text": "Thanks Natasha! We really appreciate the kind review, and wish you and Sam the best with your renovations.",
+        "time": "2022-04-23T19:19:28.837289Z"
+      }
+    },
+    {
+      "id": "AbFvOqnb05kqf1DfFWQ3Nb03CZqZRmkTqne59uaZfLFdSeXj0KGUpjRBJp6j3wrkhTQtdC55Eauwjg",
+      "author": "Michelle Davis",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLU55aoD2SdtfrIOutsP8c7EoT44fJaqCkXkii22Lo3am44ww=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Ryan came to clean the most from our roof and applied a treatment to prevent it from growing back. We were all impressed with the results and his tidy work. Would definitely recommend",
+      "time": "2022-04-05T21:26:23.421660Z",
+      "updateTime": "2022-04-05T21:26:23.421660Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOql8J8IiqsZ1dYK7g5_TO_vYYCGsdcKCtF2D68p-wWIPGcvimEPmBaYra4N5hAtOBeEaJLh56w",
+      "author": "Joseph Vardon-Hynard",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocID2uEnPAbY7wd8pHM6uetaEHocSLasSW66kcGCEgQUXQo6=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "",
+      "time": "2022-04-01T11:12:32.797692Z",
+      "updateTime": "2022-04-01T11:12:32.797692Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqmQho50HD6wSiCBWNe4gE2oeBAVy4VPmBdqbWezgNiIfFwNfoFMUxZOpsOyjjCKofcKR8lA",
+      "author": "Hilary Bates",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLV1CkP2mX52aHXohH6UQZ1QlEmBnTPF6ihCNI479sTYgUItg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Very pleasant and hard-working. Tidy and professional.",
+      "time": "2022-03-23T17:46:17.126737Z",
+      "updateTime": "2022-03-23T17:46:17.126737Z",
+      "reply": {
+        "text": "Thanks Hilary!",
+        "time": "2022-03-24T16:18:06.423559Z"
+      }
+    },
+    {
+      "id": "AbFvOqmlP5D3CeqWH970l8Rr9nwUYlzYkc3UjjzLAGBp8WbTDyucxv_gQnYfcCt7JT0nvteMeH4SKA",
+      "author": "Rose Jefferies",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocIbC-b1TQeW9S4tYVkuZgNQdAyTqS2rhw-RyasTZVPqzKnaWA=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Great service. Quick to respond and easy to book. Did a great job for a very reasonable price. Would definitely recommend!",
+      "time": "2022-03-03T14:59:58.551614Z",
+      "updateTime": "2022-03-03T14:59:58.551614Z",
+      "reply": {
+        "text": "Thanks Rose!",
+        "time": "2022-03-03T18:09:47.703508Z"
+      }
+    },
+    {
+      "id": "AbFvOqnvBSyyWoVAGkojMmbdftGi_Z-svdXqqY-G_zBFHFwZIxdR_bI-OSskfKkfnljf0LetPysr2A",
+      "author": "Carol Spencer",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLNVGbUu0uY9pm1eN5xn2J4eVPlFW4b0stRWxvp0vIfudN2Lg=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Quick, efficient, polite and on time.",
+      "time": "2022-02-10T12:11:04.311636Z",
+      "updateTime": "2022-02-10T12:11:04.311636Z",
+      "reply": {
+        "text": "Thanks Carol! Pleasure doing business with you.",
+        "time": "2022-02-10T13:40:57.704678Z"
+      }
+    },
+    {
+      "id": "AbFvOqlnt6tj8S1T7DlN7xJTX6HtKTii7yVp497dxhSVbsEeGO03FI18iOOmsziaTUzfaNYny9Q11Q",
+      "author": "Zoe Lawes",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLG5sv4bE59XxGQDL-h7hqg77OWrngAABDOCpCbY7XKObMGFQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "",
+      "time": "2022-02-08T15:59:09.479146Z",
+      "updateTime": "2022-02-08T15:59:09.479146Z",
+      "reply": {
+        "text": "Thanks Zoë! We hope you enjoy your new clean house! Let us know if you need help with anything else.",
+        "time": "2022-02-08T16:49:09.704724Z"
+      }
+    },
+    {
+      "id": "AbFvOqnAs4m55iCZ5DepTYoIkWK3gToJpD9UrJ4wPHzqjDqJ2i0GTMc_9Qy-QQUT6lg1yZbQxJwA0A",
+      "author": "Maureen Hockley",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocKg22V7y538zCurUnOOKq5dimvM25b3ZCIobphBemODfGJJvQ=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "",
+      "time": "2022-01-07T12:44:53.478397Z",
+      "updateTime": "2022-01-07T12:44:53.478397Z",
+      "reply": null
+    },
+    {
+      "id": "AbFvOqlEfsyPJlnUwZkuyDXzM6uGlykWWJluSyJ9cCOS96aSAoB1TGw0f9LUVZiqe1roM6-G5I-ZIA",
+      "author": "M H",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocJLw5W_w-PF7eR3Ovw0ite14EGCCu32JzngWv0oRaLxf4Bx_A=s120-c-rp-mo-ba4-br100",
+      "rating": 5,
+      "text": "Ryan was very professional and efficient. His working partner is his Dad both know what they are doing. Both work patiently and came well prepared. You rarely get good quality of work and value for money together. Fortunately, Gutterbugs provide you both. Keep up the good work guys. 🥇",
+      "time": "2022-01-06T11:16:18.936363Z",
+      "updateTime": "2022-01-06T11:16:18.936363Z",
+      "reply": {
+        "text": "Thank you Hassan, it was a pleasure meeting and doing business with you. Wishing you well for the New Year.",
+        "time": "2022-01-07T08:41:44.271024Z"
+      }
+    },
+    {
+      "id": "AbFvOqlCpWig4mNlUVGCnb7mYop-s0j5L743XLsXYp5yTOWwn_5XPZLVf2gOw6K8yyqzp9lCMq88PA",
+      "author": "Phoebe Barker",
+      "profilePhoto": "https://lh3.googleusercontent.com/a/ACg8ocLTMt2MEYoHqkSTccpg1zILt-__epPpBtcsyW8LDDh_ECGNNPU=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "Brilliant job - Ryan was super friendly and did a thorough gutter clearance on my very old property. I thought the price was very reasonable too. Would highly recommend!",
+      "time": "2022-01-04T21:47:36.876727Z",
+      "updateTime": "2022-01-04T21:47:36.876727Z",
+      "reply": {
+        "text": "Thanks Phoebe! Anytime, It was a pleasure doing business with you.",
+        "time": "2022-01-04T22:07:10.167386Z"
+      }
+    },
+    {
+      "id": "AbFvOqk7WqAUOtyJki9i4y9gR1OIO-ohZjOktaHLTptFT_kshb-XASwgj6xvlfhc1oLxXZ4Qa_vr",
+      "author": "Kent Stützner",
+      "profilePhoto": "https://lh3.googleusercontent.com/a-/ALV-UjWUArpGEUCkylcmOKNlG0zBUiNdbO8Ii0I3gjDBcu2ZM2OOU_vX=s120-c-rp-mo-br100",
+      "rating": 5,
+      "text": "",
+      "time": "2021-12-18T18:41:36.006205Z",
+      "updateTime": "2021-12-18T18:41:36.006205Z",
+      "reply": {
+        "text": "Thanks Kent!",
+        "time": "2021-12-19T03:14:31.693596Z"
+      }
+    }
+  ]
+}
