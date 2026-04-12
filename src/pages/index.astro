@@ -51,8 +51,12 @@ const services = [
   },
 ];
 
-import { fetchGoogleReviews } from '../lib/reviews';
-const { rating, totalReviews, reviews } = await fetchGoogleReviews();
+import reviewData from '../data/reviews.json';
+
+// Get the top 6 reviews for the homepage
+const topReviews = reviewData.reviews.slice(0, 6);
+const rating = reviewData.averageRating;
+const totalReviews = reviewData.totalReviews;
 
 ---
 
@@ -104,37 +108,55 @@ const { rating, totalReviews, reviews } = await fetchGoogleReviews();
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {reviews.map(r => (
-          <a href={r.googleMapsUri} target="_blank" rel="noopener noreferrer" class="bg-gray-50 border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-shadow duration-200 block">
-            <div class="flex items-center gap-3 mb-4">
-              {r.authorPhoto ? (
-                <img src={r.authorPhoto} alt={r.author} class="w-10 h-10 rounded-full" loading="lazy" />
-              ) : (
-                <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold text-sm">
-                  {r.author.charAt(0)}
+        {topReviews.map(r => {
+          const now = new Date();
+          const then = new Date(r.time);
+          const diffMs = now.getTime() - then.getTime();
+          const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+          
+          let relativeTime = '';
+          if (days < 1) relativeTime = 'Today';
+          else if (days === 1) relativeTime = 'Yesterday';
+          else if (days < 7) relativeTime = `${days} days ago`;
+          else if (days < 30) relativeTime = `${Math.floor(days / 7)} week${Math.floor(days / 7) > 1 ? 's' : ''} ago`;
+          else if (days < 365) relativeTime = `${Math.floor(days / 30)} month${Math.floor(days / 30) > 1 ? 's' : ''} ago`;
+          else relativeTime = `${Math.floor(days / 365)} year${Math.floor(days / 365) > 1 ? 's' : ''} ago`;
+
+          return (
+            <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-shadow duration-200 block">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex gap-0.5">
+                  {Array.from({ length: r.rating }).map(() => <span class="text-yellow-400 text-sm">★</span>)}
+                  {Array.from({ length: 5 - r.rating }).map(() => <span class="text-gray-300 text-sm">★</span>)}
                 </div>
-              )}
-              <div>
-                <p class="text-gray-900 font-semibold text-sm">{r.author}</p>
-                <p class="text-gray-500 text-xs">{r.relativeTime}</p>
+                <span class="text-gray-400 text-xs">{relativeTime}</span>
+              </div>
+              
+              <p class="text-gray-700 text-sm leading-relaxed mb-5 flex-grow line-clamp-4">"{r.text}"</p>
+              
+              <div class="flex items-center gap-3 mt-auto border-t border-gray-100 pt-4">
+                {r.profilePhoto ? (
+                  <img src={r.profilePhoto} alt={r.author} class="w-8 h-8 rounded-full" loading="lazy" />
+                ) : (
+                  <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold text-xs">
+                    {r.author.charAt(0)}
+                  </div>
+                )}
+                <div>
+                  <p class="text-gray-900 font-semibold text-sm leading-none">{r.author}</p>
+                </div>
               </div>
             </div>
-            <div class="flex gap-0.5 mb-3">
-              {[1,2,3,4,5].map(() => <span class="text-yellow-400 text-sm">★</span>)}
-            </div>
-            <p class="text-gray-700 text-sm leading-relaxed">{r.text}</p>
-          </a>
-        ))}
+          );
+        })}
       </div>
 
       <div class="text-center mt-10">
         <a
-          href="https://search.google.com/local/reviews?placeid=ChIJo_uUdkhwDIgR0rK-6PvfVJ8"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/reviews"
           class="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-medium text-sm transition-colors"
         >
-          See all {totalReviews} reviews on Google →
+          Read all {totalReviews} verified reviews →
         </a>
       </div>
     </div>
