@@ -353,6 +353,12 @@ async function handleFormSubmission(request, env, ctx) {
       if (ctx?.waitUntil) ctx.waitUntil(tgPromise);
     }
 
+    // Instant auto-acknowledgment email to customer (non-blocking)
+    if (env.RESEND_API_KEY && body.email) {
+      const emailPromise = sendAutoAcknowledgment(env, body);
+      if (ctx?.waitUntil) ctx.waitUntil(emailPromise);
+    }
+
     return new Response(JSON.stringify({
       ok: true,
       lead: {
@@ -410,6 +416,79 @@ async function sendTelegramNotification(env, lead) {
     }
   } catch (err) {
     console.error('Telegram notify error:', err.message);
+  }
+}
+
+// ─── Auto-Acknowledgment Email ────────────────────────────────────────────────
+
+const SERVICE_LABELS = {
+  gutter_cleaning: 'Gutter Cleaning',
+  roof_scraping: 'Roof Moss Removal',
+  roof_pressure: 'Roof Pressure Washing',
+  driveway: 'Driveway/Patio Cleaning',
+  soffit_fascia: 'Soffit & Fascia Washing',
+  conservatory_roof: 'Conservatory Roof Washing',
+  solar_panels: 'Solar Panel Washing',
+  other: 'Other Services',
+};
+
+async function sendAutoAcknowledgment(env, lead) {
+  const firstName = (lead.first_name || '').trim();
+  const services = (lead.service_type || '')
+    .split(',')
+    .map(s => SERVICE_LABELS[s.trim()] || s.trim())
+    .filter(Boolean);
+
+  const serviceText = services.length > 0
+    ? services.join(', ')
+    : 'your property';
+
+  const html = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background: #0ea5e9; padding: 24px; border-radius: 12px 12px 0 0; text-align: center;">
+    <h1 style="color: white; margin: 0; font-size: 22px;">Thanks for getting in touch${firstName ? `, ${firstName}` : ''}!</h1>
+  </div>
+  <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px;">
+    <p>We've received your enquiry for <strong>${serviceText}</strong> and Ryan will review it shortly.</p>
+    <p>We typically respond within a few hours during working days (Mon–Fri). If your request is urgent, feel free to give us a call:</p>
+    <div style="text-align: center; margin: 24px 0;">
+      <a href="tel:07904621160" style="display: inline-block; background: #0ea5e9; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">📞 Call 07904 621160</a>
+    </div>
+    <p style="font-size: 14px; color: #64748b;">In the meantime, here's what you can expect:</p>
+    <ul style="font-size: 14px; color: #64748b; padding-left: 20px;">
+      <li>We'll assess your property using satellite imagery</li>
+      <li>You'll receive a detailed quote — no obligation</li>
+      <li>We cover Hertfordshire, Buckinghamshire & surrounding areas</li>
+    </ul>
+    <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;">
+    <p style="font-size: 13px; color: #94a3b8; margin: 0;">Gutterbugs Exterior Cleaning<br>Hertfordshire & Buckinghamshire<br><a href="https://gutterbugs.co.uk" style="color: #0ea5e9;">gutterbugs.co.uk</a></p>
+  </div>
+</body>
+</html>`;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Gutterbugs <quotes@gutterbugs.co.uk>',
+        to: [lead.email],
+        reply_to: 'ryan@gutterbugs.co.uk',
+        subject: `We've received your enquiry${services.length > 0 ? ` for ${services[0]}` : ''}!`,
+        html,
+      }),
+    });
+    if (!res.ok) {
+      console.error('Auto-ack email failed:', await res.text());
+    }
+  } catch (err) {
+    console.error('Auto-ack email error:', err.message);
   }
 }
 
