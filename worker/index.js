@@ -39,6 +39,11 @@ export default {
       return handlePlaceDetails(url, request, env);
     }
 
+    // Route: Telegram webhook (building confirmation callbacks)
+    if (url.pathname === '/telegram-webhook' && request.method === 'POST') {
+      return handleTelegramWebhook(request, env);
+    }
+
     // Route: Form submission (existing)
     if (request.method !== 'POST') {
       return new Response(JSON.stringify({ error: 'Method not allowed' }), {
@@ -347,10 +352,18 @@ async function handleFormSubmission(request, env, ctx) {
       if (ctx?.waitUntil) ctx.waitUntil(mcPromise);
     }
 
-    // Instant Telegram notification (non-blocking)
-    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
-      const tgPromise = sendTelegramNotification(env, body);
-      if (ctx?.waitUntil) ctx.waitUntil(tgPromise);
+    // Instant Telegram notification (SYNCHRONOUS — await ensures delivery before response)
+    // Previously used ctx.waitUntil which fired-and-forgot; Cloudflare sometimes preempts
+    // the waitUntil promise before the Telegram call completes, causing missed notifications.
+    // Awaiting adds ~200-400ms to form submit response time — invisible to the user.
+    // Use dedicated LEADS_BOT_TOKEN if set, fall back to TELEGRAM_BOT_TOKEN
+    const botToken = env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN;
+    if (botToken && env.TELEGRAM_CHAT_ID) {
+      try {
+        await sendTelegramNotification(env, body, result.meta.last_row_id, botToken);
+      } catch (err) {
+        console.error('Telegram notification failed:', err.message);
+      }
     }
 
     // Instant auto-acknowledgment email to customer (non-blocking)
@@ -384,16 +397,18 @@ async function handleFormSubmission(request, env, ctx) {
 
 // ─── Telegram Notification ────────────────────────────────────────────────────
 
-async function sendTelegramNotification(env, lead) {
+async function sendTelegramNotification(env, lead, leadId, botToken) {
+  botToken = botToken || env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN;
   const name = `${lead.first_name} ${lead.last_name}`.trim();
   const services = lead.service_type || 'Not specified';
   const source = lead.source || 'direct';
   const phone = lead.phone || '';
+  const address = lead.address ? `${lead.address}${lead.postcode ? ', ' + lead.postcode : ''}` : '';
 
   const message = [
     `🪲 *New Lead!*`,
     `*${name}*` + (services !== 'Not specified' ? ` — ${services}` : ''),
-    lead.address ? `📍 ${lead.address}${lead.postcode ? ', ' + lead.postcode : ''}` : '',
+    address ? `📍 ${address}` : '',
     phone ? `📞 [${phone}](tel:${phone.replace(/\s/g, '')})` : '',
     lead.email ? `✉️ ${lead.email}` : '',
     lead.message ? `💬 _"${lead.message}"_` : '',
@@ -401,15 +416,34 @@ async function sendTelegramNotification(env, lead) {
     lead.gclid ? `📊 Google Ads click` : '',
   ].filter(Boolean).join('\n');
 
+  // Build inline keyboard
+  const keyboard = [];
+
+  // Row 1: Apple Maps link (if address available)
+  if (address) {
+    const mapsUrl = `https://maps.apple.com/?address=${encodeURIComponent(address)}`;
+    keyboard.push([{ text: '🗺️ View in Apple Maps', url: mapsUrl }]);
+  }
+
+  // Note: confirm buttons are sent in a follow-up message by Mission Control
+  // once the satellite measurement completes (~30s), so Ryan can see the building
+  // before confirming. Keeping this message fast & text-only for instant delivery.
+
   try {
-    const res = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    const payload = {
+      chat_id: env.TELEGRAM_CHAT_ID,
+      text: message,
+      parse_mode: 'Markdown',
+    };
+
+    if (keyboard.length > 0) {
+      payload.reply_markup = JSON.stringify({ inline_keyboard: keyboard });
+    }
+
+    const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: env.TELEGRAM_CHAT_ID,
-        text: message,
-        parse_mode: 'Markdown',
-      }),
+      body: JSON.stringify(payload),
     });
     if (!res.ok) {
       console.error('Telegram send failed:', await res.text());
@@ -419,6 +453,7 @@ async function sendTelegramNotification(env, lead) {
   }
 }
 
+<<<<<<< Updated upstream
 // ─── Auto-Acknowledgment Email ────────────────────────────────────────────────
 
 const SERVICE_LABELS = {
@@ -492,6 +527,95 @@ async function sendAutoAcknowledgment(env, lead) {
   }
 }
 
+=======
+
+// ─── Telegram Webhook — Building Confirmation Callbacks ───────────────────────
+
+async function handleTelegramWebhook(request, env) {
+  try {
+    const update = await request.json();
+
+    // Handle callback queries (inline button presses)
+    if (update.callback_query) {
+      const { id: callbackId, data, from, message } = update.callback_query;
+
+      // Parse callback data: "confirm:LEAD_ID:yes" or "confirm:LEAD_ID:no"
+      const match = data?.match(/^confirm:(\d+):(yes|no)$/);
+      if (!match) {
+        await answerCallback(env, callbackId, '⚠️ Unknown action');
+        return new Response('ok');
+      }
+
+      const leadId = parseInt(match[1]);
+      const confirmed = match[2];
+
+      // Ensure building_confirmations table exists (idempotent)
+      await env.DB.prepare(`
+        CREATE TABLE IF NOT EXISTS building_confirmations (
+          lead_id INTEGER PRIMARY KEY,
+          confirmed TEXT NOT NULL,
+          confirmed_by TEXT,
+          confirmed_at TEXT DEFAULT (datetime('now')),
+          synced_to_mc INTEGER DEFAULT 0
+        )
+      `).run();
+
+      // Check if already confirmed
+      const existing = await env.DB.prepare(
+        'SELECT confirmed FROM building_confirmations WHERE lead_id = ?'
+      ).bind(leadId).first();
+
+      if (existing) {
+        const emoji = existing.confirmed === 'yes' ? '✅' : '❌';
+        await answerCallback(env, callbackId, `Already ${emoji} ${existing.confirmed === 'yes' ? 'confirmed' : 'rejected'}`);
+        return new Response('ok');
+      }
+
+      // Store confirmation
+      await env.DB.prepare(
+        'INSERT INTO building_confirmations (lead_id, confirmed, confirmed_by) VALUES (?, ?, ?)'
+      ).bind(leadId, confirmed, `telegram:${from.id}`).run();
+
+      // Answer the callback
+      const emoji = confirmed === 'yes' ? '✅' : '❌';
+      const label = confirmed === 'yes' ? 'Building confirmed!' : 'Building rejected — flagged for review';
+      await answerCallback(env, callbackId, `${emoji} ${label}`);
+
+      // Update the original message to show the result
+      if (message?.chat?.id && message?.message_id) {
+        const newText = message.text + `\n\n${emoji} *${label}*` + ` (by ${from.first_name || 'user'})`;
+        await fetch(`https://api.telegram.org/bot${env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN}/editMessageText`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: message.chat.id,
+            message_id: message.message_id,
+            text: newText,
+            parse_mode: 'Markdown',
+            reply_markup: JSON.stringify({ inline_keyboard: [] }),
+          }),
+        });
+      }
+
+      return new Response('ok');
+    }
+
+    return new Response('ok');
+  } catch (err) {
+    console.error('Telegram webhook error:', err);
+    return new Response('ok');
+  }
+}
+
+async function answerCallback(env, callbackId, text) {
+  await fetch(`https://api.telegram.org/bot${env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN}/answerCallbackQuery`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ callback_query_id: callbackId, text, show_alert: true }),
+  });
+}
+
+>>>>>>> Stashed changes
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 
 function getAllowedOrigins(env) {

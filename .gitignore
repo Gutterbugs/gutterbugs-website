@@ -24,3 +24,6 @@ pnpm-debug.log*
 .idea/
 worker/.dev.vars
 worker/.wrangler/
+
+# Wrangler local state
+worker/.wrangler/
