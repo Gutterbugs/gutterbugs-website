@@ -453,7 +453,6 @@ async function sendTelegramNotification(env, lead, leadId, botToken) {
   }
 }
 
-<<<<<<< Updated upstream
 // ─── Auto-Acknowledgment Email ────────────────────────────────────────────────
 
 const SERVICE_LABELS = {
@@ -487,17 +486,20 @@ async function sendAutoAcknowledgment(env, lead) {
     <h1 style="color: white; margin: 0; font-size: 22px;">Thanks for getting in touch${firstName ? `, ${firstName}` : ''}!</h1>
   </div>
   <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px;">
-    <p>We've received your enquiry for <strong>${serviceText}</strong> and Ryan will review it shortly.</p>
-    <p>We typically respond within a few hours during working days (Mon–Fri). If your request is urgent, feel free to give us a call:</p>
+    <p>We've received your enquiry for <strong>${serviceText}</strong>. Our automated system is already measuring your property from satellite imagery — your quote will arrive shortly.</p>
+    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 6px; margin: 20px 0;">
+      <p style="margin: 0; font-size: 14px; color: #78350f;"><strong>What happens next:</strong></p>
+      <ol style="font-size: 14px; color: #78350f; padding-left: 20px; margin: 8px 0 0;">
+        <li>We assess your property using satellite imagery (usually under 2 minutes)</li>
+        <li>Ryan reviews the automated measurement for accuracy</li>
+        <li>A detailed, itemised quote is emailed to you from Xero</li>
+      </ol>
+    </div>
+    <p>If you'd like to speak with Ryan directly, feel free to call:</p>
     <div style="text-align: center; margin: 24px 0;">
       <a href="tel:07904621160" style="display: inline-block; background: #0ea5e9; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">📞 Call 07904 621160</a>
     </div>
-    <p style="font-size: 14px; color: #64748b;">In the meantime, here's what you can expect:</p>
-    <ul style="font-size: 14px; color: #64748b; padding-left: 20px;">
-      <li>We'll assess your property using satellite imagery</li>
-      <li>You'll receive a detailed quote — no obligation</li>
-      <li>We cover Hertfordshire, Buckinghamshire & surrounding areas</li>
-    </ul>
+    <p style="font-size: 14px; color: #64748b;">We cover Hertfordshire, Buckinghamshire & surrounding areas. Full terms: <a href="https://gutterbugs.co.uk/terms" style="color: #0ea5e9;">gutterbugs.co.uk/terms</a></p>
     <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;">
     <p style="font-size: 13px; color: #94a3b8; margin: 0;">Gutterbugs Exterior Cleaning<br>Hertfordshire & Buckinghamshire<br><a href="https://gutterbugs.co.uk" style="color: #0ea5e9;">gutterbugs.co.uk</a></p>
   </div>
@@ -527,7 +529,6 @@ async function sendAutoAcknowledgment(env, lead) {
   }
 }
 
-=======
 
 // ─── Telegram Webhook — Building Confirmation Callbacks ───────────────────────
 
@@ -615,7 +616,6 @@ async function answerCallback(env, callbackId, text) {
   });
 }
 
->>>>>>> Stashed changes
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 
 function getAllowedOrigins(env) {
