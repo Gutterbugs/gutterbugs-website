@@ -39,11 +39,6 @@ export default {
       return handlePlaceDetails(url, request, env);
     }
 
-    // Route: Telegram webhook (building confirmation callbacks)
-    if (url.pathname === '/telegram-webhook' && request.method === 'POST') {
-      return handleTelegramWebhook(request, env);
-    }
-
     // Route: Form submission (existing)
     if (request.method !== 'POST') {
       return new Response(JSON.stringify({ error: 'Method not allowed' }), {
@@ -352,18 +347,10 @@ async function handleFormSubmission(request, env, ctx) {
       if (ctx?.waitUntil) ctx.waitUntil(mcPromise);
     }
 
-    // Instant Telegram notification (SYNCHRONOUS — await ensures delivery before response)
-    // Previously used ctx.waitUntil which fired-and-forgot; Cloudflare sometimes preempts
-    // the waitUntil promise before the Telegram call completes, causing missed notifications.
-    // Awaiting adds ~200-400ms to form submit response time — invisible to the user.
-    // Use dedicated LEADS_BOT_TOKEN if set, fall back to TELEGRAM_BOT_TOKEN
-    const botToken = env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN;
-    if (botToken && env.TELEGRAM_CHAT_ID) {
-      try {
-        await sendTelegramNotification(env, body, result.meta.last_row_id, botToken);
-      } catch (err) {
-        console.error('Telegram notification failed:', err.message);
-      }
+    // Instant Telegram notification (non-blocking)
+    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+      const tgPromise = sendTelegramNotification(env, body);
+      if (ctx?.waitUntil) ctx.waitUntil(tgPromise);
     }
 
     // Instant auto-acknowledgment email to customer (non-blocking)
@@ -397,18 +384,16 @@ async function handleFormSubmission(request, env, ctx) {
 
 // ─── Telegram Notification ────────────────────────────────────────────────────
 
-async function sendTelegramNotification(env, lead, leadId, botToken) {
-  botToken = botToken || env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN;
+async function sendTelegramNotification(env, lead) {
   const name = `${lead.first_name} ${lead.last_name}`.trim();
   const services = lead.service_type || 'Not specified';
   const source = lead.source || 'direct';
   const phone = lead.phone || '';
-  const address = lead.address ? `${lead.address}${lead.postcode ? ', ' + lead.postcode : ''}` : '';
 
   const message = [
     `🪲 *New Lead!*`,
     `*${name}*` + (services !== 'Not specified' ? ` — ${services}` : ''),
-    address ? `📍 ${address}` : '',
+    lead.address ? `📍 ${lead.address}${lead.postcode ? ', ' + lead.postcode : ''}` : '',
     phone ? `📞 [${phone}](tel:${phone.replace(/\s/g, '')})` : '',
     lead.email ? `✉️ ${lead.email}` : '',
     lead.message ? `💬 _"${lead.message}"_` : '',
@@ -416,34 +401,15 @@ async function sendTelegramNotification(env, lead, leadId, botToken) {
     lead.gclid ? `📊 Google Ads click` : '',
   ].filter(Boolean).join('\n');
 
-  // Build inline keyboard
-  const keyboard = [];
-
-  // Row 1: Apple Maps link (if address available)
-  if (address) {
-    const mapsUrl = `https://maps.apple.com/?address=${encodeURIComponent(address)}`;
-    keyboard.push([{ text: '🗺️ View in Apple Maps', url: mapsUrl }]);
-  }
-
-  // Note: confirm buttons are sent in a follow-up message by Mission Control
-  // once the satellite measurement completes (~30s), so Ryan can see the building
-  // before confirming. Keeping this message fast & text-only for instant delivery.
-
   try {
-    const payload = {
-      chat_id: env.TELEGRAM_CHAT_ID,
-      text: message,
-      parse_mode: 'Markdown',
-    };
-
-    if (keyboard.length > 0) {
-      payload.reply_markup = JSON.stringify({ inline_keyboard: keyboard });
-    }
-
-    const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        chat_id: env.TELEGRAM_CHAT_ID,
+        text: message,
+        parse_mode: 'Markdown',
+      }),
     });
     if (!res.ok) {
       console.error('Telegram send failed:', await res.text());
@@ -486,20 +452,17 @@ async function sendAutoAcknowledgment(env, lead) {
     <h1 style="color: white; margin: 0; font-size: 22px;">Thanks for getting in touch${firstName ? `, ${firstName}` : ''}!</h1>
   </div>
   <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px;">
-    <p>We've received your enquiry for <strong>${serviceText}</strong>. Our automated system is already measuring your property from satellite imagery — your quote will arrive shortly.</p>
-    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 6px; margin: 20px 0;">
-      <p style="margin: 0; font-size: 14px; color: #78350f;"><strong>What happens next:</strong></p>
-      <ol style="font-size: 14px; color: #78350f; padding-left: 20px; margin: 8px 0 0;">
-        <li>We assess your property using satellite imagery (usually under 2 minutes)</li>
-        <li>Ryan reviews the automated measurement for accuracy</li>
-        <li>A detailed, itemised quote is emailed to you from Xero</li>
-      </ol>
-    </div>
-    <p>If you'd like to speak with Ryan directly, feel free to call:</p>
+    <p>We've received your enquiry for <strong>${serviceText}</strong> and Ryan will review it shortly.</p>
+    <p>We typically respond within a few hours during working days (Mon–Fri). If your request is urgent, feel free to give us a call:</p>
     <div style="text-align: center; margin: 24px 0;">
       <a href="tel:07904621160" style="display: inline-block; background: #0ea5e9; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">📞 Call 07904 621160</a>
     </div>
-    <p style="font-size: 14px; color: #64748b;">We cover Hertfordshire, Buckinghamshire & surrounding areas. Full terms: <a href="https://gutterbugs.co.uk/terms" style="color: #0ea5e9;">gutterbugs.co.uk/terms</a></p>
+    <p style="font-size: 14px; color: #64748b;">In the meantime, here's what you can expect:</p>
+    <ul style="font-size: 14px; color: #64748b; padding-left: 20px;">
+      <li>We'll assess your property using satellite imagery</li>
+      <li>You'll receive a detailed quote — no obligation</li>
+      <li>We cover Hertfordshire, Buckinghamshire & surrounding areas</li>
+    </ul>
     <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;">
     <p style="font-size: 13px; color: #94a3b8; margin: 0;">Gutterbugs Exterior Cleaning<br>Hertfordshire & Buckinghamshire<br><a href="https://gutterbugs.co.uk" style="color: #0ea5e9;">gutterbugs.co.uk</a></p>
   </div>
@@ -527,93 +490,6 @@ async function sendAutoAcknowledgment(env, lead) {
   } catch (err) {
     console.error('Auto-ack email error:', err.message);
   }
-}
-
-
-// ─── Telegram Webhook — Building Confirmation Callbacks ───────────────────────
-
-async function handleTelegramWebhook(request, env) {
-  try {
-    const update = await request.json();
-
-    // Handle callback queries (inline button presses)
-    if (update.callback_query) {
-      const { id: callbackId, data, from, message } = update.callback_query;
-
-      // Parse callback data: "confirm:LEAD_ID:yes" or "confirm:LEAD_ID:no"
-      const match = data?.match(/^confirm:(\d+):(yes|no)$/);
-      if (!match) {
-        await answerCallback(env, callbackId, '⚠️ Unknown action');
-        return new Response('ok');
-      }
-
-      const leadId = parseInt(match[1]);
-      const confirmed = match[2];
-
-      // Ensure building_confirmations table exists (idempotent)
-      await env.DB.prepare(`
-        CREATE TABLE IF NOT EXISTS building_confirmations (
-          lead_id INTEGER PRIMARY KEY,
-          confirmed TEXT NOT NULL,
-          confirmed_by TEXT,
-          confirmed_at TEXT DEFAULT (datetime('now')),
-          synced_to_mc INTEGER DEFAULT 0
-        )
-      `).run();
-
-      // Check if already confirmed
-      const existing = await env.DB.prepare(
-        'SELECT confirmed FROM building_confirmations WHERE lead_id = ?'
-      ).bind(leadId).first();
-
-      if (existing) {
-        const emoji = existing.confirmed === 'yes' ? '✅' : '❌';
-        await answerCallback(env, callbackId, `Already ${emoji} ${existing.confirmed === 'yes' ? 'confirmed' : 'rejected'}`);
-        return new Response('ok');
-      }
-
-      // Store confirmation
-      await env.DB.prepare(
-        'INSERT INTO building_confirmations (lead_id, confirmed, confirmed_by) VALUES (?, ?, ?)'
-      ).bind(leadId, confirmed, `telegram:${from.id}`).run();
-
-      // Answer the callback
-      const emoji = confirmed === 'yes' ? '✅' : '❌';
-      const label = confirmed === 'yes' ? 'Building confirmed!' : 'Building rejected — flagged for review';
-      await answerCallback(env, callbackId, `${emoji} ${label}`);
-
-      // Update the original message to show the result
-      if (message?.chat?.id && message?.message_id) {
-        const newText = message.text + `\n\n${emoji} *${label}*` + ` (by ${from.first_name || 'user'})`;
-        await fetch(`https://api.telegram.org/bot${env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN}/editMessageText`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: message.chat.id,
-            message_id: message.message_id,
-            text: newText,
-            parse_mode: 'Markdown',
-            reply_markup: JSON.stringify({ inline_keyboard: [] }),
-          }),
-        });
-      }
-
-      return new Response('ok');
-    }
-
-    return new Response('ok');
-  } catch (err) {
-    console.error('Telegram webhook error:', err);
-    return new Response('ok');
-  }
-}
-
-async function answerCallback(env, callbackId, text) {
-  await fetch(`https://api.telegram.org/bot${env.LEADS_BOT_TOKEN || env.TELEGRAM_BOT_TOKEN}/answerCallbackQuery`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ callback_query_id: callbackId, text, show_alert: true }),
-  });
 }
 
 // ─── CORS ─────────────────────────────────────────────────────────────────────
