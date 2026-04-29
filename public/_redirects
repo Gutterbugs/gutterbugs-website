@@ -1,0 +1,92 @@
+# Redirect old /service-in-location pattern to /locations/service-location
+# These URLs return a soft-404 (homepage with 200) — fix with proper 301s
+
+/gutter-clearing-in-tring /locations/gutter-clearing-tring/ 301
+/gutter-clearing-in-berkhamsted /locations/gutter-clearing-berkhamsted/ 301
+/gutter-clearing-in-hemel-hempstead /locations/gutter-clearing-hemel-hempstead/ 301
+/gutter-clearing-in-aylesbury /locations/gutter-clearing-aylesbury/ 301
+/gutter-clearing-in-chesham /locations/gutter-clearing-chesham/ 301
+/gutter-clearing-in-amersham /locations/gutter-clearing-amersham/ 301
+/gutter-clearing-in-wendover /locations/gutter-clearing-wendover/ 301
+/gutter-clearing-in-kings-langley /locations/gutter-clearing-kings-langley/ 301
+/gutter-clearing-in-milton-keynes /locations/gutter-clearing-milton-keynes/ 301
+/gutter-clearing-in-newport-pagnell /locations/gutter-clearing-newport-pagnell/ 301
+/gutter-clearing-in-olney /locations/gutter-clearing-olney/ 301
+/gutter-clearing-in-wolverton /locations/gutter-clearing-wolverton/ 301
+/gutter-clearing-in-stony-stratford /locations/gutter-clearing-stony-stratford/ 301
+/gutter-clearing-in-bletchley /locations/gutter-clearing-bletchley/ 301
+
+/roof-cleaning-in-tring /locations/roof-cleaning-tring/ 301
+/roof-cleaning-in-berkhamsted /locations/roof-cleaning-berkhamsted/ 301
+/roof-cleaning-in-hemel-hempstead /locations/roof-cleaning-hemel-hempstead/ 301
+/roof-cleaning-in-aylesbury /locations/roof-cleaning-aylesbury/ 301
+/roof-cleaning-in-chesham /locations/roof-cleaning-chesham/ 301
+/roof-cleaning-in-amersham /locations/roof-cleaning-amersham/ 301
+/roof-cleaning-in-wendover /locations/roof-cleaning-wendover/ 301
+/roof-cleaning-in-kings-langley /locations/roof-cleaning-kings-langley/ 301
+/roof-cleaning-in-milton-keynes /locations/roof-cleaning-milton-keynes/ 301
+/roof-cleaning-in-newport-pagnell /locations/roof-cleaning-newport-pagnell/ 301
+/roof-cleaning-in-olney /locations/roof-cleaning-olney/ 301
+/roof-cleaning-in-wolverton /locations/roof-cleaning-wolverton/ 301
+/roof-cleaning-in-stony-stratford /locations/roof-cleaning-stony-stratford/ 301
+/roof-cleaning-in-bletchley /locations/roof-cleaning-bletchley/ 301
+
+/pressure-washing-in-tring /locations/pressure-washing-tring/ 301
+/pressure-washing-in-berkhamsted /locations/pressure-washing-berkhamsted/ 301
+/pressure-washing-in-hemel-hempstead /locations/pressure-washing-hemel-hempstead/ 301
+/pressure-washing-in-aylesbury /locations/pressure-washing-aylesbury/ 301
+/pressure-washing-in-chesham /locations/pressure-washing-chesham/ 301
+/pressure-washing-in-amersham /locations/pressure-washing-amersham/ 301
+/pressure-washing-in-wendover /locations/pressure-washing-wendover/ 301
+/pressure-washing-in-kings-langley /locations/pressure-washing-kings-langley/ 301
+/pressure-washing-in-milton-keynes /locations/pressure-washing-milton-keynes/ 301
+/pressure-washing-in-newport-pagnell /locations/pressure-washing-newport-pagnell/ 301
+/pressure-washing-in-olney /locations/pressure-washing-olney/ 301
+/pressure-washing-in-wolverton /locations/pressure-washing-wolverton/ 301
+/pressure-washing-in-stony-stratford /locations/pressure-washing-stony-stratford/ 301
+/pressure-washing-in-bletchley /locations/pressure-washing-bletchley/ 301
+
+/soffit-fascia-washing-in-tring /locations/soffit-fascia-washing-tring/ 301
+/soffit-fascia-washing-in-berkhamsted /locations/soffit-fascia-washing-berkhamsted/ 301
+/soffit-fascia-washing-in-hemel-hempstead /locations/soffit-fascia-washing-hemel-hempstead/ 301
+/soffit-fascia-washing-in-aylesbury /locations/soffit-fascia-washing-aylesbury/ 301
+/soffit-fascia-washing-in-chesham /locations/soffit-fascia-washing-chesham/ 301
+/soffit-fascia-washing-in-amersham /locations/soffit-fascia-washing-amersham/ 301
+/soffit-fascia-washing-in-wendover /locations/soffit-fascia-washing-wendover/ 301
+/soffit-fascia-washing-in-kings-langley /locations/soffit-fascia-washing-kings-langley/ 301
+/soffit-fascia-washing-in-milton-keynes /locations/soffit-fascia-washing-milton-keynes/ 301
+/soffit-fascia-washing-in-newport-pagnell /locations/soffit-fascia-washing-newport-pagnell/ 301
+/soffit-fascia-washing-in-olney /locations/soffit-fascia-washing-olney/ 301
+/soffit-fascia-washing-in-wolverton /locations/soffit-fascia-washing-wolverton/ 301
+/soffit-fascia-washing-in-stony-stratford /locations/soffit-fascia-washing-stony-stratford/ 301
+/soffit-fascia-washing-in-bletchley /locations/soffit-fascia-washing-bletchley/ 301
+
+/conservatory-cleaning-in-tring /locations/conservatory-cleaning-tring/ 301
+/conservatory-cleaning-in-berkhamsted /locations/conservatory-cleaning-berkhamsted/ 301
+/conservatory-cleaning-in-hemel-hempstead /locations/conservatory-cleaning-hemel-hempstead/ 301
+/conservatory-cleaning-in-aylesbury /locations/conservatory-cleaning-aylesbury/ 301
+/conservatory-cleaning-in-chesham /locations/conservatory-cleaning-chesham/ 301
+/conservatory-cleaning-in-amersham /locations/conservatory-cleaning-amersham/ 301
+/conservatory-cleaning-in-wendover /locations/conservatory-cleaning-wendover/ 301
+/conservatory-cleaning-in-kings-langley /locations/conservatory-cleaning-kings-langley/ 301
+/conservatory-cleaning-in-milton-keynes /locations/conservatory-cleaning-milton-keynes/ 301
+/conservatory-cleaning-in-newport-pagnell /locations/conservatory-cleaning-newport-pagnell/ 301
+/conservatory-cleaning-in-olney /locations/conservatory-cleaning-olney/ 301
+/conservatory-cleaning-in-wolverton /locations/conservatory-cleaning-wolverton/ 301
+/conservatory-cleaning-in-stony-stratford /locations/conservatory-cleaning-stony-stratford/ 301
+/conservatory-cleaning-in-bletchley /locations/conservatory-cleaning-bletchley/ 301
+
+/solar-panel-cleaning-in-tring /locations/solar-panel-cleaning-tring/ 301
+/solar-panel-cleaning-in-berkhamsted /locations/solar-panel-cleaning-berkhamsted/ 301
+/solar-panel-cleaning-in-hemel-hempstead /locations/solar-panel-cleaning-hemel-hempstead/ 301
+/solar-panel-cleaning-in-aylesbury /locations/solar-panel-cleaning-aylesbury/ 301
+/solar-panel-cleaning-in-chesham /locations/solar-panel-cleaning-chesham/ 301
+/solar-panel-cleaning-in-amersham /locations/solar-panel-cleaning-amersham/ 301
+/solar-panel-cleaning-in-wendover /locations/solar-panel-cleaning-wendover/ 301
+/solar-panel-cleaning-in-kings-langley /locations/solar-panel-cleaning-kings-langley/ 301
+/solar-panel-cleaning-in-milton-keynes /locations/solar-panel-cleaning-milton-keynes/ 301
+/solar-panel-cleaning-in-newport-pagnell /locations/solar-panel-cleaning-newport-pagnell/ 301
+/solar-panel-cleaning-in-olney /locations/solar-panel-cleaning-olney/ 301
+/solar-panel-cleaning-in-wolverton /locations/solar-panel-cleaning-wolverton/ 301
+/solar-panel-cleaning-in-stony-stratford /locations/solar-panel-cleaning-stony-stratford/ 301
+/solar-panel-cleaning-in-bletchley /locations/solar-panel-cleaning-bletchley/ 301
