@@ -1,4 +1,6 @@
 ---
+import TrustStack from './TrustStack.astro';
+
 interface Props {
   title?: string;
   subtitle?: string;
@@ -48,20 +50,8 @@ const {
         </a>
       </div>
 
-      <!-- Trust Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-        {[
-          { icon: '✓', label: 'Fully Insured' },
-          { icon: '★', label: '5-Star Rated' },
-          { icon: '⚡', label: 'Same-Day Quotes' },
-          { icon: '🏠', label: 'Family Business' },
-        ].map(badge => (
-          <div class="flex items-center gap-2 text-gray-600">
-            <span class="text-sky-400 font-bold">{badge.icon}</span>
-            <span class="text-sm font-medium">{badge.label}</span>
-          </div>
-        ))}
-      </div>
+      <!-- Trust Stack (review count, insurance, scale, family) -->
+      <TrustStack />
     </div>
   </div>
 </section>

@@ -1,0 +1,55 @@
+---
+/**
+ * TrustStack — single source of truth for trust signals across landing pages.
+ * Stronger than generic badges: shows actual review count, star rating,
+ * insurance, scale (3,000+ homes). Per landing-page audit 2026-04-28:
+ * "the highest-asset social proof Gutterbugs owns".
+ *
+ * Variants:
+ *   - default: full stack with review link (homepage, service pages)
+ *   - compact: tighter version for narrower hero columns
+ */
+
+interface Props {
+  variant?: 'default' | 'compact';
+  className?: string;
+}
+
+const { variant = 'default', className = '' } = Astro.props;
+
+// Review count is updated when the reviews page rebuilds; hard-code for now,
+// pull from Google Business Profile API in future.
+const REVIEW_COUNT = 92;
+const STAR_RATING = '5.0';
+const HOMES_CLEANED = '3,000+';
+
+const isCompact = variant === 'compact';
+---
+
+<div class={`flex flex-wrap items-center justify-center ${isCompact ? 'gap-3 sm:gap-5' : 'gap-4 sm:gap-8'} ${className}`}>
+  <!-- Star rating + review count (clickable to /reviews) -->
+  <a href="/reviews" class="flex items-center gap-2 group" aria-label={`${STAR_RATING} stars from ${REVIEW_COUNT} Google reviews`}>
+    <span class="text-yellow-400 text-lg leading-none" aria-hidden="true">★★★★★</span>
+    <span class={`${isCompact ? 'text-xs' : 'text-sm'} font-semibold text-gray-900 group-hover:text-sky-600 transition-colors`}>
+      {STAR_RATING}/5 — {REVIEW_COUNT} reviews
+    </span>
+  </a>
+
+  <!-- Fully insured -->
+  <div class="flex items-center gap-2 text-gray-600">
+    <span class="text-sky-500 font-bold" aria-hidden="true">✓</span>
+    <span class={`${isCompact ? 'text-xs' : 'text-sm'} font-medium`}>Fully Insured</span>
+  </div>
+
+  <!-- Scale -->
+  <div class="flex items-center gap-2 text-gray-600">
+    <span class="text-sky-500 font-bold" aria-hidden="true">🏠</span>
+    <span class={`${isCompact ? 'text-xs' : 'text-sm'} font-medium`}>{HOMES_CLEANED} Homes Cleaned</span>
+  </div>
+
+  <!-- Family run -->
+  <div class="flex items-center gap-2 text-gray-600">
+    <span class="text-sky-500 font-bold" aria-hidden="true">👨‍👦</span>
+    <span class={`${isCompact ? 'text-xs' : 'text-sm'} font-medium`}>Family Business</span>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
 import CTASection from '../components/CTASection.astro';
+import TrustStack from '../components/TrustStack.astro';
 
 interface Props {
   title: string;
@@ -32,7 +33,7 @@ const { title, description, heroTitle, heroSubtitle, canonicalURL, heroImage, he
           <p class="text-xl text-gray-600 mb-8 leading-relaxed">
             {heroSubtitle}
           </p>
-          <div class="flex flex-col sm:flex-row gap-4">
+          <div class="flex flex-col sm:flex-row gap-4 mb-8">
             <a href="/contact" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25">
               Get Free Quote →
             </a>
@@ -40,6 +41,8 @@ const { title, description, heroTitle, heroSubtitle, canonicalURL, heroImage, he
               📞 07904621160
             </a>
           </div>
+          <!-- Trust Stack — added 2026-04-28 per landing-page audit (was missing on all service pages) -->
+          <TrustStack variant={heroImage ? 'compact' : 'default'} className="justify-start" />
         </div>
         {heroImage && (
           <div class="hidden lg:block">
