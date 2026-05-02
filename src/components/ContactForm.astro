@@ -1,4 +1,19 @@
 ---
+interface Props {
+  /** Unique id suffix for this form instance — required when multiple forms appear on one page */
+  formId?: string;
+  /** Compact mode: tighter spacing for hero placement */
+  compact?: boolean;
+  /** Pre-tick a service checkbox by value (e.g. 'gutter_cleaning') */
+  preselectedService?: string;
+  /** Optional override for the submit button label */
+  submitLabel?: string;
+}
+
+const { formId = 'contact', compact = false, preselectedService, submitLabel = 'Get My Free Quote' } = Astro.props;
+
+const fid = (suffix: string) => `${suffix}-${formId}`;
+
 const services = [
   { value: 'gutter_cleaning', label: 'Gutter Cleaning' },
   { value: 'roof_scraping', label: 'Roof Moss Removal (Scraping)' },
@@ -9,116 +24,137 @@ const services = [
   { value: 'solar_panels', label: 'Solar Panel Washing' },
   { value: 'other', label: 'Other Services' },
 ];
+
+// In compact mode we tighten vertical rhythm for hero placement
+const fieldSpacing = compact ? 'space-y-4' : 'space-y-6';
+const fieldGridGap = compact ? 'gap-3' : 'gap-5';
+const inputPadding = compact ? 'px-3.5 py-2.5' : 'px-4 py-3';
+const labelMargin = compact ? 'mb-1' : 'mb-1.5';
+const buttonPadding = compact ? 'py-3' : 'py-4';
 ---
 
-<form id="contact-form" class="space-y-6">
+<form id={fid('contact-form')} class={fieldSpacing} data-form-instance={formId}>
   <!-- Hidden attribution fields -->
-  <input type="hidden" name="gclid" id="gclid" />
-  <input type="hidden" name="source" id="source" />
-  <input type="hidden" name="landing_page" id="landing_page" />
-  <input type="hidden" name="referrer" id="referrer" />
-  <input type="hidden" name="utm_source" id="utm_source" />
-  <input type="hidden" name="utm_medium" id="utm_medium" />
-  <input type="hidden" name="utm_campaign" id="utm_campaign" />
-  <input type="hidden" name="utm_term" id="utm_term" />
+  <input type="hidden" name="gclid" id={fid('gclid')} />
+  <input type="hidden" name="source" id={fid('source')} />
+  <input type="hidden" name="landing_page" id={fid('landing_page')} />
+  <input type="hidden" name="referrer" id={fid('referrer')} />
+  <input type="hidden" name="utm_source" id={fid('utm_source')} />
+  <input type="hidden" name="utm_medium" id={fid('utm_medium')} />
+  <input type="hidden" name="utm_campaign" id={fid('utm_campaign')} />
+  <input type="hidden" name="utm_term" id={fid('utm_term')} />
+  <!-- form_variant lets the backend distinguish hero-inline vs full /contact submissions -->
+  <input type="hidden" name="form_variant" value={compact ? 'inline' : 'standard'} />
 
   <!-- Name -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
     <div>
-      <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1.5">First Name <span class="text-red-500">*</span></label>
+      <label for={fid('first_name')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>First Name <span class="text-red-500">*</span></label>
       <input
         type="text"
-        id="first_name"
+        id={fid('first_name')}
         name="first_name"
         required
-        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+        autocomplete="given-name"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
     <div>
-      <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1.5">Last Name <span class="text-red-500">*</span></label>
+      <label for={fid('last_name')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Last Name <span class="text-red-500">*</span></label>
       <input
         type="text"
-        id="last_name"
+        id={fid('last_name')}
         name="last_name"
         required
-        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+        autocomplete="family-name"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
   </div>
 
   <!-- Email & Phone -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
     <div>
-      <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">Email <span class="text-red-500">*</span></label>
+      <label for={fid('email')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Email <span class="text-red-500">*</span></label>
       <input
         type="email"
-        id="email"
+        id={fid('email')}
         name="email"
         required
-        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+        autocomplete="email"
+        inputmode="email"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
     <div>
-      <label for="phone" class="block text-sm font-medium text-gray-700 mb-1.5">Phone <span class="text-red-500">*</span></label>
+      <label for={fid('phone')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Phone <span class="text-red-500">*</span></label>
       <input
         type="tel"
-        id="phone"
+        id={fid('phone')}
         name="phone"
         required
-        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+        autocomplete="tel"
+        inputmode="tel"
+        placeholder="07xxx xxxxxx"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
   </div>
 
   <!-- Address -->
   <div>
-    <label for="address" class="block text-sm font-medium text-gray-700 mb-1.5">Street Address <span class="text-red-500">*</span></label>
+    <label for={fid('address')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Street Address <span class="text-red-500">*</span></label>
     <input
       type="text"
-      id="address"
+      id={fid('address')}
       name="address"
       required
+      autocomplete="street-address"
       placeholder="e.g. 14 High Street"
-      class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+      class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
     />
   </div>
 
   <!-- Town & Postcode -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+  <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
     <div>
-      <label for="address_city" class="block text-sm font-medium text-gray-700 mb-1.5">Town <span class="text-red-500">*</span></label>
+      <label for={fid('address_city')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Town <span class="text-red-500">*</span></label>
       <input
         type="text"
-        id="address_city"
+        id={fid('address_city')}
         name="address_city"
         required
+        autocomplete="address-level2"
         placeholder="e.g. Tring"
-        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
     <div>
-      <label for="postcode" class="block text-sm font-medium text-gray-700 mb-1.5">Postcode <span class="text-red-500">*</span></label>
+      <label for={fid('postcode')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Postcode <span class="text-red-500">*</span></label>
       <input
         type="text"
-        id="postcode"
+        id={fid('postcode')}
         name="postcode"
         required
+        autocomplete="postal-code"
+        autocapitalize="characters"
         placeholder="e.g. HP23 4AB"
-        class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
   </div>
 
   <!-- Services Checkboxes -->
   <div>
-    <label class="block text-sm font-medium text-gray-700 mb-3">Services Needed</label>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class={`block text-sm font-medium text-gray-700 ${compact ? 'mb-2' : 'mb-3'}`}>Services Needed</label>
+    <div class={`grid grid-cols-1 sm:grid-cols-2 ${compact ? 'gap-2' : 'gap-3'}`}>
       {services.map(s => (
         <label class="flex items-center gap-3 cursor-pointer group">
           <input
             type="checkbox"
             name="services"
             value={s.value}
+            checked={preselectedService === s.value}
             class="w-5 h-5 rounded border-2 border-gray-300 text-sky-500 focus:ring-sky-500 focus:ring-offset-0 accent-sky-500 flex-shrink-0"
           />
           <span class="text-gray-700 text-sm group-hover:text-sky-600 transition-colors">{s.label}</span>
@@ -127,35 +163,54 @@ const services = [
     </div>
   </div>
 
-  <!-- Message -->
-  <div>
-    <label for="message" class="block text-sm font-medium text-gray-700 mb-1.5">Additional Details</label>
-    <textarea
-      id="form-message"
-      name="message"
-      rows="4"
-      placeholder="Tell us about your property, any specific requirements, or questions you have..."
-      class="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200 resize-none"
-    ></textarea>
-  </div>
+  <!-- Message (hidden in compact mode unless user expands) -->
+  {!compact && (
+    <div>
+      <label for={fid('message')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Additional Details</label>
+      <textarea
+        id={fid('message')}
+        name="message"
+        rows="4"
+        placeholder="Tell us about your property, any specific requirements, or questions you have..."
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200 resize-none`}
+      ></textarea>
+    </div>
+  )}
+  {compact && (
+    <details class="group">
+      <summary class="cursor-pointer text-sm text-sky-600 hover:text-sky-700 font-medium select-none list-none flex items-center gap-2">
+        <span class="inline-block transition-transform group-open:rotate-90">▸</span>
+        Add notes (optional)
+      </summary>
+      <div class="mt-2">
+        <textarea
+          id={fid('message')}
+          name="message"
+          rows="3"
+          placeholder="Tell us about your property, any specific requirements, or questions you have..."
+          class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200 resize-none`}
+        ></textarea>
+      </div>
+    </details>
+  )}
 
   <!-- Success message -->
-  <div id="form-success" class="hidden bg-sky-50 border border-sky-200 text-sky-800 text-sm px-4 py-3 rounded-xl text-center font-medium">
+  <div id={fid('form-success')} class="hidden bg-sky-50 border border-sky-200 text-sky-800 text-sm px-4 py-3 rounded-xl text-center font-medium">
     Thank you! Your request has been submitted. We'll get back to you with a quote shortly.
   </div>
 
   <!-- Error message -->
-  <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl text-center">
+  <div id={fid('form-error')} class="hidden bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl text-center">
     Something went wrong. Please try again or call us on <a href="tel:07904621160" class="underline font-medium">07904621160</a>.
   </div>
 
   <button
     type="submit"
-    id="submit-btn"
-    class="w-full bg-sky-500 hover:bg-sky-600 text-white py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+    id={fid('submit-btn')}
+    class={`w-full bg-sky-500 hover:bg-sky-600 text-white ${buttonPadding} rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0`}
   >
-    <span id="submit-text">Get My Free Quote</span>
-    <span id="submit-loading" class="hidden">Submitting...</span>
+    <span id={fid('submit-text')}>{submitLabel}</span>
+    <span id={fid('submit-loading')} class="hidden">Submitting...</span>
   </button>
 
   <p class="text-gray-500 text-xs text-center">
@@ -164,49 +219,101 @@ const services = [
 </form>
 
 <script>
-  // ─── Attribution Capture ────────────────────────────────────────────
+  // ─── Attribution Capture (shared across all form instances on the page) ─
   function getUrlParam(name: string): string | null {
     return new URLSearchParams(window.location.search).get(name);
   }
 
+  // ─── Experiment bucketing ─────────────────────────────────────────
+  // Stable visitor bucket assigned on first visit, persisted in localStorage.
+  // While EXPERIMENT_ACTIVE is false, every visitor reports as 'inline-only'
+  // (rolling out to 100% of traffic). When we want to A/B test a future
+  // change, flip EXPERIMENT_ACTIVE to true and split traffic by bucket.
+  const EXPERIMENT_ACTIVE = false;
+  const EXPERIMENT_NAME = 'inline-form-v1';
+
+  function getOrAssignBucket(): string {
+    try {
+      const key = `gb_exp_${EXPERIMENT_NAME}`;
+      let bucket = localStorage.getItem(key);
+      if (!bucket) {
+        const id = (crypto?.randomUUID?.() || String(Math.random())).replace(/-/g, '');
+        let h = 0;
+        for (let i = 0; i < id.length; i++) {
+          h = ((h << 5) - h) + id.charCodeAt(i);
+          h |= 0;
+        }
+        bucket = (Math.abs(h) % 2 === 0) ? 'A' : 'B';
+        localStorage.setItem(key, bucket);
+      }
+      return EXPERIMENT_ACTIVE ? bucket : 'inline-only';
+    } catch {
+      return 'inline-only';
+    }
+  }
+
   function initAttribution() {
-    // gclid: capture from URL, persist in localStorage
     const gclidParam = getUrlParam('gclid');
     if (gclidParam) localStorage.setItem('gclid', gclidParam);
     const gclid = gclidParam || localStorage.getItem('gclid') || '';
-    (document.getElementById('gclid') as HTMLInputElement).value = gclid;
 
-    // UTM parameters
-    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term'].forEach(param => {
-      const val = getUrlParam(param);
-      if (val) (document.getElementById(param) as HTMLInputElement).value = val;
-    });
-
-    // Referrer & landing page
-    (document.getElementById('referrer') as HTMLInputElement).value = document.referrer || '';
-    (document.getElementById('landing_page') as HTMLInputElement).value = window.location.href;
-
-    // Source determination
     let source = 'direct';
     if (gclid) source = 'google_ads';
     else if (getUrlParam('utm_source')) source = getUrlParam('utm_source')!;
     else if (document.referrer && !document.referrer.includes('gutterbugs.co.uk')) source = 'organic';
-    (document.getElementById('source') as HTMLInputElement).value = source;
 
-    // Store gclid for future visits
-    if (gclid) localStorage.setItem('gclid', gclid);
+    const utmSrc = getUrlParam('utm_source') || '';
+    const utmMed = getUrlParam('utm_medium') || '';
+    const utmCmp = getUrlParam('utm_campaign') || '';
+    const utmTrm = getUrlParam('utm_term') || '';
+    const arm = getOrAssignBucket();
+
+    // Populate every form instance on the page
+    document.querySelectorAll<HTMLFormElement>('form[data-form-instance]').forEach(form => {
+      const set = (selector: string, val: string) => {
+        const el = form.querySelector<HTMLInputElement>(selector);
+        if (el) el.value = val;
+      };
+      set('input[name="gclid"]', gclid);
+      set('input[name="source"]', source);
+      set('input[name="referrer"]', document.referrer || '');
+      set('input[name="landing_page"]', window.location.href);
+      set('input[name="utm_source"]', utmSrc);
+      set('input[name="utm_medium"]', utmMed);
+      set('input[name="utm_campaign"]', utmCmp);
+      set('input[name="utm_term"]', utmTrm);
+      set('input[name="experiment_arm"]', arm);
+    });
   }
 
-  // ─── Form Submission ────────────────────────────────────────────────
-  function initForm() {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-    const submitText = document.getElementById('submit-text')!;
-    const submitLoading = document.getElementById('submit-loading')!;
-    const errorDiv = document.getElementById('form-error')!;
-    const successDiv = document.getElementById('form-success')!;
+  // ─── Form Submission (per-instance handler) ─────────────────────────────
+  function bindForm(form: HTMLFormElement) {
+    const id = form.dataset.formInstance!;
+    const submitBtn = document.getElementById(`submit-btn-${id}`) as HTMLButtonElement;
+    const submitText = document.getElementById(`submit-text-${id}`)!;
+    const submitLoading = document.getElementById(`submit-loading-${id}`)!;
+    const errorDiv = document.getElementById(`form-error-${id}`)!;
+    const successDiv = document.getElementById(`form-success-${id}`)!;
 
-    form?.addEventListener('submit', async (e) => {
+    // form_start event — fires on first focus into any field of THIS form, once per page load.
+    // Used to measure abandonment (form_start vs form_complete events).
+    let formStartFired = false;
+    const variant = form.querySelector<HTMLInputElement>('input[name="form_variant"]')?.value || 'standard';
+    form.addEventListener('focusin', () => {
+      if (formStartFired) return;
+      formStartFired = true;
+      if (typeof gtag !== 'undefined') {
+        const arm = form.querySelector<HTMLInputElement>('input[name="experiment_arm"]')?.value || 'inline-only';
+        gtag('event', 'form_start', {
+          event_category: 'form',
+          event_label: variant,
+          form_variant: variant,
+          experiment_arm: arm,
+        });
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       submitBtn.disabled = true;
@@ -215,32 +322,35 @@ const services = [
       errorDiv.classList.add('hidden');
       successDiv.classList.add('hidden');
 
-      // Collect form data
       const formData = new FormData(form);
       const data: Record<string, string | null> = {};
       formData.forEach((value, key) => {
         if (key !== 'services') data[key] = value.toString();
       });
 
-      // Handle multiple service checkboxes → comma-separated string
       const checkedServices = Array.from(
         form.querySelectorAll('input[name="services"]:checked')
       ).map((cb) => (cb as HTMLInputElement).value);
       data.service_type = checkedServices.length > 0 ? checkedServices.join(',') : null;
 
-      // GA4 conversion event
       if (typeof gtag !== 'undefined') {
         gtag('event', 'Contact_Us_Form_Entry', {
           event_category: 'form',
           event_label: data.service_type || 'unspecified',
+          form_variant: data.form_variant || 'standard',
+          experiment_arm: data.experiment_arm || 'inline-only',
         });
-      }
-
-      // Phone call click tracking (for attribution)
-      if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_complete', {
+          event_category: 'form',
+          event_label: data.form_variant || 'standard',
+          form_variant: data.form_variant || 'standard',
+          experiment_arm: data.experiment_arm || 'inline-only',
+        });
         gtag('event', 'generate_lead', {
           currency: 'GBP',
           value: 0,
+          form_variant: data.form_variant || 'standard',
+          experiment_arm: data.experiment_arm || 'inline-only',
         });
       }
 
@@ -255,11 +365,8 @@ const services = [
         const result = await response.json();
 
         if (response.ok) {
-          // Show success inline or redirect to thank-you
           successDiv.classList.remove('hidden');
           form.reset();
-          
-          // Redirect after short delay so user sees success message
           setTimeout(() => {
             window.location.href = '/thank-you';
           }, 1500);
@@ -275,9 +382,8 @@ const services = [
     });
   }
 
-  // Declare gtag for TypeScript
   declare function gtag(...args: any[]): void;
 
   initAttribution();
-  initForm();
+  document.querySelectorAll<HTMLFormElement>('form[data-form-instance]').forEach(bindForm);
 </script>

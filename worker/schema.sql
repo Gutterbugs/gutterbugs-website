@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS leads (
   utm_medium TEXT,
   utm_campaign TEXT,
   utm_term TEXT,
+  form_variant TEXT,
+  experiment_arm TEXT,
   created_at TEXT DEFAULT (datetime('now')),
   synced_to_mc INTEGER DEFAULT 0
 );

@@ -303,8 +303,8 @@ async function handleFormSubmission(request, env, ctx) {
     }
 
     const result = await env.DB.prepare(`
-      INSERT INTO leads (first_name, last_name, email, phone, address, postcode, service_type, message, gclid, source, landing_page, referrer, utm_source, utm_medium, utm_campaign, utm_term, address_city, address_county, address_lat, address_lng)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO leads (first_name, last_name, email, phone, address, postcode, service_type, message, gclid, source, landing_page, referrer, utm_source, utm_medium, utm_campaign, utm_term, address_city, address_county, address_lat, address_lng, form_variant, experiment_arm)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       body.first_name,
       body.last_name,
@@ -326,6 +326,8 @@ async function handleFormSubmission(request, env, ctx) {
       body.address_county || null,
       body.address_lat || null,
       body.address_lng || null,
+      body.form_variant || null,
+      body.experiment_arm || null,
     ).run();
 
     if (env.MISSION_CONTROL_URL) {

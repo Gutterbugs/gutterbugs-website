@@ -2,6 +2,7 @@
 import Layout from './Layout.astro';
 import CTASection from '../components/CTASection.astro';
 import TrustStack from '../components/TrustStack.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 interface Props {
   title: string;
@@ -9,47 +10,113 @@ interface Props {
   heroTitle: string;
   heroSubtitle: string;
   canonicalURL?: string;
+  /** Optional fallback image (only shown if inlineForm=false) */
   heroImage?: string;
   heroImageAlt?: string;
+  /**
+   * Pre-tick a service checkbox in the inline hero form.
+   * Use the same value as the form's `services` checkbox values, e.g. 'gutter_cleaning'.
+   */
+  serviceSlug?: string;
+  /**
+   * Show the inline contact form in the hero right column. Default: true.
+   * Set false to keep the legacy "image + Get Quote button" hero (e.g. for non-conversion pages).
+   */
+  inlineForm?: boolean;
 }
 
-const { title, description, heroTitle, heroSubtitle, canonicalURL, heroImage, heroImageAlt } = Astro.props;
+const {
+  title,
+  description,
+  heroTitle,
+  heroSubtitle,
+  canonicalURL,
+  heroImage,
+  heroImageAlt,
+  serviceSlug,
+  inlineForm = true,
+} = Astro.props;
+
+// Build a stable formId from the page path (so multiple service pages don't clash if cached)
+const formId = `hero-${(Astro.url?.pathname || 'service').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'page'}`;
 ---
 
 <Layout title={title} description={description} canonicalURL={canonicalURL}>
   <!-- Hero -->
-  <section class="bg-white pt-32 pb-20 relative overflow-hidden">
+  <section class="bg-white pt-32 pb-16 lg:pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-sky-900/20 to-transparent pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class={heroImage ? "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" : ""}>
-        <div class={heroImage ? "" : "max-w-3xl"}>
+      <div class={inlineForm || heroImage ? "grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start" : ""}>
+        <!-- Left column: copy + trust + CTA -->
+        <div class={inlineForm || heroImage ? "lg:col-span-2 lg:pt-4" : "max-w-3xl"}>
           <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-6">
             <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
-            <span class="text-sky-400 text-sm font-medium">Professional Service</span>
+            <span class="text-sky-400 text-sm font-medium">Free quote · 24h response</span>
           </div>
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight" style="font-family: 'Poppins', sans-serif;">
             {heroTitle}
           </h1>
-          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          <p class="text-lg lg:text-xl text-gray-600 mb-6 leading-relaxed">
             {heroSubtitle}
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="/contact" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25">
-              Get Free Quote →
-            </a>
-            <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-white/30 text-gray-900 hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200">
-              📞 07904621160
+
+          <!-- On mobile, the form sits ABOVE the trust stack (see right column below).
+               On desktop, the trust stack appears here in the left column. -->
+          <div class="hidden lg:block">
+            <TrustStack variant="compact" className="justify-start mb-6" />
+            <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-900 hover:bg-gray-50 px-6 py-3 rounded-full font-semibold transition-all duration-200">
+              📞 Or call Ryan: 07904 621160
             </a>
           </div>
-          <!-- Trust Stack — added 2026-04-28 per landing-page audit (was missing on all service pages) -->
-          <TrustStack variant={heroImage ? 'compact' : 'default'} className="justify-start" />
+
+          <!-- On mobile, show a single primary CTA above the form (the form is below) -->
+          {inlineForm && (
+            <div class="lg:hidden flex flex-col sm:flex-row gap-3 mb-8">
+              <a href="tel:07904621160" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200 shadow-lg shadow-sky-500/25">
+                📞 Call Ryan: 07904 621160
+              </a>
+            </div>
+          )}
         </div>
-        {heroImage && (
-          <div class="hidden lg:block">
+
+        <!-- Right column: inline form (or fallback image) -->
+        {inlineForm ? (
+          <div class="lg:col-span-3">
+            <div class="bg-white rounded-3xl shadow-2xl ring-1 ring-gray-200/60 p-6 lg:p-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-1" style="font-family: 'Poppins', sans-serif;">
+                Get your free quote
+              </h2>
+              <p class="text-sm text-gray-600 mb-5">No surprise prices. No spam. We respond within 24 hours.</p>
+              <ContactForm
+                formId={formId}
+                compact={true}
+                preselectedService={serviceSlug}
+                submitLabel="Get my quote"
+              />
+            </div>
+            <!-- Trust stack rendered below form on mobile, shows on left column on desktop -->
+            <div class="lg:hidden mt-6">
+              <TrustStack variant="compact" className="justify-center" />
+            </div>
+          </div>
+        ) : heroImage ? (
+          <div class="hidden lg:block lg:col-span-3">
             <img src={heroImage} alt={heroImageAlt || heroTitle} class="rounded-2xl shadow-2xl w-full object-cover max-h-[450px]" loading="eager" />
           </div>
-        )}
+        ) : null}
       </div>
+
+      <!-- Old CTA buttons preserved for `inlineForm=false` pages only -->
+      {!inlineForm && (
+        <div class="flex flex-col sm:flex-row gap-4 mt-8">
+          <a href="/contact" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25">
+            Get Free Quote →
+          </a>
+          <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-white/30 text-gray-900 hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200">
+            📞 07904621160
+          </a>
+        </div>
+      )}
     </div>
   </section>
 
