@@ -388,7 +388,7 @@ async function handleFormSubmission(request, env, ctx) {
 
 async function sendTelegramNotification(env, lead) {
   const name = `${lead.first_name} ${lead.last_name}`.trim();
-  const services = lead.service_type || 'Not specified';
+  const services = (lead.service_type || 'Not specified').replace(/_/g, ' ');
   const source = lead.source || 'direct';
   const phone = lead.phone || '';
 
