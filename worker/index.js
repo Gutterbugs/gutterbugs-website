@@ -456,6 +456,7 @@ async function sendAutoAcknowledgment(env, lead) {
   <div style="background: #f8fafc; padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px;">
     <p>We've received your enquiry for <strong>${serviceText}</strong> and Ryan will review it shortly.</p>
     <p>We typically respond within a few hours during working days (Mon–Fri). If your request is urgent, feel free to give us a call:</p>
+    <p style="font-size: 14px; color: #64748b; background: #eff6ff; border-left: 3px solid #0ea5e9; padding: 10px 14px; border-radius: 6px;">☔ <strong>Please note:</strong> during periods of heavy rainfall we experience a surge of requests, so it may take us slightly longer than usual to get back to you. Thanks for your patience.</p>
     <div style="text-align: center; margin: 24px 0;">
       <a href="tel:07904621160" style="display: inline-block; background: #0ea5e9; color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">📞 Call 07904 621160</a>
     </div>
