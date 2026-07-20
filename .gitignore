@@ -27,3 +27,6 @@ worker/.wrangler/
 
 # Wrangler local state
 worker/.wrangler/
+
+# Graphify derived state
+graphify-out/

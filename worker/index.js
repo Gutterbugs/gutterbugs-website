@@ -292,8 +292,9 @@ async function handlePlaceDetails(url, request, env) {
 // ─── Form Submission ──────────────────────────────────────────────────────────
 
 async function handleFormSubmission(request, env, ctx) {
+  let body = null;
   try {
-    const body = await request.json();
+    body = await request.json();
 
     if (!body.first_name || !body.last_name || !body.email || !body.phone) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -375,6 +376,35 @@ async function handleFormSubmission(request, env, ctx) {
 
   } catch (err) {
     console.error('Worker error:', err);
+
+    // SAFETY NET: even if D1 failed, try to notify Ryan via Telegram so no
+    // lead is lost. The customer's submission reached us — we must not lose
+    // it silently. This is best-effort (the DB may be down for the same
+    // reason), but Telegram is a separate service and worth trying.
+    if (body && env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+      try {
+        const fallbackMessage = [
+          `⚠️ *DB SAVE FAILED — LEAD RECOVERED FROM ERROR PATH*`,
+          `*${body.first_name || '?'} ${body.last_name || '?'}*`,
+          body.phone ? `📞 ${body.phone}` : '',
+          body.email ? `✉️ ${body.email}` : '',
+          body.address ? `📍 ${body.address}` : '',
+          body.message ? `💬 _"${body.message}"_` : '',
+          `🔧 Error: ${err.message || 'unknown'}`,
+        ].filter(Boolean).join('\n');
+        const tgPromise = fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: env.TELEGRAM_CHAT_ID,
+            text: fallbackMessage,
+            parse_mode: 'Markdown',
+          }),
+        });
+        if (ctx?.waitUntil) ctx.waitUntil(tgPromise);
+      } catch {}
+    }
+
     return new Response(JSON.stringify({
       error: 'Something went wrong. Please call 07904 621160.',
     }), {

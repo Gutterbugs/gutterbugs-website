@@ -362,7 +362,25 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
           body: JSON.stringify(data),
         });
 
-        const result = await response.json();
+        // Parse JSON defensively — worker always returns JSON, but a transient
+        // network blip or a Cloudflare error page could return non-JSON. If the
+        // response isn't parseable, we still treat a 2xx as success (the lead
+        // was almost certainly saved server-side before the response came back).
+        let result: any = null;
+        try {
+          result = await response.json();
+        } catch {
+          // Non-JSON response — if status is 2xx, treat as success; otherwise fail
+          if (response.ok) {
+            successDiv.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+              window.location.href = '/thank-you';
+            }, 1500);
+            return;
+          }
+          throw new Error('Server error');
+        }
 
         if (response.ok) {
           successDiv.classList.remove('hidden');
@@ -371,7 +389,7 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
             window.location.href = '/thank-you';
           }, 1500);
         } else {
-          throw new Error(result.error || 'Server error');
+          throw new Error(result?.error || 'Server error');
         }
       } catch {
         errorDiv.classList.remove('hidden');
