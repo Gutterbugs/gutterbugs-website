@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TrustStack from '../components/TrustStack.astro';
+import ContactForm from '../components/ContactForm.astro';
+import CTASection from '../components/CTASection.astro';
+
+const title = 'Commercial & Contract Exterior Cleaning | Chiltern Exterior Cleaning, London & Home Counties';
+const description = 'Commercial and contract exterior cleaning for schools, apartment blocks, warehouses and offices across London and the Home Counties. IPAF-certified operators, own MEWP, scheduled maintenance contracts.';
+---
+
+<Layout title={title} description={description} canonicalURL="/commercial">
+  <!-- Hero -->
+  <section class="bg-white pt-32 pb-16 lg:pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-900/20 to-transparent pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 rounded-full px-4 py-1.5 mb-6">
+        <span class="w-2 h-2 bg-sky-400 rounded-full"></span>
+        <span class="text-sky-400 text-sm font-medium">Chiltern Exterior Cleaning · The commercial arm of Gutterbugs Ltd</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight" style="font-family: 'Poppins', sans-serif;">
+        Commercial & Contract Exterior Cleaning
+      </h1>
+      <p class="text-lg lg:text-xl text-gray-600 mb-6 leading-relaxed max-w-3xl">
+        Exterior cleaning for schools, apartment blocks, warehouses and commercial property across London and the Home Counties.
+      </p>
+      <p class="text-base text-gray-600 mb-8 leading-relaxed max-w-3xl">
+        We provide professional gutter clearing, exterior cleaning and scheduled maintenance for commercial and public-sector buildings. From single warehouse units to multi-building sites, our in-house IPAF-certified team handles difficult access safely, with minimum disruption to your site or term schedule.
+      </p>
+      <div class="mb-8">
+        <TrustStack variant="compact" className="justify-start" />
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#commercial-quote" class="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-sky-500/25">
+          Request a commercial quote
+        </a>
+        <a href="tel:07904621160" class="inline-flex items-center justify-center border-2 border-gray-300 text-gray-900 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-200">
+          📞 07904 621160
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sectors -->
+  <section class="bg-gray-50 py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center" style="font-family: 'Poppins', sans-serif;">
+        Sectors we serve
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/60 p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Schools & Academies</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Gutter clearing and exterior cleaning planned around term times, including bi-annual maintenance contracts. We work within school procurement cycles: PO numbers, purchase-order invoicing and 30-day terms all handled.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/60 p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Apartment Blocks & Managing Agents</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Full-site exterior maintenance for blocks and estates: gutters, roofline, hard surfaces and bin areas. Scheduled contracts keep buildings in serviceable condition year-round.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/60 p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Warehouses & Industrial Units</h3>
+          <p class="text-gray-600 leading-relaxed">
+            High-level gutter clearing on large industrial buildings using our own MEWP, operated by our in-house IPAF-certified operators. No subcontracted access, no waiting on third-party availability.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm ring-1 ring-gray-200/60 p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Offices & Retail</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Facade, roofline and hard-surface cleaning that keeps premises presenting well, carried out at times that don't disrupt your operations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="bg-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-10" style="font-family: 'Poppins', sans-serif;">
+        Why commercial clients choose us
+      </h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 max-w-5xl">
+        <li class="flex items-start gap-3">
+          <span class="text-sky-500 font-bold">✓</span>
+          <span class="text-gray-700">IPAF 3a & 3b certified operators, all powered access operated in-house</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-sky-500 font-bold">✓</span>
+          <span class="text-gray-700">Own MEWP and zero-weight tower access. No ladders on gutters, no weight on roof structures</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-sky-500 font-bold">✓</span>
+          <span class="text-gray-700">Fully insured and VAT registered, invoicing with full VAT breakdown, 30-day payment terms</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-sky-500 font-bold">✓</span>
+          <span class="text-gray-700">Experienced with public-sector procurement: RAMS, insurance documents and references supplied with every quote</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-sky-500 font-bold">✓</span>
+          <span class="text-gray-700">One team start to finish, no subcontractors, consistent standards on every visit</span>
+        </li>
+      </ul>
+
+      <h2 class="text-3xl font-bold text-gray-900 mt-16 mb-8" style="font-family: 'Poppins', sans-serif;">
+        Contract options
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+        <div class="border-2 border-gray-200 rounded-2xl p-6">
+          <h3 class="font-bold text-gray-900 mb-2">One-off deep cleans</h3>
+          <p class="text-sm text-gray-600">A single scheduled visit, quoted fixed-price.</p>
+        </div>
+        <div class="border-2 border-sky-500 rounded-2xl p-6 bg-sky-50/50">
+          <h3 class="font-bold text-gray-900 mb-2">Scheduled maintenance</h3>
+          <p class="text-sm text-gray-600">Annual or bi-annual cleaning to keep buildings protected.</p>
+        </div>
+        <div class="border-2 border-gray-200 rounded-2xl p-6">
+          <h3 class="font-bold text-gray-900 mb-2">Reactive callouts</h3>
+          <p class="text-sm text-gray-600">Blocked or overflowing gutters dealt with promptly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote form -->
+  <section id="commercial-quote" class="bg-gray-50 py-16 lg:py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl shadow-2xl ring-1 ring-gray-200/60 p-6 lg:p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-1" style="font-family: 'Poppins', sans-serif;">
+          Request a commercial quote
+        </h2>
+        <p class="text-sm text-gray-600 mb-5">Tell us about your site and we'll arrange a survey, or provide a quote from plans and photographs.</p>
+        <ContactForm formId="commercial-page" compact={false} submitLabel="Request commercial quote" />
+      </div>
+      <p class="text-center text-xs text-gray-500 mt-6">
+        Chiltern Exterior Cleaning is a trading name of Gutterbugs Ltd.
+      </p>
+    </div>
+  </section>
+</Layout>
