@@ -355,13 +355,15 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
         });
       }
 
+      const endpoint = (import.meta as any).env?.PUBLIC_FORM_ENDPOINT || RESCUE_BASE;
+      let status = 0;
       try {
-        const endpoint = (import.meta as any).env?.PUBLIC_FORM_ENDPOINT || 'https://gutterbugs-form.ryan-1f9.workers.dev';
         const response = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
+        status = response.status;
 
         // Parse JSON defensively — worker always returns JSON, but a transient
         // network blip or a Cloudflare error page could return non-JSON. If the
@@ -392,7 +394,22 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
         } else {
           throw new Error(result?.error || 'Server error');
         }
-      } catch {
+      } catch (err) {
+        // The primary submit failed. Before showing an error, send the lead to
+        // the hard-coded rescue route so it still reaches Ryan. A 4xx is a real
+        // validation error, so the visitor must fix the form instead.
+        const isValidationError = status >= 400 && status < 500;
+        if (!isValidationError) {
+          const reason = `${status ? 'HTTP ' + status : (err as Error)?.message || 'network error'} from ${endpoint}`;
+          if (await rescueLead(data, reason)) {
+            successDiv.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => {
+              window.location.href = '/thank-you';
+            }, 1500);
+            return;
+          }
+        }
         errorDiv.classList.remove('hidden');
         submitBtn.disabled = false;
         submitText.classList.remove('hidden');
@@ -402,6 +419,28 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
   }
 
   declare function gtag(...args: any[]): void;
+
+  // Hard-coded on purpose: never read from env. A bad PUBLIC_FORM_ENDPOINT at
+  // build time sent every submission to localhost from 21 to 29 Sept 2026 and
+  // lost those leads. The rescue route must survive that kind of mistake.
+  const RESCUE_BASE = 'https://gutterbugs-form.ryan-1f9.workers.dev';
+
+  // Sends the lead to the worker's /rescue route, which saves it and alerts
+  // Ryan that the primary submit failed. text/plain keeps it a "simple"
+  // request (no CORS preflight to fail). Returns true only on a 2xx.
+  async function rescueLead(data: Record<string, string | null>, reason: string): Promise<boolean> {
+    try {
+      const res = await fetch(`${RESCUE_BASE}/rescue`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ ...data, rescue_reason: reason }),
+        keepalive: true,
+      });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
 
   initAttribution();
   document.querySelectorAll<HTMLFormElement>('form[data-form-instance]').forEach(bindForm);

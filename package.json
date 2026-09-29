@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "verify": "node scripts/verify-dist.mjs",
+    "deploy": "astro build && node scripts/verify-dist.mjs && npx wrangler pages deploy dist --project-name gutterbugs-website --branch main"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

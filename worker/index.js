@@ -39,6 +39,16 @@ export default {
       return handlePlaceDetails(url, request, env);
     }
 
+    // Route: Health check (used by the daily live-site monitor)
+    if (url.pathname === '/health' && request.method === 'GET') {
+      return handleHealth(request, env);
+    }
+
+    // Route: Rescue submission, sent by the form when its primary submit fails
+    if (url.pathname === '/rescue' && request.method === 'POST') {
+      return handleFormSubmission(request, env, ctx, { rescue: true });
+    }
+
     // Route: Form submission (existing)
     if (request.method !== 'POST') {
       return new Response(JSON.stringify({ error: 'Method not allowed' }), {
@@ -291,10 +301,12 @@ async function handlePlaceDetails(url, request, env) {
 
 // ─── Form Submission ──────────────────────────────────────────────────────────
 
-async function handleFormSubmission(request, env, ctx) {
+async function handleFormSubmission(request, env, ctx, { rescue = false } = {}) {
   let body = null;
   try {
-    body = await request.json();
+    // Parse text rather than request.json(): the rescue route is sent as
+    // text/plain so the browser skips the CORS preflight.
+    body = JSON.parse(await request.text());
 
     if (!body.first_name || !body.last_name || !body.email || !body.phone) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -354,6 +366,18 @@ async function handleFormSubmission(request, env, ctx) {
     if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
       const tgPromise = sendTelegramNotification(env, body);
       if (ctx?.waitUntil) ctx.waitUntil(tgPromise);
+      if (rescue) {
+        // The lead is saved, but the visitor's primary submit failed: the
+        // site is probably broken for everyone. Tell Ryan loudly.
+        const alertPromise = sendTelegramText(env, [
+          '🚨 FORM PRIMARY SUBMIT FAILED: lead saved via rescue route',
+          `Lead #${result.meta.last_row_id}: ${body.first_name} ${body.last_name}`,
+          `Page: ${body.landing_page || 'unknown'}`,
+          `Reason: ${body.rescue_reason || 'unknown'}`,
+          'Check the live form now: other visitors are likely hitting the same error.',
+        ].join('\n'));
+        if (ctx?.waitUntil) ctx.waitUntil(alertPromise);
+      }
     }
 
     // Instant auto-acknowledgment email to customer (non-blocking)
@@ -415,6 +439,36 @@ async function handleFormSubmission(request, env, ctx) {
 }
 
 // ─── Telegram Notification ────────────────────────────────────────────────────
+
+// Plain-text Telegram message (no Markdown, so arbitrary error text is safe).
+async function sendTelegramText(env, text) {
+  try {
+    await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text }),
+    });
+  } catch (e) {
+    console.error('Telegram alert failed:', e.message);
+  }
+}
+
+// Reports whether the worker can reach D1 and when the last lead arrived.
+// Public and read-only; exposes no lead details.
+async function handleHealth(request, env) {
+  try {
+    const row = await env.DB.prepare('SELECT MAX(created_at) AS last_lead_at FROM leads').first();
+    return new Response(JSON.stringify({ ok: true, db: true, last_lead_at: row?.last_lead_at || null }), {
+      status: 200,
+      headers: corsHeaders(request, env),
+    });
+  } catch (e) {
+    return new Response(JSON.stringify({ ok: false, db: false, error: e.message }), {
+      status: 503,
+      headers: corsHeaders(request, env),
+    });
+  }
+}
 
 async function sendTelegramNotification(env, lead) {
   const name = `${lead.first_name} ${lead.last_name}`.trim();
