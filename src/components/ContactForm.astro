@@ -53,6 +53,40 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
     </p>
   </div>
 
+  <!-- Returning-customer hint: email + postcode is all a returner needs to type -->
+  <p class="text-sm text-gray-500">
+    Returning customer? Just fill in your email and postcode below and we'll bring up your saved details.
+  </p>
+
+  <!-- Email & Postcode first: one pair is all a returner types before autofill kicks in -->
+  <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
+    <div>
+      <label for={fid('email')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Email <span class="text-red-500">*</span></label>
+      <input
+        type="email"
+        id={fid('email')}
+        name="email"
+        required
+        autocomplete="email"
+        inputmode="email"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
+      />
+    </div>
+    <div>
+      <label for={fid('postcode')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Postcode <span class="text-red-500">*</span></label>
+      <input
+        type="text"
+        id={fid('postcode')}
+        name="postcode"
+        required
+        autocomplete="postal-code"
+        autocapitalize="characters"
+        placeholder="e.g. HP23 4AB"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
+      />
+    </div>
+  </div>
+
   <!-- Name -->
   <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
     <div>
@@ -79,20 +113,8 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
     </div>
   </div>
 
-  <!-- Email & Phone -->
+  <!-- Phone & Town -->
   <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
-    <div>
-      <label for={fid('email')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Email <span class="text-red-500">*</span></label>
-      <input
-        type="email"
-        id={fid('email')}
-        name="email"
-        required
-        autocomplete="email"
-        inputmode="email"
-        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
-      />
-    </div>
     <div>
       <label for={fid('phone')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Phone <span class="text-red-500">*</span></label>
       <input
@@ -103,6 +125,18 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
         autocomplete="tel"
         inputmode="tel"
         placeholder="07xxx xxxxxx"
+        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
+      />
+    </div>
+    <div>
+      <label for={fid('address_city')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Town <span class="text-red-500">*</span></label>
+      <input
+        type="text"
+        id={fid('address_city')}
+        name="address_city"
+        required
+        autocomplete="address-level2"
+        placeholder="e.g. Tring"
         class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
       />
     </div>
@@ -120,35 +154,6 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
       placeholder="e.g. 14 High Street"
       class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
     />
-  </div>
-
-  <!-- Town & Postcode -->
-  <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
-    <div>
-      <label for={fid('address_city')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Town <span class="text-red-500">*</span></label>
-      <input
-        type="text"
-        id={fid('address_city')}
-        name="address_city"
-        required
-        autocomplete="address-level2"
-        placeholder="e.g. Tring"
-        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
-      />
-    </div>
-    <div>
-      <label for={fid('postcode')} class={`block text-sm font-medium text-gray-700 ${labelMargin}`}>Postcode <span class="text-red-500">*</span></label>
-      <input
-        type="text"
-        id={fid('postcode')}
-        name="postcode"
-        required
-        autocomplete="postal-code"
-        autocapitalize="characters"
-        placeholder="e.g. HP23 4AB"
-        class={`w-full bg-white border-2 border-gray-200 rounded-xl ${inputPadding} text-gray-900 placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors duration-200`}
-      />
-    </div>
   </div>
 
   <!-- Services Checkboxes -->
