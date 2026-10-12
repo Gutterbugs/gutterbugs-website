@@ -46,6 +46,13 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
   <!-- form_variant lets the backend distinguish hero-inline vs full /contact submissions -->
   <input type="hidden" name="form_variant" value={compact ? 'inline' : 'standard'} />
 
+  <!-- Returning-customer welcome back (revealed by JS when a saved record is found) -->
+  <div id={fid('welcome-back')} class="hidden rounded-xl bg-sky-50 border-2 border-sky-100 px-4 py-3">
+    <p class="text-sm text-sky-800">
+      Welcome back, <span id={fid('welcome-back-name')} class="font-semibold"></span>! We've filled in your details from your last visit. Just check them over and send.
+    </p>
+  </div>
+
   <!-- Name -->
   <div class={`grid grid-cols-1 sm:grid-cols-2 ${fieldGridGap}`}>
     <div>
@@ -313,6 +320,68 @@ const buttonPadding = compact ? 'py-3' : 'py-4';
         });
       }
     });
+
+    // Returning-customer autofill: when BOTH email and postcode are filled,
+    // look up their last submission and pre-fill the empty fields. Never
+    // overwrites anything the customer has already typed.
+    const welcomeBack = document.getElementById(`welcome-back-${id}`);
+    const welcomeName = document.getElementById(`welcome-back-name-${id}`);
+    let autofillDone = false;
+    let lookupInFlight = false;
+
+    async function tryAutofill(): Promise<void> {
+      if (autofillDone || lookupInFlight) return;
+      const emailEl = form.querySelector<HTMLInputElement>('input[name="email"]');
+      const pcEl = form.querySelector<HTMLInputElement>('input[name="postcode"]');
+      const email = (emailEl?.value || '').trim();
+      const postcode = (pcEl?.value || '').trim();
+      if (!email.includes('@') || postcode.replace(/\s/g, '').length < 5) return;
+
+      lookupInFlight = true;
+      try {
+        const res = await fetch(
+          `${RESCUE_BASE}/api/lookup?email=${encodeURIComponent(email)}&postcode=${encodeURIComponent(postcode)}`
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data?.found) return;
+
+        // Fill only empty fields — never stomp user input.
+        const fill = (name: string, value: unknown): void => {
+          if (!value) return;
+          const el = form.querySelector<HTMLInputElement | HTMLTextAreaElement>(`[name="${name}"]`);
+          if (el && !el.value) el.value = String(value);
+        };
+        fill('first_name', data.first_name);
+        fill('last_name', data.last_name);
+        fill('phone', data.phone);
+        fill('address', data.address);
+        fill('address_city', data.address_city);
+
+        // Pre-tick their last service if nothing is checked yet.
+        if (data.service_type) {
+          const checked = form.querySelectorAll<HTMLInputElement>('input[name="services"]:checked');
+          const box = form.querySelector<HTMLInputElement>(`input[name="services"][value="${data.service_type}"]`);
+          if (!checked.length && box) box.checked = true;
+        }
+
+        if (welcomeBack && welcomeName) {
+          welcomeName.textContent = String(data.first_name || 'there');
+          welcomeBack.classList.remove('hidden');
+        }
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'returning_customer_autofill', { event_category: 'form', form_variant: variant });
+        }
+        autofillDone = true;
+      } catch {
+        /* silent: autofill is a bonus, never a blocker */
+      } finally {
+        lookupInFlight = false;
+      }
+    }
+
+    form.querySelector<HTMLInputElement>('input[name="email"]')?.addEventListener('blur', () => void tryAutofill());
+    form.querySelector<HTMLInputElement>('input[name="postcode"]')?.addEventListener('blur', () => void tryAutofill());
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

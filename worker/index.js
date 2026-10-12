@@ -49,6 +49,22 @@ export default {
       return handleFormSubmission(request, env, ctx, { rescue: true });
     }
 
+    // Route: Agent quote API (self-documenting GET, JSON POST)
+    if (url.pathname === '/api/quote') {
+      if (request.method === 'GET') return handleQuoteSchema(request, env);
+      if (request.method === 'POST') return handleFormSubmission(request, env, ctx, { agent: true });
+      return new Response(JSON.stringify({ error: 'Method not allowed. GET returns the schema, POST submits a quote request.' }), {
+        status: 405,
+        headers: corsHeaders(request, env),
+      });
+    }
+
+    // Route: Returning-customer lookup (email + postcode both required, no PII otherwise)
+    if (url.pathname === '/api/lookup' && request.method === 'GET') {
+      return handleReturningCustomerLookup(url, request, env);
+    }
+
+
     // Route: Form submission (existing)
     if (request.method !== 'POST') {
       return new Response(JSON.stringify({ error: 'Method not allowed' }), {
@@ -301,12 +317,104 @@ async function handlePlaceDetails(url, request, env) {
 
 // ─── Form Submission ──────────────────────────────────────────────────────────
 
-async function handleFormSubmission(request, env, ctx, { rescue = false } = {}) {
+// ─── Agent Quote API ─────────────────────────────────────────────────────────
+
+const QUOTE_SCHEMA = {
+  endpoint: '/api/quote',
+  method: 'POST',
+  content_type: 'application/json',
+  description:
+    'Submit a quote request to Gutterbugs Ltd (Gutterbugs Exterior Cleaning, UK). ' +
+    'The lead is saved, the owner is notified instantly, and a human replies (usually within 1 working day) ' +
+    'by phone or email to confirm the job and give a price. Pricing is quoted per job, not published.',
+  required_fields: {
+    first_name: 'string - customer first name',
+    last_name: 'string - customer last name',
+    email: 'string - contact email',
+    phone: 'string - contact phone (UK)',
+  },
+  optional_fields: {
+    address: 'string - property address or street',
+    address_city: 'string',
+    postcode: 'string - UK postcode strongly recommended for accurate quoting',
+    service_type: 'string - one of: gutter_clearing, roof_cleaning, pressure_washing, soffit_fascia_washing, conservatory_cleaning, solar_panel_cleaning, commercial, other',
+    message: 'string - free-text details (access, property size, issues)',
+    source: 'string - label your agent, e.g. "ai_agent_<name>" (defaults to ai_agent)',
+  },
+  example_request: {
+    first_name: 'Alex',
+    last_name: 'Morgan',
+    email: 'alex@example.com',
+    phone: '07700900000',
+    postcode: 'MK16 8AA',
+    service_type: 'gutter_clearing',
+    message: 'Semi-detached, 3-bed. Gutters overflowing at rear.',
+  },
+  response: { status: 'created', reply_within: '1 working day', contact_method: 'phone or email' },
+  coverage: 'Milton Keynes and surrounding areas (Buckinghamshire, Bedfordshire, Northamptonshire)',
+  business: 'Gutterbugs Ltd, phone 07904621160, ryan@gutterbugs.co.uk',
+};
+
+function handleQuoteSchema(request, env) {
+  return new Response(JSON.stringify(QUOTE_SCHEMA, null, 2), {
+    status: 200,
+    headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' },
+  });
+}
+
+// ─── Returning-Customer Lookup ────────────────────────────────────────────────
+// Serves the website's autofill: given BOTH a matching email and postcode,
+// returns the fields the form asks for anyway. No match → {found:false}.
+// Both keys required: an email alone (or a postcode alone) must never return data.
+async function handleReturningCustomerLookup(url, request, env) {
+  const json = (obj, status = 200) =>
+    new Response(JSON.stringify(obj), {
+      status,
+      headers: { ...corsHeaders(request, env), 'Content-Type': 'application/json' },
+    });
+
+  const email = (url.searchParams.get('email') || '').trim().toLowerCase();
+  const postcode = (url.searchParams.get('postcode') || '').replace(/\s+/g, '').toUpperCase();
+  if (!email || !email.includes('@') || postcode.length < 5) return json({ found: false }, 400);
+
+  try {
+    const result = await env.DB.prepare(
+      `SELECT first_name, last_name, phone, address, address_city, postcode, service_type
+         FROM leads
+        WHERE LOWER(email) = ?
+          AND UPPER(REPLACE(REPLACE(postcode, ' ', ''), '-', '')) = ?
+        ORDER BY id DESC LIMIT 1`
+    )
+      .bind(email, postcode)
+      .all();
+
+    const row = result.results?.[0];
+    if (!row) return json({ found: false });
+
+    return json({
+      found: true,
+      first_name: row.first_name,
+      last_name: row.last_name,
+      phone: row.phone,
+      address: row.address,
+      address_city: row.address_city,
+      postcode: row.postcode,
+      service_type: row.service_type,
+    });
+  } catch (e) {
+    return json({ found: false, error: 'lookup_failed' }, 500);
+  }
+}
+
+
+async function handleFormSubmission(request, env, ctx, { rescue = false, agent = false } = {}) {
   let body = null;
   try {
     // Parse text rather than request.json(): the rescue route is sent as
     // text/plain so the browser skips the CORS preflight.
     body = JSON.parse(await request.text());
+
+    if (agent) body.source = body.source || 'ai_agent';
 
     if (!body.first_name || !body.last_name || !body.email || !body.phone) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {

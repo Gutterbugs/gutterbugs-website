@@ -1,0 +1,25 @@
+# Gutterbugs Exterior Cleaning
+
+> UK exterior cleaning company based in Milton Keynes. Gutter clearing, roof cleaning, pressure washing, soffit & fascia washing, conservatory and solar panel cleaning, commercial exterior cleaning via Chiltern Exterior Cleaning. Pricing quoted per job by a human, usually within 1 working day. Phone 07904621160, email ryan@gutterbugs.co.uk.
+
+## AI agents
+
+- Agent instructions and quote API: https://gutterbugs.co.uk/agents.md
+- Quote API (GET = schema, POST = submit): https://gutterbugs-form.ryan-1f9.workers.dev/api/quote
+
+## Services
+
+- [Gutter clearing](https://gutterbugs.co.uk/gutter-clearing): vacuum-based, ground-level, CCTV inspection, residential and commercial
+- [Roof cleaning](https://gutterbugs.co.uk/roof-cleaning): moss removal, soft washing
+- [Pressure washing](https://gutterbugs.co.uk/pressure-washing): driveways, patios, paths
+- [Soffit & fascia washing](https://gutterbugs.co.uk/soffit-fascia-washing)
+- [Conservatory cleaning](https://gutterbugs.co.uk/conservatory-cleaning)
+- [Solar panel cleaning](https://gutterbugs.co.uk/solar-panel-cleaning)
+- [Commercial exterior cleaning](https://gutterbugs.co.uk/commercial)
+
+## Company
+
+- [About](https://gutterbugs.co.uk/about)
+- [Reviews](https://gutterbugs.co.uk/reviews)
+- [Contact](https://gutterbugs.co.uk/contact)
+- Coverage: Milton Keynes, Buckinghamshire, Bedfordshire, Northamptonshire

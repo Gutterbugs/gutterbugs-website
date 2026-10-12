@@ -50,13 +50,20 @@ for (const page of FORM_PAGES) {
   const f = join(DIST, page);
   let text;
   try {
-    text = readFileSync(f, 'utf8');
+    text = readFileSync(f, 'utf-8');
   } catch {
     failures.push(`${page} is missing from the build`);
     continue;
   }
   if (!text.includes('data-form-instance')) failures.push(`${page} has no work request form`);
-  if (!text.includes(WORKER)) failures.push(`${page} does not post to ${WORKER}`);
+  // Astro bundles the ContactForm script separately: the page HTML references it,
+  // the bundle carries the endpoint. Verify the bundle (not the page) for the worker URL.
+  const bundleFiles = files.filter((x) => /ContactForm.*\.js$/.test(x));
+  if (!bundleFiles.length) {
+    failures.push('no ContactForm bundle found in build output');
+  } else if (!bundleFiles.some((bf) => readFileSync(bf, 'utf-8').includes(WORKER))) {
+    failures.push(`ContactForm bundle does not post to ${WORKER}`);
+  }
 }
 
 if (failures.length) {
